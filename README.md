@@ -11,3 +11,7 @@ Easyly create *.txt memo and it is automatically saved(when change to another me
 or program exit. And also you can save file intensionally. 
 The saved file is saved on .txt file, not a data base.
 
+- Screenshot
+
+![Screenshot] (./screenshot.png)
+
