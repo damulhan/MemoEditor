@@ -1,0 +1,96 @@
+﻿<Window x:Class="MemoEditor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MemoEditor" 
+        xmlns:resx="clr-namespace:MemoEditor.Properties"
+        xmlns:ignore="http://www.ignore.com"
+        mc:Ignorable="d ignore"
+        Height="550"
+        Width="800"
+        Title="MemoEditor"
+        DataContext="{Binding Main, Source={StaticResource Locator}}" 
+        Loaded="Window_Loaded"
+        Icon="./Resources/Icon1.ico" Closing="Window_Closing">
+
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.New" 
+                        Executed="FileNew_Executed" 
+                        CanExecute="FileNew_CanExecute" />
+        <CommandBinding Command="ApplicationCommands.Save" 
+                        Executed="FileSave_Executed" 
+                        CanExecute="FileSave_CanExecute" />
+    </Window.CommandBindings>
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Skins/MainSkin.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <DockPanel Margin="0,0,0,0">
+
+        <Menu DockPanel.Dock="Top" Margin="0,0,0,0">
+            <MenuItem Header="{x:Static resx:Resources.menu_file}">
+                <MenuItem Command="ApplicationCommands.New" Header="{x:Static resx:Resources.menu_new}" />
+                <MenuItem Command="ApplicationCommands.Save" Header="{x:Static resx:Resources.menu_save}" />
+                <Separator />
+                <MenuItem Command="{Binding ExitCommand}" Header="{x:Static resx:Resources.menu_exit}" InputGestureText="Ctrl+X"/>
+            </MenuItem>
+            <MenuItem Header="{x:Static resx:Resources.menu_edit}">
+                <MenuItem Command="Cut" Header="_Cut" />
+                <MenuItem Command="Copy" Header="C_opy" />
+                <MenuItem Command="Paste" Header="_Paste" />
+            </MenuItem>
+            <MenuItem Header="{x:Static resx:Resources.menu_help}">
+                <MenuItem Command="{Binding HelpInfoCommand}" Header="{x:Static resx:Resources.menu_info}" />
+            </MenuItem>
+        </Menu>
+
+        <ToolBarTray DockPanel.Dock="Top">
+            <ToolBar>
+                <Button Command="ApplicationCommands.New" Content="{x:Static resx:Resources.btn_new}" VerticalAlignment="Bottom" Margin="2,0,2,0"/>
+                <Button Command="ApplicationCommands.Save" Content="{x:Static resx:Resources.btn_save}" Margin="2,0,2,0"/>
+                <Button Command="{Binding FileDeleteCommand}" Content="{x:Static resx:Resources.btn_delete}" Margin="2,0,2,0"/>
+                <Button Command="{Binding FolderNewCommand}" Content="{x:Static resx:Resources.btn_new_folder}" Margin="2,0,2,0"/>
+                <Button Command="{Binding FolderChangeCommand}" Content="{x:Static resx:Resources.btn_select_folder}" Margin="2,0,2,0"/>
+            </ToolBar>
+        </ToolBarTray>
+
+        <Grid Margin="0,0,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="180"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.Resources>
+                <Style TargetType="{x:Type TextBox}" x:Key="TextBoxWithColoredCaretStyle">
+                    <Setter Property="CaretBrush">
+                        <Setter.Value>
+                            <SolidColorBrush Color="#FFAE63F3"/>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Grid.Resources>
+
+            <local:FileExplorerControl x:Name="FileExplorer1" Grid.Column="0" Loaded="FileExplorer1_Loaded" />
+
+            <GridSplitter Margin="0,0,0,0" Width="5"/>
+            
+            <ScrollViewer Grid.Column="1" Margin="0,0,0,0" >
+                <TextBox x:Name="EditText1" Grid.Column="1" TextWrapping="Wrap" AcceptsReturn="True" 
+                     Text="{Binding EditText}" 
+                     IsEnabled="{Binding IsEnabledEditText, UpdateSourceTrigger=PropertyChanged}" 
+                     TextChanged="EditText1_TextChanged" FontSize="14" FontFamily="Malgun Gothic" 
+                     Style="{StaticResource TextBoxWithColoredCaretStyle}"
+                         />
+            </ScrollViewer>
+
+        </Grid>
+
+    </DockPanel>
+
+</Window>

@@ -1,0 +1,88 @@
+﻿<UserControl x:Class="MemoEditor.FileExplorerControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Behaviors="clr-namespace:MemoEditor.Behaviors"
+             xmlns:local="clr-namespace:MemoEditor"
+             xmlns:resx="clr-namespace:MemoEditor.Properties"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300"    
+             DataContext="{Binding Main, Source={StaticResource Locator}}">
+
+    <DockPanel>
+        <!-- FAMILY TREE -->
+        <TreeView x:Name="TreeView1" ItemsSource="{Binding FirstGeneration}" Behaviors:TreeViewInPlaceEditBehavior.IsEditable="True">
+            <TreeView.ContextMenu>
+                <ContextMenu Name="cm">
+                    <MenuItem Header="{x:Static resx:Resources.command_save}" IsEnabled="{Binding EditTextSavable}"/>
+                    <MenuItem Header="{x:Static resx:Resources.command_rename}" Command="{Binding FileRenameCommand}"/>
+                    <MenuItem Header="{x:Static resx:Resources.command_delete}" Command="{Binding FileDeleteCommand}"/>
+                </ContextMenu>
+            </TreeView.ContextMenu>
+            <TreeView.ItemContainerStyle>
+                <!-- 
+                This Style binds a TreeViewItem to a PersonViewModel. 
+                -->
+                <Style TargetType="{x:Type TreeViewItem}">
+                    <Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}" />
+                    <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}" />
+                </Style>
+            </TreeView.ItemContainerStyle>
+            
+            <TreeView.InputBindings>
+                <KeyBinding Command="{Binding FileDeleteCommand}" Key="Delete" />
+            </TreeView.InputBindings>
+
+            <TreeView.ItemTemplate>
+                <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                    <StackPanel Orientation="Horizontal">
+                        
+                        <!-- 
+                        <Image Name="img"
+				            Width="16"
+				            Height="16"
+				            Stretch="Fill"
+				            Source="{Binding Converter={x:Static local:HeaderToImageConverter.Instance}}" 
+                            Margin="0,0,5,0" 
+                            />                        
+                        -->
+                                                
+                        <Grid>
+                            <TextBlock Text="{Binding Name}" />
+                            <TextBox Text="{Binding Name, UpdateSourceTrigger=Explicit}" Visibility="Collapsed" x:Name="TextBox" />
+                        </Grid>
+                        
+                    </StackPanel>
+
+                    <HierarchicalDataTemplate.Triggers>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding IsSelected}" Value="True"/>
+                                <Condition Binding="{Binding Path=(Behaviors:TreeViewInPlaceEditBehavior.IsEditing), RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type TreeView}}}" Value="True"/>
+                            </MultiDataTrigger.Conditions>
+                            <Setter TargetName="TextBox" Property="Visibility" Value="Visible"/>
+                            <Setter TargetName="TextBox" Property="Behaviors:TreeViewInPlaceEditBoxBehavior.IsEditing">
+                                <Setter.Value>
+                                    <Binding Path="(Behaviors:TreeViewInPlaceEditBehavior.IsEditing)" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type TreeView}}"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter TargetName="TextBox" Property="Behaviors:TreeViewInPlaceEditBoxBehavior.IsEditConfirmed">
+                                <Setter.Value>
+                                    <Binding Path="(Behaviors:TreeViewInPlaceEditBehavior.IsEditConfirmed)" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type TreeView}}"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter TargetName="TextBox" Property="Behaviors:TreeViewInPlaceEditBoxBehavior.IsEditCancelled">
+                                <Setter.Value>
+                                    <Binding Path="(Behaviors:TreeViewInPlaceEditBehavior.IsEditCancelled)" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type TreeView}}"/>
+                                </Setter.Value>
+                            </Setter>
+                        </MultiDataTrigger>
+                    </HierarchicalDataTemplate.Triggers>
+                </HierarchicalDataTemplate>
+            </TreeView.ItemTemplate>
+        </TreeView>
+
+    </DockPanel>
+
+</UserControl>
