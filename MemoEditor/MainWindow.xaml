@@ -12,7 +12,7 @@
         Title="MemoEditor"
         DataContext="{Binding Main, Source={StaticResource Locator}}" 
         Loaded="Window_Loaded"
-        Icon="./Resources/Icon1.ico" Closing="Window_Closing">
+        Icon="./Resources/MemoEditor.ico" Closing="Window_Closing">
 
     <Window.CommandBindings>
         <CommandBinding Command="ApplicationCommands.New" 

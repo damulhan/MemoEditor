@@ -8,6 +8,6 @@ namespace MemoEditor
     class Version
     {
         public static string APP_NAME = "MemoEditor";
-        public static string VERSION = "0.11";
+        public static string VERSION = "0.12";
     }
 }
