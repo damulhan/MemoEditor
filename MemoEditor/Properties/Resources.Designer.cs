@@ -61,6 +61,15 @@ namespace MemoEditor.Properties {
         }
         
         /// <summary>
+        ///   Change Folder과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string btn_change_folder {
+            get {
+                return ResourceManager.GetString("btn_change_folder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Delete과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         public static string btn_delete {
@@ -93,15 +102,6 @@ namespace MemoEditor.Properties {
         public static string btn_save {
             get {
                 return ResourceManager.GetString("btn_save", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Select Folder과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        public static string btn_select_folder {
-            get {
-                return ResourceManager.GetString("btn_select_folder", resourceCulture);
             }
         }
         
@@ -219,6 +219,24 @@ namespace MemoEditor.Properties {
         public static string menu_save {
             get {
                 return ResourceManager.GetString("menu_save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Top Most과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string menu_topmost {
+            get {
+                return ResourceManager.GetString("menu_topmost", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   View과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string menu_view {
+            get {
+                return ResourceManager.GetString("menu_view", resourceCulture);
             }
         }
     }

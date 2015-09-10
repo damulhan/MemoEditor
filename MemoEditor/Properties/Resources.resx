@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="btn_change_folder" xml:space="preserve">
+    <value>Change Folder</value>
+  </data>
   <data name="btn_delete" xml:space="preserve">
     <value>Delete</value>
   </data>
@@ -128,9 +131,6 @@
   </data>
   <data name="btn_save" xml:space="preserve">
     <value>Save</value>
-  </data>
-  <data name="btn_select_folder" xml:space="preserve">
-    <value>Select Folder</value>
   </data>
   <data name="command_delete" xml:space="preserve">
     <value>Delete</value>
@@ -170,5 +170,11 @@
   </data>
   <data name="menu_save" xml:space="preserve">
     <value>Save</value>
+  </data>
+  <data name="menu_topmost" xml:space="preserve">
+    <value>Top Most</value>
+  </data>
+  <data name="menu_view" xml:space="preserve">
+    <value>View</value>
   </data>
 </root>

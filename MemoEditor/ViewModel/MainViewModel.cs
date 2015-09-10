@@ -8,6 +8,7 @@ using System.Windows.Input;
 using MemoEditor.Model;
 using MemoEditor;
 using Utility;
+using System.Collections;
 
 namespace MemoEditor.ViewModel
 {
@@ -19,10 +20,6 @@ namespace MemoEditor.ViewModel
     /// </summary>
     public class MainViewModel : ViewModelBase
     {
-        public static string REGFILE = "MemoEditor.ini";
-        public static string REGSECTION = "MemoEditor";
-        public static string REGKEY_WorkingFolder = "WorkingFolder";
-
         // event mapper 
         public RelayCommand OnLoadedCommand { get; private set; }
         public RelayCommand OnClosingCommand { get; private set; }
@@ -39,6 +36,8 @@ namespace MemoEditor.ViewModel
 
         // data service 
         private readonly IDataService _dataService;
+
+        private UserPreferences _userPrefs;
         
         public IDataService DataService {
             get { return _dataService; }
@@ -111,9 +110,6 @@ namespace MemoEditor.ViewModel
         public bool EditTextSavable
         {
             get {
-                //Debug.WriteLine("EditTextSavable called: _textChanged " + _textChanged.ToString() + " text:" + (_editText != _editTextOld).ToString()); 
-                //return _currentExplorerNode != null && 
-                //    _currentExplorerNode.ExplorerType == ExplorerType.File && 
                 return _textChanged;
             }
         }
@@ -144,6 +140,7 @@ namespace MemoEditor.ViewModel
         /// </summary>
         public MainViewModel(IDataService dataService)
         {
+            // Init data service 
             _dataService = dataService;
             _dataService.GetData(
                 (item, error) =>
@@ -157,22 +154,25 @@ namespace MemoEditor.ViewModel
                     _initializeData(item);
                 });
 
-            // 
+            // Init in-between view model messenger 
             _initializeMessenger();
 
-            //
+            // Connecting window event with command 
             OnLoadedCommand = new RelayCommand(OnLoaded, () => true);
             OnClosingCommand = new RelayCommand(OnClosing, () => true);
-            FileNewCommand = new RelayCommand(FileNew, () => true);
-            FileSaveCommand = new RelayCommand(FileSave, () => EditTextSavable);
-            EditText1_TextChangedCommand = new RelayCommand(EditText1_TextChanged, () => true);
-            FolderNewCommand = new RelayCommand(FolderNew, () => true);
-            FileRenameCommand = new RelayCommand(FileRename, () => true);
-            FileDeleteCommand = new RelayCommand(FileDelete, () => true);
-            HelpInfoCommand = new RelayCommand(HelpInfo, () => true);
-            FolderChangeCommand = new RelayCommand(FolderChange, () => true);
-            ExitCommand = new RelayCommand(Exit, () => true);
-            SettingCommand = new RelayCommand(Setting, () => true);
+            FileNewCommand = new RelayCommand(OnFileNew, () => true);
+            FileSaveCommand = new RelayCommand(OnFileSave, () => EditTextSavable);
+            EditText1_TextChangedCommand = new RelayCommand(OnEditText1_TextChanged, () => true);
+            FolderNewCommand = new RelayCommand(OnFolderNew, () => true);
+            FileRenameCommand = new RelayCommand(OnFileRename, () => true);
+            FileDeleteCommand = new RelayCommand(OnFileDelete, () => true);
+            HelpInfoCommand = new RelayCommand(OnHelpInfo, () => true);
+            FolderChangeCommand = new RelayCommand(OnFolderChange, () => true);
+            ExitCommand = new RelayCommand(OnExit, () => true);
+            SettingCommand = new RelayCommand(OnSetting, () => true);
+
+            // Loading user preference
+            this._userPrefs = UserPreferences.Instance;
         }
         
         private void _initializeData(DataItem item)
@@ -194,7 +194,6 @@ namespace MemoEditor.ViewModel
 
             // IsEnabled_EditText 
             IsEnabledEditText = false;
-
         }
 
         private void _initializeMessenger()
@@ -214,7 +213,7 @@ namespace MemoEditor.ViewModel
                         var node = (ExplorerNode)m.obj;
 
                         // saving old files 
-                        FileSave();
+                        OnFileSave();
 
                         // load files 
                         if (node != null && node.ExplorerType == ExplorerType.File) {
@@ -243,29 +242,27 @@ namespace MemoEditor.ViewModel
             _textChanged = false; 
         }
 
-        private void FileNew()
+        private void OnFileNew()
         {
-            //MessageBox.Show("The New command was invoked");
             Debug.WriteLine("File New..");
 
-            FileSave();
+            OnFileSave();
 
             Messenger.Default.Send(new CustomMessage(
                 CustomMessage.MessageType.CREATE_NEW));
         }
 
-        private void FolderNew()
+        private void OnFolderNew()
         {
-            //MessageBox.Show("The New command was invoked");
             Debug.WriteLine("New folder ..");
 
-            FileSave();
+            OnFileSave();
 
             Messenger.Default.Send(new CustomMessage(
                 CustomMessage.MessageType.CREATE_NEW_FOLDER));
         }
         
-        private void FileSave()
+        private void OnFileSave()
         {
             //MessageBox.Show("The Save command was invoked");
             Debug.WriteLine("File Save..");
@@ -318,11 +315,11 @@ namespace MemoEditor.ViewModel
             }
         }
 
-        private void FileRename()
+        private void OnFileRename()
         {
             Debug.WriteLine("FileRename..");
 
-            FileSave();
+            OnFileSave();
 
             //treeView.BeginEdit();
 
@@ -346,7 +343,7 @@ namespace MemoEditor.ViewModel
             }
         }
 
-        private void FileDelete()
+        private void OnFileDelete()
         {
             string messageBoxText = "삭제하겠습니까?";
             string caption = Version.APP_NAME;
@@ -371,7 +368,7 @@ namespace MemoEditor.ViewModel
             }
         }
 
-        private void HelpInfo()
+        private void OnHelpInfo()
         {
             string messageBoxText = "MemoEditor\n"+
                 "©2015 greatcorea9000@hanmail.net\n"+
@@ -379,12 +376,12 @@ namespace MemoEditor.ViewModel
             MessageBoxShow(messageBoxText);
         }
 
-        private void EditText1_TextChanged()
+        private void OnEditText1_TextChanged()
         {
             _textChanged = true; 
         }
 
-        private void FolderChange()
+        private void OnFolderChange()
         {
             System.Windows.Forms.FolderBrowserDialog dialog 
                 = new System.Windows.Forms.FolderBrowserDialog();
@@ -404,72 +401,42 @@ namespace MemoEditor.ViewModel
                 node.IsExpanded = true;
                 node.IsSelected = true;
 
-                // registry에 추가 
-                //var reg = new Utility.ModifyRegistry.ModifyRegistry();
-                //reg.Write(REGKEY_WorkingFolder, dialog.SelectedPath);
-
-                IniFile ini = new IniFile();
-                try
-                {
-                    ini.AddSection(REGSECTION).AddKey(REGKEY_WorkingFolder).Value = dialog.SelectedPath;
-                    ini.Save(REGFILE);
-                }
-                catch (System.IO.IOException e)
-                {
-                    MessageBoxShow(e.Message);
-                }
-            }
+                // Save in Setting 
+                _userPrefs.WorkingFolder = dialog.SelectedPath;
+           }
         }
 
         private void OnLoaded()
         {
-            /*
-            var reg = new Utility.ModifyRegistry.ModifyRegistry();
-            string workfolder = reg.Read(REGKEY_WorkingFolder);
-            Debug.WriteLine(workfolder);
-
-            if (workfolder != null)
-            {
-                // FirstGeneration 
-                var firsts = new ObservableCollection<ExplorerNode>();
-                firsts.Add(new ExplorerNode(workfolder));
-                FirstGeneration = firsts;
-            }
-            */
-
-            IniFile ini = new IniFile();
+            // Make initial tree node 
             try
             {
-                ini.Load(REGFILE);
-                string workfolder = ini.GetSection(REGSECTION).GetKey(REGKEY_WorkingFolder).GetValue();
-
-                if (workfolder != null)
+                if(_userPrefs.WorkingFolder != "")
                 {
                     // FirstGeneration 
                     var firsts = new ObservableCollection<ExplorerNode>();
-                    firsts.Add(new ExplorerNode(workfolder));
+                    firsts.Add(new ExplorerNode(_userPrefs.WorkingFolder));
                     FirstGeneration = firsts;
                 }
             }
             catch (System.IO.FileNotFoundException e)
             {
                 Debug.WriteLine(e.ToString());
-                //MessageBoxShow(e.Message);
             }
         }
 
         private void OnClosing()
         {
-            FileSave();
+            OnFileSave();
         }
         
-        private void Exit()
+        private void OnExit()
         {
             OnClosing();
             Application.Current.Shutdown();
         }
 
-        private void Setting()
+        private void OnSetting()
         {
 
         }

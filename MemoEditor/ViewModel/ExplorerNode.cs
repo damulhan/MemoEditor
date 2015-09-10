@@ -335,6 +335,7 @@ namespace MemoEditor.ViewModel
         }
 
         private bool _isSelected;
+        private object p;
         public bool IsSelected
         {
             get { return _isSelected; }

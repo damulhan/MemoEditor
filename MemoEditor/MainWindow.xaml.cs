@@ -25,6 +25,14 @@ namespace MemoEditor
             Closing += (s, e) => ViewModelLocator.Cleanup();
 
             _instance = this;
+
+            // Loading user preferences 
+            var userPrefs = UserPreferences.Instance;
+            this.Height = userPrefs.WindowHeight;
+            this.Width = userPrefs.WindowWidth;
+            this.Top = userPrefs.WindowTop;
+            this.Left = userPrefs.WindowLeft;
+            this.WindowState = userPrefs.WindowState;
         }
 
         public IntPtr Handle
@@ -34,7 +42,9 @@ namespace MemoEditor
 
         public static MainWindow Instance 
         {
-            get { return _instance; }
+            get { 
+                return _instance;
+            }
         }
 
         private MainViewModel ViewModel
@@ -78,7 +88,7 @@ namespace MemoEditor
         }
 
         #endregion
-
+        
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             ViewModel.OnLoadedCommand.Execute(e.Source);
@@ -86,6 +96,17 @@ namespace MemoEditor
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            var userPrefs = UserPreferences.Instance; 
+
+            userPrefs.WindowHeight = this.Height;
+            userPrefs.WindowWidth = this.Width;
+            userPrefs.WindowTop = this.Top;
+            userPrefs.WindowLeft = this.Left;
+            userPrefs.WindowState = this.WindowState;
+
+            userPrefs.Save();
+            
+            // Call View model's on closing 
             ViewModel.OnClosingCommand.Execute(e);
         }
 
@@ -99,6 +120,12 @@ namespace MemoEditor
                 node.IsSelected = true; 
             }
         }
+        
+        private void MenuItemTopmost_Click(object sender, RoutedEventArgs e)
+        {
+            this.Topmost = (sender as MenuItem).IsChecked;
+        }
+        
 
     }
 }

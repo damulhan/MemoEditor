@@ -7,12 +7,15 @@
         xmlns:resx="clr-namespace:MemoEditor.Properties"
         xmlns:ignore="http://www.ignore.com"
         mc:Ignorable="d ignore"
-        Height="550"
-        Width="800"
         Title="MemoEditor"
-        DataContext="{Binding Main, Source={StaticResource Locator}}" 
+        DataContext="{Binding Main, Source={StaticResource Locator}}"         
+        Icon="./Resources/MemoEditor.ico" 
+        WindowStartupLocation="Manual"
         Loaded="Window_Loaded"
-        Icon="./Resources/MemoEditor.ico" Closing="Window_Closing">
+        Closing="Window_Closing" 
+        Width="800"
+        Height="550"
+        >
 
     <Window.CommandBindings>
         <CommandBinding Command="ApplicationCommands.New" 
@@ -45,6 +48,9 @@
                 <MenuItem Command="Copy" Header="C_opy" />
                 <MenuItem Command="Paste" Header="_Paste" />
             </MenuItem>
+            <MenuItem Header="{x:Static resx:Resources.menu_view}">
+                <MenuItem x:Name="MenuItemTopmost" Command="" Header="{x:Static resx:Resources.menu_topmost}" IsCheckable="True" Click="MenuItemTopmost_Click" />
+            </MenuItem>
             <MenuItem Header="{x:Static resx:Resources.menu_help}">
                 <MenuItem Command="{Binding HelpInfoCommand}" Header="{x:Static resx:Resources.menu_info}" />
             </MenuItem>
@@ -56,7 +62,7 @@
                 <Button Command="ApplicationCommands.Save" Content="{x:Static resx:Resources.btn_save}" Margin="2,0,2,0"/>
                 <Button Command="{Binding FileDeleteCommand}" Content="{x:Static resx:Resources.btn_delete}" Margin="2,0,2,0"/>
                 <Button Command="{Binding FolderNewCommand}" Content="{x:Static resx:Resources.btn_new_folder}" Margin="2,0,2,0"/>
-                <Button Command="{Binding FolderChangeCommand}" Content="{x:Static resx:Resources.btn_select_folder}" Margin="2,0,2,0"/>
+                <Button Command="{Binding FolderChangeCommand}" Content="{x:Static resx:Resources.btn_change_folder}" Margin="2,0,2,0"/>
             </ToolBar>
         </ToolBarTray>
 
