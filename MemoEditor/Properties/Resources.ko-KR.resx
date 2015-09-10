@@ -177,4 +177,7 @@
   <data name="menu_view" xml:space="preserve">
     <value>보기</value>
   </data>
+  <data name="msg_delete" xml:space="preserve">
+    <value>삭제하겠습니까?</value>
+  </data>
 </root>

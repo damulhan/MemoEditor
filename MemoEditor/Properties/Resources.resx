@@ -177,4 +177,7 @@
   <data name="menu_view" xml:space="preserve">
     <value>View</value>
   </data>
+  <data name="msg_delete" xml:space="preserve">
+    <value>Want to delete?</value>
+  </data>
 </root>

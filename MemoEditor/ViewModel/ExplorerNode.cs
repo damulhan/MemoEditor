@@ -243,7 +243,7 @@ namespace MemoEditor.ViewModel
             Messenger.Default.Send(new CustomMessage(
                 CustomMessage.MessageType.CREATED_NEW, childnode.Name, childnode.Path, childnode));
 
-            // 선택하기 
+            // Selecting node 
             node.IsExpanded = true;
             childnode.IsSelected = true;
 

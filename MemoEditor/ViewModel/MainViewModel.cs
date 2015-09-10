@@ -345,7 +345,7 @@ namespace MemoEditor.ViewModel
 
         private void OnFileDelete()
         {
-            string messageBoxText = "삭제하겠습니까?";
+            string messageBoxText = Properties.Resources.ResourceManager.GetString("msg_delete");
             string caption = Version.APP_NAME;
             MessageBoxButton button = MessageBoxButton.OKCancel;
             MessageBoxImage icon = MessageBoxImage.Warning;
