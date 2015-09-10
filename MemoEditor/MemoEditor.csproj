@@ -101,7 +101,6 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="UserPreference.cs" />
-    <Compile Include="Utility\IniFileCs.cs" />
     <Compile Include="Utility\MessageBoxEx.cs" />
     <Compile Include="Model\DataItem.cs" />
     <Compile Include="Model\DataService.cs" />
