@@ -41,6 +41,8 @@
                 <MenuItem Command="ApplicationCommands.New" Header="{x:Static resx:Resources.menu_new}" />
                 <MenuItem Command="ApplicationCommands.Save" Header="{x:Static resx:Resources.menu_save}" />
                 <Separator />
+                <MenuItem x:Name="MenuItemFontChange" Header="{x:Static resx:Resources.menu_change_font}" Click="MenuItemFontChange_Clicked"/>
+                <Separator />
                 <MenuItem Command="{Binding ExitCommand}" Header="{x:Static resx:Resources.menu_exit}" InputGestureText="Ctrl+X"/>
             </MenuItem>
             <MenuItem Header="{x:Static resx:Resources.menu_edit}">
@@ -90,9 +92,8 @@
                 <TextBox x:Name="EditText1" Grid.Column="1" TextWrapping="Wrap" AcceptsReturn="True" 
                      Text="{Binding EditText}" 
                      IsEnabled="{Binding IsEnabledEditText, UpdateSourceTrigger=PropertyChanged}" 
-                     TextChanged="EditText1_TextChanged" FontSize="14" FontFamily="Malgun Gothic" 
-                     Style="{StaticResource TextBoxWithColoredCaretStyle}"
-                         />
+                     TextChanged="EditText1_TextChanged" 
+                     Style="{StaticResource TextBoxWithColoredCaretStyle}" />
             </ScrollViewer>
 
         </Grid>

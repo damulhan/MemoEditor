@@ -20,5 +20,11 @@
     <Setting Name="WorkingFolder" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="FontSize" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">14</Value>
+    </Setting>
+    <Setting Name="FontFamily" Type="System.String" Scope="User">
+      <Value Profile="(Default)">malgun gothic</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -160,6 +160,15 @@ namespace MemoEditor.Properties {
         }
         
         /// <summary>
+        ///   Change Font과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string menu_change_font {
+            get {
+                return ResourceManager.GetString("menu_change_font", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Edit과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         public static string menu_edit {

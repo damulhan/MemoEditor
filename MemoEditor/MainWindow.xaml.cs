@@ -33,6 +33,10 @@ namespace MemoEditor
             this.Top = userPrefs.WindowTop;
             this.Left = userPrefs.WindowLeft;
             this.WindowState = userPrefs.WindowState;
+            this.EditText1.FontSize = userPrefs.FontSize;
+            this.EditText1.FontFamily = new FontFamily(userPrefs.FontFamily);
+
+            Debug.WriteLine("font:" + userPrefs.FontFamily + " " + userPrefs.FontSize);
         }
 
         public IntPtr Handle
@@ -55,25 +59,21 @@ namespace MemoEditor
         #region toolbar events 
         private void FileNew_CanExecute(object sender, System.Windows.Input.CanExecuteRoutedEventArgs e)
         {
-            //Debug.WriteLine("FileNew_CanExecute: " + sender.ToString() + " " + e.Source.ToString());
             e.CanExecute = ViewModel.FileNewCommand.CanExecute(e.Source);
         }
 
         private void FileNew_Executed(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
         {
-            //Debug.WriteLine("FileNew_Executed: " + sender.ToString() + " " + e.Source.ToString());
             ViewModel.FileNewCommand.Execute(null);
         }
 
         private void FileSave_CanExecute(object sender, System.Windows.Input.CanExecuteRoutedEventArgs e)
         {
-            //Debug.WriteLine("FileSave_CanExecute: " + sender.ToString() + " " + e.Source.ToString());
             e.CanExecute = ViewModel.FileSaveCommand.CanExecute(e.Source);
         }
 
         private void FileSave_Executed(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
         {
-            //Debug.WriteLine("FileSave_Executed: " + sender.ToString() + " " + e.Source.ToString());
             ViewModel.FileSaveCommand.Execute(null);
         }
 
@@ -103,6 +103,8 @@ namespace MemoEditor
             userPrefs.WindowTop = this.Top;
             userPrefs.WindowLeft = this.Left;
             userPrefs.WindowState = this.WindowState;
+            userPrefs.FontSize = this.EditText1.FontSize;
+            userPrefs.FontFamily = this.EditText1.FontFamily.ToString();
 
             userPrefs.Save();
             
@@ -125,7 +127,32 @@ namespace MemoEditor
         {
             this.Topmost = (sender as MenuItem).IsChecked;
         }
-        
+
+        private void MenuItemFontChange_Clicked(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Forms.FontDialog fontDialog = new System.Windows.Forms.FontDialog();
+            fontDialog.Font = new System.Drawing.Font(EditText1.FontFamily.ToString(), (float)EditText1.FontSize);
+
+            if (fontDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                FontFamilyConverter ffc = new FontFamilyConverter();
+
+                EditText1.FontSize = (double)fontDialog.Font.Size;
+                EditText1.FontFamily = (FontFamily)ffc.ConvertFromString(fontDialog.Font.Name);
+                
+                /*
+                if (fontDialog.Font.Bold)
+                    textAnnotation.FontWeight = FontWeights.Bold;
+                else
+                    textAnnotation.FontWeight = FontWeights.Normal;
+
+                if (fontDialog.Font.Italic)
+                    textAnnotation.FontStyle = FontStyles.Italic;
+                else
+                    textAnnotation.FontStyle = FontStyles.Normal;
+                */
+            }
+        }        
 
     }
 }

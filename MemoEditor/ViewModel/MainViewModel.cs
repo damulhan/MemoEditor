@@ -9,6 +9,8 @@ using MemoEditor.Model;
 using MemoEditor;
 using Utility;
 using System.Collections;
+using System.Windows.Media;
+using System.Windows.Controls;
 
 namespace MemoEditor.ViewModel
 {
@@ -98,7 +100,6 @@ namespace MemoEditor.ViewModel
             }
             set
             {
-                Debug.WriteLine("EditText new value: " + value);
                 if (_editText != value)
                 {
                     _editText = value;
@@ -232,8 +233,7 @@ namespace MemoEditor.ViewModel
                 }
             });
         }
-
-
+        
         private void EditTextInit()
         {
             _editTextOld = "";

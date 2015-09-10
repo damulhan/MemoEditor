@@ -150,6 +150,9 @@
   <data name="memo_foldername_prefix" xml:space="preserve">
     <value>새 폴더</value>
   </data>
+  <data name="menu_change_font" xml:space="preserve">
+    <value>폰트 변경</value>
+  </data>
   <data name="menu_edit" xml:space="preserve">
     <value>편집</value>
   </data>

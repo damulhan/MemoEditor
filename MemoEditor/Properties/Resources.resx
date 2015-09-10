@@ -150,6 +150,9 @@
   <data name="memo_foldername_prefix" xml:space="preserve">
     <value>New Folder</value>
   </data>
+  <data name="menu_change_font" xml:space="preserve">
+    <value>Change Font</value>
+  </data>
   <data name="menu_edit" xml:space="preserve">
     <value>Edit</value>
   </data>

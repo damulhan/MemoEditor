@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.ComponentModel;
+using System.Diagnostics;
 
 namespace MemoEditor
 {
@@ -18,6 +19,8 @@ namespace MemoEditor
         private double _windowWidth;
         private System.Windows.WindowState _windowState;
         private string _workingFolder;
+        private double _fontSize;
+        private string _fontFamily;
 
         #endregion //Member Variables
 
@@ -57,6 +60,17 @@ namespace MemoEditor
         {
             get { return _workingFolder; }
             set { _workingFolder = value; }
+        }
+
+        public double FontSize 
+        {
+            get { return _fontSize; }
+            set { _fontSize = value; }
+        }
+        public string FontFamily
+        {
+            get { return _fontFamily; }
+            set { _fontFamily = value; }
         }
 
         #endregion //Public Properties
@@ -141,18 +155,37 @@ namespace MemoEditor
             _windowWidth = Properties.Settings.Default.WindowHeight;
             _windowState = Properties.Settings.Default.WindowState;
             _workingFolder = Properties.Settings.Default.WorkingFolder;
+            _fontSize = Properties.Settings.Default.FontSize;
+            _fontFamily = Properties.Settings.Default.FontFamily;
         }
 
         public void Save()
         {
             if (_windowState != System.Windows.WindowState.Minimized)
             {
+                Debug.WriteLine("UserPref: _windowTop: " + _windowTop);
                 Properties.Settings.Default.WindowTop = _windowTop;
+
+                Debug.WriteLine("UserPref: _windowLeft: " + _windowLeft);
                 Properties.Settings.Default.WindowLeft = _windowLeft;
+
+                Debug.WriteLine("UserPref: _windowHeight: " + _windowHeight);
                 Properties.Settings.Default.WindowWidth = _windowHeight;
+
+                Debug.WriteLine("UserPref: _windowWidth: " + _windowWidth);
                 Properties.Settings.Default.WindowHeight = _windowWidth;
+
+                Debug.WriteLine("UserPref: _windowState: " + _windowState);
                 Properties.Settings.Default.WindowState = _windowState;
+
+                Debug.WriteLine("UserPref: _workingFolder: " + _workingFolder);
                 Properties.Settings.Default.WorkingFolder = _workingFolder;
+
+                Debug.WriteLine("UserPref: _fontSize: " + _fontSize);
+                Properties.Settings.Default.FontSize = _fontSize;
+
+                Debug.WriteLine("UserPref: _fontFamily: " + _fontFamily);
+                Properties.Settings.Default.FontFamily = _fontFamily;
 
                 Properties.Settings.Default.Save();
             }

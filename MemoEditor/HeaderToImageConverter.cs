@@ -27,13 +27,13 @@ namespace MemoEditor
             }
             if (node.ExplorerType == ExplorerType.Drive)
             {
-                var uri = new Uri("pack://application:,,,/Images/diskdrive.png");
+                var uri = new Uri("pack://application:,,,./Resources/diskdrive.png");
                 var source = new BitmapImage(uri);
                 return source;
             }
             else
             {
-                var uri = new Uri("pack://application:,,,/Images/folder.png");
+                var uri = new Uri("pack://application:,,,./Resources/folder.png");
                 var source = new BitmapImage(uri);
                 return source;
             }
