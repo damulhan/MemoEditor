@@ -8,9 +8,9 @@
 
     <Grid Margin="10,10,2,4">
         <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="{x:Static resx:Resources.findwin_find_content}" VerticalAlignment="Top" RenderTransformOrigin="0.275,1.125"/>
-        <TextBox x:Name="TextToFind" HorizontalAlignment="Left" Height="19" Margin="96,7,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="235" FontSize="14" KeyDown="TextToFind_KeyDown"/>
+        <TextBox x:Name="TextToFind" HorizontalAlignment="Left" Height="19" Margin="96,7,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="235" KeyDown="TextToFind_KeyDown"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,35,0,0" TextWrapping="Wrap" Text="{x:Static resx:Resources.findwin_replace_content}" VerticalAlignment="Top" RenderTransformOrigin="0.275,1.125"/>
-        <TextBox x:Name="TextToReplace" HorizontalAlignment="Left" Height="19" Margin="96,35,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="235" FontSize="14"/>
+        <TextBox x:Name="TextToReplace" HorizontalAlignment="Left" Height="19" Margin="96,35,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="235"/>
         <Button x:Name="BtnFind" Content="{x:Static resx:Resources.findwin_find}" HorizontalAlignment="Left" Margin="345,6,0,0" VerticalAlignment="Top" Width="75" Click="BtnFind_Click" BorderThickness="2,2,2,2" />
         <Button x:Name="BtnReplace" Content="{x:Static resx:Resources.findwin_replace}" HorizontalAlignment="Left" Margin="345,31,0,0" VerticalAlignment="Top" Width="75" Click="BtnReplace_Click"/>
         <Button x:Name="BtnCancel" Content="{x:Static resx:Resources.findwin_cancel}" HorizontalAlignment="Left" Margin="345,56,0,0" VerticalAlignment="Top" Width="75" Click="BtnCancel_Click"/>

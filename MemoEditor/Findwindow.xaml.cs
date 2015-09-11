@@ -65,15 +65,29 @@ namespace MemoEditor
         {
             Debug.WriteLine("FindNext");
 
-            if (_editText.SelectionLength > 0)
-                _startIndex = _editText.SelectionStart + _editText.SelectionLength;
-            else
-                _startIndex = _editText.SelectionStart;
-
             if (_editText.IsEnabled && FindString != null)
             {
+                int index = -1;
                 string str = _editText.Text;
-                int index = str.IndexOf(FindString, _startIndex, StringComparison.CurrentCultureIgnoreCase);
+
+                if (DirectionDown.IsChecked.Value == true)
+                {
+                    if (_editText.SelectionLength > 0)
+                        _startIndex = _editText.SelectionStart + _editText.SelectionLength;
+                    else
+                        _startIndex = _editText.SelectionStart;
+
+                    index = str.IndexOf(FindString, _startIndex, StringComparison.CurrentCultureIgnoreCase);
+                }
+                else
+                {
+                    _startIndex = _editText.SelectionStart;
+
+                    index = str.LastIndexOf(FindString, _startIndex, StringComparison.CurrentCultureIgnoreCase);
+                }
+
+                //Debug.WriteLine("Find index: " + index);
+
                 if (index >= 0)
                 {
                     _editText.SelectionStart = index;

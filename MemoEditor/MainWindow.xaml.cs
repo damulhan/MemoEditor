@@ -173,9 +173,11 @@ namespace MemoEditor
         private void Find_Executed(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
         {
             if (_findwin == null)
+            {
                 _findwin = new Findwindow(this);
-
-            _findwin.Owner = this;
+                _findwin.Owner = this;
+            }
+            
             _findwin.Show();
         }
 
