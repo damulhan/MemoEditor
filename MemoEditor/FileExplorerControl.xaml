@@ -38,6 +38,7 @@
                 <HierarchicalDataTemplate ItemsSource="{Binding Children}">
                     <StackPanel Orientation="Horizontal">
                         
+                        <!--
                         <Image Name="img"
 				            Width="16"
 				            Height="16"
@@ -45,6 +46,7 @@
 				            Source="{Binding Converter={x:Static local:HeaderToImageConverter.Instance}}" 
                             Margin="0,0,5,0"
                             />                        
+                        -->
 
                         <Grid>
                             <TextBlock Text="{Binding Name}" />

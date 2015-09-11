@@ -238,7 +238,11 @@ namespace MemoEditor.ViewModel
                         } else {
                             EditTextInit();
                         }
+
+                        // Title change 
+                        Title = Version.APP_NAME + " - " + node.Name;
                         break;
+
                     case CustomMessage.MessageType.CREATED_NEW:
                         break;
                     case CustomMessage.MessageType.CREATED_NEW_FOLDER:
