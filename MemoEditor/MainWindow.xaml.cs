@@ -17,7 +17,17 @@ namespace MemoEditor
     /// </summary>
     public partial class MainWindow : Window, System.Windows.Forms.IWin32Window
     {
-        static MainWindow _instance; 
+        static MainWindow _instance;
+
+        public static readonly RoutedUICommand FindNextCommand =
+            new RoutedUICommand("Find Next", "Find Next", typeof(MainWindow),
+                new InputGestureCollection() { new KeyGesture(Key.F3) }
+            );
+
+        public static readonly RoutedUICommand AddTimeCommand =
+            new RoutedUICommand("Add Time", "Add Time", typeof(MainWindow),
+                new InputGestureCollection() { new KeyGesture(Key.F5) }
+            );
 
         /// <summary>
         /// Initializes a new instance of the MainWindow class.
@@ -160,36 +170,6 @@ namespace MemoEditor
             }
         }
 
-
-        private void MenuItemAddTime_Click(object sender, RoutedEventArgs e)
-        {
-            DateTime time = DateTime.Now;
-
-            string datePatt = "yyyy-MM-dd hh:mm:ss tt";
-
-            EditText1.SelectedText = time.ToString(datePatt);
-            EditText1.SelectionLength = 0;
-            
-            //EditText1.TextWrapping = TextWrapping.
-            //EditText1.SelectedText = "test";
-        }
-
-
-        private void MenuItemFindNext_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void MenuItemReplace_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void MenuItemGoto_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void Find_Executed(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
         {
             if (_findwin == null)
@@ -203,11 +183,6 @@ namespace MemoEditor
         {
             e.CanExecute = true;
         }
-
-        public static readonly RoutedUICommand FindNextCommand = 
-            new RoutedUICommand("Find Next", "Find Next", typeof(MainWindow), 
-                new InputGestureCollection() { new KeyGesture(Key.F3) }
-            );
 
         private void FindNext_Executed(object sender, ExecutedRoutedEventArgs e)
         {
@@ -234,24 +209,22 @@ namespace MemoEditor
                 e.CanExecute = true; 
         }
 
-        /*
-        private void EditText1_LostFocus(object sender, RoutedEventArgs e)
+        private void AddTime_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            // When the RichTextBox loses focus the user can no longer see the selection.
-            // This is a hack to make the RichTextBox think it did not lose focus.
-            e.Handled = true;
+            DateTime time = DateTime.Now;
 
-            // The TextBox will not realize it lost the focus and will still show the highlighted selection.
-            // I'm not using data binding in this case, so it may be possible that this will mess 
-            // up the two way binding. You may have to force binding in your LostFocus event handler. Something like this:
-            Binding binding = BindingOperations.GetBinding(this, TextProperty);
-            if (binding.UpdateSourceTrigger == UpdateSourceTrigger.Default ||
-                binding.UpdateSourceTrigger == UpdateSourceTrigger.LostFocus)
-            {
-                BindingOperations.GetBindingExpression(this, TextProperty).UpdateSource();
-            }
+            string datePatt = "yyyy-MM-dd hh:mm:ss tt";
+
+            EditText1.SelectedText = time.ToString(datePatt);
+            EditText1.SelectionStart += EditText1.SelectedText.Length;
+            EditText1.SelectionLength = 0;
         }
-         */
+
+        private void AddTime_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            if (EditText1.IsEnabled)
+                e.CanExecute = true; 
+        }
 
     }
 }

@@ -7,8 +7,8 @@
         xmlns:resx="clr-namespace:MemoEditor.Properties"
         xmlns:ignore="http://www.ignore.com"
         mc:Ignorable="d ignore"
-        Title="MemoEditor"
         DataContext="{Binding Main, Source={StaticResource Locator}}"         
+        Title="{Binding Title}"
         Icon="./Resources/MemoEditor.ico" 
         WindowStartupLocation="Manual"
         Loaded="Window_Loaded"
@@ -41,6 +41,9 @@
         <CommandBinding Command="ApplicationCommands.SelectAll" 
                         Executed="SelectAll_Executed" 
                         CanExecute="SelectAll_CanExecute" />
+        <CommandBinding Command="local:MainWindow.AddTimeCommand" 
+                        Executed="AddTime_Executed" 
+                        CanExecute="AddTime_CanExecute" />
     </Window.CommandBindings>
 
     <DockPanel Margin="0,0,0,0">
@@ -64,7 +67,7 @@
                 <MenuItem Command="ApplicationCommands.Replace" x:Name="MenuItemReplace" Header="{x:Static resx:Resources.command_replace}" />
                 <Separator />
                 <MenuItem Command="ApplicationCommands.SelectAll" Header="{x:Static resx:Resources.command_selectall}" InputGestureText="Ctrl+A"/>
-                <MenuItem x:Name="MenuItemAddTime" Header="{x:Static resx:Resources.command_addtime}" InputGestureText="F5" Click="MenuItemAddTime_Click"/>
+                <MenuItem Command="local:MainWindow.AddTimeCommand" x:Name="MenuItemAddTime" Header="{x:Static resx:Resources.command_addtime}" InputGestureText="F5" />
             </MenuItem>
             <MenuItem Header="{x:Static resx:Resources.menu_view}">
                 <MenuItem x:Name="MenuItemTopmost" Command="" Header="{x:Static resx:Resources.menu_topmost}" IsCheckable="True" Click="MenuItemTopmost_Click" />

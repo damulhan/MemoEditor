@@ -44,6 +44,18 @@ namespace MemoEditor.ViewModel
         public IDataService DataService {
             get { return _dataService; }
         }
+
+        private string _title;
+        public string Title
+        {
+            get { 
+                return _title; 
+            }
+            set { 
+                _title = value;
+                RaisePropertyChanged("Title");
+            }
+        }
         
         private string _welcomeTitle = string.Empty;
 
@@ -178,9 +190,12 @@ namespace MemoEditor.ViewModel
         
         private void _initializeData(DataItem item)
         {
+            // Title
+            Title = Version.APP_NAME;
+
             // WelcomeTitle 
             WelcomeTitle = item.Title;
-
+            
             // FirstGeneration 
             var firsts = new ObservableCollection<ExplorerNode>();
             foreach (var i in item.FirstGeneration)
@@ -370,7 +385,7 @@ namespace MemoEditor.ViewModel
 
         private void OnHelpInfo()
         {
-            string messageBoxText = "MemoEditor\n"+
+            string messageBoxText = Version.APP_NAME + "\n"+
                 "©2015 greatcorea9000@hanmail.net\n"+
                 "ver " + Version.VERSION;
             MessageBoxShow(messageBoxText);
