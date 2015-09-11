@@ -17,15 +17,6 @@
         Height="550"
         >
 
-    <Window.CommandBindings>
-        <CommandBinding Command="ApplicationCommands.New" 
-                        Executed="FileNew_Executed" 
-                        CanExecute="FileNew_CanExecute" />
-        <CommandBinding Command="ApplicationCommands.Save" 
-                        Executed="FileSave_Executed" 
-                        CanExecute="FileSave_CanExecute" />
-    </Window.CommandBindings>
-
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -33,6 +24,24 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
+
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.New" 
+                        Executed="FileNew_Executed" 
+                        CanExecute="FileNew_CanExecute" />
+        <CommandBinding Command="ApplicationCommands.Save" 
+                        Executed="FileSave_Executed" 
+                        CanExecute="FileSave_CanExecute" />
+        <CommandBinding Command="ApplicationCommands.Find" 
+                        Executed="Find_Executed" 
+                        CanExecute="Find_CanExecute" />
+        <CommandBinding Command="local:MainWindow.FindNextCommand" 
+                        Executed="FindNext_Executed" 
+                        CanExecute="FindNext_CanExecute" />
+        <CommandBinding Command="ApplicationCommands.SelectAll" 
+                        Executed="SelectAll_Executed" 
+                        CanExecute="SelectAll_CanExecute" />
+    </Window.CommandBindings>
 
     <DockPanel Margin="0,0,0,0">
 
@@ -46,9 +55,16 @@
                 <MenuItem Command="{Binding ExitCommand}" Header="{x:Static resx:Resources.menu_exit}" InputGestureText="Ctrl+X"/>
             </MenuItem>
             <MenuItem Header="{x:Static resx:Resources.menu_edit}">
-                <MenuItem Command="Cut" Header="_Cut" />
-                <MenuItem Command="Copy" Header="C_opy" />
-                <MenuItem Command="Paste" Header="_Paste" />
+                <MenuItem Command="Cut" Header="{x:Static resx:Resources.command_cut}" />
+                <MenuItem Command="Copy" Header="{x:Static resx:Resources.command_copy}" />
+                <MenuItem Command="Paste" Header="{x:Static resx:Resources.command_paste}" />
+                <Separator />
+                <MenuItem Command="ApplicationCommands.Find" x:Name="MenuItemFind" Header="{x:Static resx:Resources.command_find}"  />
+                <MenuItem Command="local:MainWindow.FindNextCommand" x:Name="MenuItemFindNext" Header="{x:Static resx:Resources.command_find_next}" InputGestureText="F3"/>
+                <MenuItem Command="ApplicationCommands.Replace" x:Name="MenuItemReplace" Header="{x:Static resx:Resources.command_replace}" />
+                <Separator />
+                <MenuItem Command="ApplicationCommands.SelectAll" Header="{x:Static resx:Resources.command_selectall}" InputGestureText="Ctrl+A"/>
+                <MenuItem x:Name="MenuItemAddTime" Header="{x:Static resx:Resources.command_addtime}" InputGestureText="F5" Click="MenuItemAddTime_Click"/>
             </MenuItem>
             <MenuItem Header="{x:Static resx:Resources.menu_view}">
                 <MenuItem x:Name="MenuItemTopmost" Command="" Header="{x:Static resx:Resources.menu_topmost}" IsCheckable="True" Click="MenuItemTopmost_Click" />
@@ -78,7 +94,7 @@
                 <Style TargetType="{x:Type TextBox}" x:Key="TextBoxWithColoredCaretStyle">
                     <Setter Property="CaretBrush">
                         <Setter.Value>
-                            <SolidColorBrush Color="#FFAE63F3"/>
+                            <SolidColorBrush Color="DodgerBlue"/>
                         </Setter.Value>
                     </Setter>
                 </Style>
@@ -93,7 +109,9 @@
                      Text="{Binding EditText}" 
                      IsEnabled="{Binding IsEnabledEditText, UpdateSourceTrigger=PropertyChanged}" 
                      TextChanged="EditText1_TextChanged" 
-                     Style="{StaticResource TextBoxWithColoredCaretStyle}" />
+                     FocusManager.IsFocusScope="True"
+                     Style="{StaticResource TextBoxWithColoredCaretStyle}"
+                />
             </ScrollViewer>
 
         </Grid>

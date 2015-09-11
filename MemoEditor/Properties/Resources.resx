@@ -132,17 +132,74 @@
   <data name="btn_save" xml:space="preserve">
     <value>Save</value>
   </data>
+  <data name="command_addtime" xml:space="preserve">
+    <value>Add Current Time</value>
+  </data>
+  <data name="command_copy" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="command_cut" xml:space="preserve">
+    <value>Cut</value>
+  </data>
   <data name="command_delete" xml:space="preserve">
     <value>Delete</value>
+  </data>
+  <data name="command_find" xml:space="preserve">
+    <value>Find</value>
+  </data>
+  <data name="command_find_next" xml:space="preserve">
+    <value>Find Next</value>
+  </data>
+  <data name="command_goto" xml:space="preserve">
+    <value>Goto</value>
   </data>
   <data name="command_new" xml:space="preserve">
     <value>New</value>
   </data>
+  <data name="command_paste" xml:space="preserve">
+    <value>Paste</value>
+  </data>
   <data name="command_rename" xml:space="preserve">
     <value>Rename</value>
   </data>
+  <data name="command_replace" xml:space="preserve">
+    <value>Replace</value>
+  </data>
   <data name="command_save" xml:space="preserve">
     <value>Save</value>
+  </data>
+  <data name="command_selectall" xml:space="preserve">
+    <value>Select All</value>
+  </data>
+  <data name="findwin_cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="findwin_cannot_find_message" xml:space="preserve">
+    <value>Cannot find </value>
+  </data>
+  <data name="findwin_direction" xml:space="preserve">
+    <value>Direction</value>
+  </data>
+  <data name="findwin_direction_down" xml:space="preserve">
+    <value>Down</value>
+  </data>
+  <data name="findwin_direction_up" xml:space="preserve">
+    <value>Up</value>
+  </data>
+  <data name="findwin_find" xml:space="preserve">
+    <value>Find</value>
+  </data>
+  <data name="findwin_find_content" xml:space="preserve">
+    <value>Text to find</value>
+  </data>
+  <data name="findwin_replace" xml:space="preserve">
+    <value>Replace</value>
+  </data>
+  <data name="findwin_replace_content" xml:space="preserve">
+    <value>Text to replace</value>
+  </data>
+  <data name="findwin_title" xml:space="preserve">
+    <value>Find/Replace</value>
   </data>
   <data name="memo_filename_prefix" xml:space="preserve">
     <value>Memo</value>

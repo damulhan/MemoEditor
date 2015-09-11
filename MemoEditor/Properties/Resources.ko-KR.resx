@@ -132,17 +132,74 @@
   <data name="btn_save" xml:space="preserve">
     <value>저장</value>
   </data>
+  <data name="command_addtime" xml:space="preserve">
+    <value>현재 시간 넣기</value>
+  </data>
+  <data name="command_copy" xml:space="preserve">
+    <value>복사</value>
+  </data>
+  <data name="command_cut" xml:space="preserve">
+    <value>잘라내기</value>
+  </data>
   <data name="command_delete" xml:space="preserve">
     <value>삭제</value>
+  </data>
+  <data name="command_find" xml:space="preserve">
+    <value>찾기</value>
+  </data>
+  <data name="command_find_next" xml:space="preserve">
+    <value>다음 찾기</value>
+  </data>
+  <data name="command_goto" xml:space="preserve">
+    <value>줄 찾아가기</value>
   </data>
   <data name="command_new" xml:space="preserve">
     <value>새글</value>
   </data>
+  <data name="command_paste" xml:space="preserve">
+    <value>붙여넣기</value>
+  </data>
   <data name="command_rename" xml:space="preserve">
     <value>이름 변경</value>
   </data>
+  <data name="command_replace" xml:space="preserve">
+    <value>바꾸기</value>
+  </data>
   <data name="command_save" xml:space="preserve">
     <value>저장</value>
+  </data>
+  <data name="command_selectall" xml:space="preserve">
+    <value>전체 선택</value>
+  </data>
+  <data name="findwin_cancel" xml:space="preserve">
+    <value>취소</value>
+  </data>
+  <data name="findwin_cannot_find_message" xml:space="preserve">
+    <value>찾을 수 없습니다</value>
+  </data>
+  <data name="findwin_direction" xml:space="preserve">
+    <value>방향</value>
+  </data>
+  <data name="findwin_direction_down" xml:space="preserve">
+    <value>아래로</value>
+  </data>
+  <data name="findwin_direction_up" xml:space="preserve">
+    <value>위로</value>
+  </data>
+  <data name="findwin_find" xml:space="preserve">
+    <value>찾기</value>
+  </data>
+  <data name="findwin_find_content" xml:space="preserve">
+    <value>찾을 내용</value>
+  </data>
+  <data name="findwin_replace" xml:space="preserve">
+    <value>바꾸기</value>
+  </data>
+  <data name="findwin_replace_content" xml:space="preserve">
+    <value>바꿀 내용</value>
+  </data>
+  <data name="findwin_title" xml:space="preserve">
+    <value>찾기/바꾸기</value>
   </data>
   <data name="memo_filename_prefix" xml:space="preserve">
     <value>메모</value>

@@ -94,11 +94,19 @@
     <Compile Include="FileExplorerControl.xaml.cs">
       <DependentUpon>FileExplorerControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Findwindow.xaml.cs">
+      <DependentUpon>Findwindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="HeaderToImageConverter.cs" />
-    <Compile Include="Properties\Resources.ko-KR.Designer.cs">
-      <DependentUpon>Resources.ko-KR.resx</DependentUpon>
+    <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.ko-KR.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.ko-KR.resx</DependentUpon>
     </Compile>
     <Compile Include="UserPreference.cs" />
     <Compile Include="Utility\MessageBoxEx.cs" />
@@ -112,6 +120,10 @@
     <Compile Include="Version.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Page Include="FileExplorerControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Findwindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -135,11 +147,6 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>

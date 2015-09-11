@@ -6,6 +6,9 @@ using System;
 using System.Windows.Interop;
 using System.Windows.Controls;
 using System.Windows.Data;
+using GalaSoft.MvvmLight.Command;
+using System.Windows.Input;
+using Utility;
 
 namespace MemoEditor
 {
@@ -35,6 +38,7 @@ namespace MemoEditor
             this.WindowState = userPrefs.WindowState;
             this.EditText1.FontSize = userPrefs.FontSize;
             this.EditText1.FontFamily = new FontFamily(userPrefs.FontFamily);
+            this.EditText1.SelectionBrush = Brushes.DodgerBlue;
 
             Debug.WriteLine("font:" + userPrefs.FontFamily + " " + userPrefs.FontSize);
         }
@@ -50,6 +54,8 @@ namespace MemoEditor
                 return _instance;
             }
         }
+
+        private Findwindow _findwin;
 
         private MainViewModel ViewModel
         {
@@ -152,7 +158,100 @@ namespace MemoEditor
                     textAnnotation.FontStyle = FontStyles.Normal;
                 */
             }
-        }        
+        }
+
+
+        private void MenuItemAddTime_Click(object sender, RoutedEventArgs e)
+        {
+            DateTime time = DateTime.Now;
+
+            string datePatt = "yyyy-MM-dd hh:mm:ss tt";
+
+            EditText1.SelectedText = time.ToString(datePatt);
+            EditText1.SelectionLength = 0;
+            
+            //EditText1.TextWrapping = TextWrapping.
+            //EditText1.SelectedText = "test";
+        }
+
+
+        private void MenuItemFindNext_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MenuItemReplace_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MenuItemGoto_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Find_Executed(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
+        {
+            if (_findwin == null)
+                _findwin = new Findwindow(this);
+
+            _findwin.Owner = this;
+            _findwin.Show();
+        }
+
+        private void Find_CanExecute(object sender, System.Windows.Input.CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        public static readonly RoutedUICommand FindNextCommand = 
+            new RoutedUICommand("Find Next", "Find Next", typeof(MainWindow), 
+                new InputGestureCollection() { new KeyGesture(Key.F3) }
+            );
+
+        private void FindNext_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            if (_findwin != null)
+            {
+                _findwin.FindNext();
+            }
+        }
+
+        private void FindNext_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        private void SelectAll_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            EditText1.Focus();
+            EditText1.SelectAll();
+        }
+
+        private void SelectAll_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            if(EditText1.IsEnabled)
+                e.CanExecute = true; 
+        }
+
+        /*
+        private void EditText1_LostFocus(object sender, RoutedEventArgs e)
+        {
+            // When the RichTextBox loses focus the user can no longer see the selection.
+            // This is a hack to make the RichTextBox think it did not lose focus.
+            e.Handled = true;
+
+            // The TextBox will not realize it lost the focus and will still show the highlighted selection.
+            // I'm not using data binding in this case, so it may be possible that this will mess 
+            // up the two way binding. You may have to force binding in your LostFocus event handler. Something like this:
+            Binding binding = BindingOperations.GetBinding(this, TextProperty);
+            if (binding.UpdateSourceTrigger == UpdateSourceTrigger.Default ||
+                binding.UpdateSourceTrigger == UpdateSourceTrigger.LostFocus)
+            {
+                BindingOperations.GetBindingExpression(this, TextProperty).UpdateSource();
+            }
+        }
+         */
 
     }
 }

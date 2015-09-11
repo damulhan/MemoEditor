@@ -106,11 +106,65 @@ namespace MemoEditor.Properties {
         }
         
         /// <summary>
+        ///   Add Current Time과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string command_addtime {
+            get {
+                return ResourceManager.GetString("command_addtime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Copy과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string command_copy {
+            get {
+                return ResourceManager.GetString("command_copy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cut과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string command_cut {
+            get {
+                return ResourceManager.GetString("command_cut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Delete과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         public static string command_delete {
             get {
                 return ResourceManager.GetString("command_delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Find과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string command_find {
+            get {
+                return ResourceManager.GetString("command_find", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Find Next과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string command_find_next {
+            get {
+                return ResourceManager.GetString("command_find_next", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Goto과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string command_goto {
+            get {
+                return ResourceManager.GetString("command_goto", resourceCulture);
             }
         }
         
@@ -124,6 +178,15 @@ namespace MemoEditor.Properties {
         }
         
         /// <summary>
+        ///   Paste과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string command_paste {
+            get {
+                return ResourceManager.GetString("command_paste", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Rename과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         public static string command_rename {
@@ -133,11 +196,119 @@ namespace MemoEditor.Properties {
         }
         
         /// <summary>
+        ///   Replace과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string command_replace {
+            get {
+                return ResourceManager.GetString("command_replace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Save과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         public static string command_save {
             get {
                 return ResourceManager.GetString("command_save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Select All과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string command_selectall {
+            get {
+                return ResourceManager.GetString("command_selectall", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cancel과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string findwin_cancel {
+            get {
+                return ResourceManager.GetString("findwin_cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cannot find 과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string findwin_cannot_find_message {
+            get {
+                return ResourceManager.GetString("findwin_cannot_find_message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Direction과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string findwin_direction {
+            get {
+                return ResourceManager.GetString("findwin_direction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Down과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string findwin_direction_down {
+            get {
+                return ResourceManager.GetString("findwin_direction_down", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Up과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string findwin_direction_up {
+            get {
+                return ResourceManager.GetString("findwin_direction_up", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Find과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string findwin_find {
+            get {
+                return ResourceManager.GetString("findwin_find", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Text to find과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string findwin_find_content {
+            get {
+                return ResourceManager.GetString("findwin_find_content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Replace과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string findwin_replace {
+            get {
+                return ResourceManager.GetString("findwin_replace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Text to replace과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string findwin_replace_content {
+            get {
+                return ResourceManager.GetString("findwin_replace_content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Find/Replace과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string findwin_title {
+            get {
+                return ResourceManager.GetString("findwin_title", resourceCulture);
             }
         }
         
