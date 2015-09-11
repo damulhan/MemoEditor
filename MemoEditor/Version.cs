@@ -8,6 +8,6 @@ namespace MemoEditor
     class Version
     {
         public static string APP_NAME = Properties.Resources.ResourceManager.GetString("app_name");
-        public static string VERSION = "0.15";
+        public static string VERSION = "0.16";
     }
 }

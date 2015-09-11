@@ -132,6 +132,9 @@
   <data name="btn_new_folder" xml:space="preserve">
     <value>새 폴더</value>
   </data>
+  <data name="btn_rename" xml:space="preserve">
+    <value>이름변경</value>
+  </data>
   <data name="btn_save" xml:space="preserve">
     <value>저장</value>
   </data>

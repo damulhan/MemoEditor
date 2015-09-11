@@ -132,6 +132,9 @@
   <data name="btn_new_folder" xml:space="preserve">
     <value>New Folder</value>
   </data>
+  <data name="btn_rename" xml:space="preserve">
+    <value>Rename</value>
+  </data>
   <data name="btn_save" xml:space="preserve">
     <value>Save</value>
   </data>

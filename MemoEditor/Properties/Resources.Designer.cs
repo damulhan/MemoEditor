@@ -106,6 +106,15 @@ namespace MemoEditor.Properties {
         }
         
         /// <summary>
+        ///   Rename과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string btn_rename {
+            get {
+                return ResourceManager.GetString("btn_rename", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Save과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         public static string btn_save {
