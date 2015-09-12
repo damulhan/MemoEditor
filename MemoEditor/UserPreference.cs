@@ -151,8 +151,8 @@ namespace MemoEditor
         {
             _windowTop = Properties.Settings.Default.WindowTop;
             _windowLeft = Properties.Settings.Default.WindowLeft;
-            _windowHeight = Properties.Settings.Default.WindowWidth;
-            _windowWidth = Properties.Settings.Default.WindowHeight;
+            _windowHeight = Properties.Settings.Default.WindowHeight;
+            _windowWidth = Properties.Settings.Default.WindowWidth;
             _windowState = Properties.Settings.Default.WindowState;
             _workingFolder = Properties.Settings.Default.WorkingFolder;
             _fontSize = Properties.Settings.Default.FontSize;
@@ -170,10 +170,10 @@ namespace MemoEditor
                 Properties.Settings.Default.WindowLeft = _windowLeft;
 
                 Debug.WriteLine("UserPref: _windowHeight: " + _windowHeight);
-                Properties.Settings.Default.WindowWidth = _windowHeight;
+                Properties.Settings.Default.WindowWidth = _windowWidth;
 
                 Debug.WriteLine("UserPref: _windowWidth: " + _windowWidth);
-                Properties.Settings.Default.WindowHeight = _windowWidth;
+                Properties.Settings.Default.WindowHeight = _windowHeight;
 
                 Debug.WriteLine("UserPref: _windowState: " + _windowState);
                 Properties.Settings.Default.WindowState = _windowState;

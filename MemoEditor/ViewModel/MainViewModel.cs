@@ -11,6 +11,7 @@ using Utility;
 using System.Collections;
 using System.Windows.Media;
 using System.Windows.Controls;
+using System;
 
 namespace MemoEditor.ViewModel
 {
@@ -35,6 +36,7 @@ namespace MemoEditor.ViewModel
         public RelayCommand FolderChangeCommand { get; private set; }
         public RelayCommand ExitCommand { get; private set; }
         public RelayCommand SettingCommand { get; private set; }
+        public RelayCommand EditHtmlCommand { get; private set; } 
 
         // data service 
         private readonly IDataService _dataService;
@@ -183,6 +185,7 @@ namespace MemoEditor.ViewModel
             FolderChangeCommand = new RelayCommand(OnFolderChange, () => true);
             ExitCommand = new RelayCommand(OnExit, () => true);
             SettingCommand = new RelayCommand(OnSetting, () => true);
+            EditHtmlCommand = new RelayCommand(OnEditHtml, () => true);
 
             // Loading user preference
             this._userPrefs = UserPreferences.Instance;
@@ -430,13 +433,18 @@ namespace MemoEditor.ViewModel
             // Make initial tree node 
             try
             {
-                if(_userPrefs.WorkingFolder != "")
+                var workingdir = _userPrefs.WorkingFolder;
+
+                if (workingdir == "")
                 {
-                    // FirstGeneration 
-                    var firsts = new ObservableCollection<ExplorerNode>();
-                    firsts.Add(new ExplorerNode(_userPrefs.WorkingFolder));
-                    FirstGeneration = firsts;
+                    //workingdir = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+                    workingdir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
                 }
+
+                // FirstGeneration 
+                var firsts = new ObservableCollection<ExplorerNode>();
+                firsts.Add(new ExplorerNode(workingdir));
+                FirstGeneration = firsts;
             }
             catch (System.IO.FileNotFoundException e)
             {
@@ -458,6 +466,13 @@ namespace MemoEditor.ViewModel
         private void OnSetting()
         {
 
+        }
+
+        private void OnEditHtml()
+        {
+            var html_editor = new HtmlEditor();
+            html_editor.Owner = MainWindow.Instance;
+            html_editor.Show();
         }
 
         public static void MessageBoxShow(string msg) 

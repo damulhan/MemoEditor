@@ -88,6 +88,15 @@ namespace MemoEditor.Properties {
         }
         
         /// <summary>
+        ///   Edit HTML과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string btn_edit_html {
+            get {
+                return ResourceManager.GetString("btn_edit_html", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   New과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         public static string btn_new {

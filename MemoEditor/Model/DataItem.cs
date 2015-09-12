@@ -17,8 +17,10 @@ namespace MemoEditor.Model
         }
 
         private void _initializeData() {
-           var dir = Directory.GetCurrentDirectory();
+           
+            var dir = Directory.GetCurrentDirectory();
            // var dir = "c:\\";
+           // var dir = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
 
            _firstGeneration = new List<string>();
            _firstGeneration.Add(dir);

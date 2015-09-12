@@ -26,9 +26,12 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <ProductName>MemoEditor</ProductName>
+    <PublisherName>MemoEditor</PublisherName>
+    <ApplicationRevision>3</ApplicationRevision>
+    <ApplicationVersion>0.17.0.3</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -51,6 +54,21 @@
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>Resources\MemoEditor.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>474AFFAEA0D6B18739F83D4B4E45144146D52D1A</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>MemoEditor_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>MemoEditor.App</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="GalaSoft.MvvmLight">
@@ -98,6 +116,9 @@
       <DependentUpon>Findwindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="HeaderToImageConverter.cs" />
+    <Compile Include="HtmlEditor.xaml.cs">
+      <DependentUpon>HtmlEditor.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -124,6 +145,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Findwindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HtmlEditor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -163,6 +188,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.config" />
+    <None Include="MemoEditor_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -220,6 +246,19 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\textfield_rename.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SmithHtmlEditor.Demo\SmithHtmlEditor.Demo.csproj">
+      <Project>{941eb254-38f8-4b0b-abe1-426d6c04aec9}</Project>
+      <Name>SmithHtmlEditor.Demo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SmithHtmlEditor\SmithHtmlEditor.csproj">
+      <Project>{84badda1-ab3a-4064-b87e-178d7446901d}</Project>
+      <Name>SmithHtmlEditor</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\html.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

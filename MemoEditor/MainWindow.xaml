@@ -58,9 +58,9 @@
                 <MenuItem Command="{Binding ExitCommand}" Header="{x:Static resx:Resources.menu_exit}" InputGestureText="Ctrl+X"/>
             </MenuItem>
             <MenuItem Header="{x:Static resx:Resources.menu_edit}">
-                <MenuItem Command="Cut" Header="{x:Static resx:Resources.command_cut}" />
-                <MenuItem Command="Copy" Header="{x:Static resx:Resources.command_copy}" />
-                <MenuItem Command="Paste" Header="{x:Static resx:Resources.command_paste}" />
+                <MenuItem Command="ApplicationCommands.Cut" Header="{x:Static resx:Resources.command_cut}" />
+                <MenuItem Command="ApplicationCommands.Copy" Header="{x:Static resx:Resources.command_copy}" />
+                <MenuItem Command="ApplicationCommands.Paste" Header="{x:Static resx:Resources.command_paste}" />
                 <Separator />
                 <MenuItem Command="ApplicationCommands.Find" x:Name="MenuItemFind" Header="{x:Static resx:Resources.command_find}"  />
                 <MenuItem Command="local:MainWindow.FindNextCommand" x:Name="MenuItemFindNext" Header="{x:Static resx:Resources.command_find_next}" InputGestureText="F3"/>
@@ -115,6 +115,12 @@
                         <TextBlock Margin="3,0,0,0" Text="{x:Static resx:Resources.btn_change_folder}"/>
                     </StackPanel>
                 </Button>
+                <Button Command="{Binding EditHtmlCommand}" Margin="2,0,2,0" ToolTip="{x:Static resx:Resources.btn_edit_html}">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/html.png" />
+                        <TextBlock Margin="3,0,0,0" Text="{x:Static resx:Resources.btn_edit_html}"/>
+                    </StackPanel>
+                </Button>                
             </ToolBar>
         </ToolBarTray>
 
@@ -137,16 +143,15 @@
             <local:FileExplorerControl x:Name="FileExplorer1" Grid.Column="0" Loaded="FileExplorer1_Loaded" />
 
             <GridSplitter Margin="0,0,0,0" Width="5"/>
-            
-            <ScrollViewer Grid.Column="1" Margin="0,0,0,0" >
-                <TextBox x:Name="EditText1" Grid.Column="1" TextWrapping="Wrap" AcceptsReturn="True" 
-                     Text="{Binding EditText}" 
-                     IsEnabled="{Binding IsEnabledEditText, UpdateSourceTrigger=PropertyChanged}" 
-                     TextChanged="EditText1_TextChanged" 
-                     FocusManager.IsFocusScope="True"
-                     Style="{StaticResource TextBoxWithColoredCaretStyle}"
-                />
-            </ScrollViewer>
+
+            <TextBox x:Name="EditText1" Grid.Column="1" TextWrapping="Wrap" AcceptsReturn="True" 
+                    Text="{Binding EditText}" 
+                    IsEnabled="{Binding IsEnabledEditText, UpdateSourceTrigger=PropertyChanged}" 
+                    TextChanged="EditText1_TextChanged" 
+                    FocusManager.IsFocusScope="True"
+                    Style="{StaticResource TextBoxWithColoredCaretStyle}"
+                    VerticalScrollBarVisibility="Auto"
+            />
 
         </Grid>
 

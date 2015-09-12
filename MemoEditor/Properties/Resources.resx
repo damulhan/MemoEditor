@@ -126,6 +126,9 @@
   <data name="btn_delete" xml:space="preserve">
     <value>Delete</value>
   </data>
+  <data name="btn_edit_html" xml:space="preserve">
+    <value>Edit HTML</value>
+  </data>
   <data name="btn_new" xml:space="preserve">
     <value>New</value>
   </data>

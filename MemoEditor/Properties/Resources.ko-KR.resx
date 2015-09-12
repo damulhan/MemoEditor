@@ -126,6 +126,9 @@
   <data name="btn_delete" xml:space="preserve">
     <value>삭제</value>
   </data>
+  <data name="btn_edit_html" xml:space="preserve">
+    <value>HTML편집</value>
+  </data>
   <data name="btn_new" xml:space="preserve">
     <value>새글</value>
   </data>

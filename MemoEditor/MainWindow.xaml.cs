@@ -9,6 +9,7 @@ using System.Windows.Data;
 using GalaSoft.MvvmLight.Command;
 using System.Windows.Input;
 using Utility;
+using GalaSoft.MvvmLight.Messaging;
 
 namespace MemoEditor
 {
@@ -41,8 +42,8 @@ namespace MemoEditor
 
             // Loading user preferences 
             var userPrefs = UserPreferences.Instance;
-            this.Height = userPrefs.WindowHeight;
             this.Width = userPrefs.WindowWidth;
+            this.Height = userPrefs.WindowHeight;
             this.Top = userPrefs.WindowTop;
             this.Left = userPrefs.WindowLeft;
             this.WindowState = userPrefs.WindowState;
@@ -50,9 +51,11 @@ namespace MemoEditor
             this.EditText1.FontFamily = new FontFamily(userPrefs.FontFamily);
             this.EditText1.SelectionBrush = Brushes.DodgerBlue;
 
-            Debug.WriteLine("font:" + userPrefs.FontFamily + " " + userPrefs.FontSize);
-        }
+            //Debug.WriteLine("font:" + userPrefs.FontFamily + " " + userPrefs.FontSize);
 
+            _initializeMessenger();
+        }
+        
         public IntPtr Handle
         {
             get { return new WindowInteropHelper(this).Handle; }
@@ -71,6 +74,27 @@ namespace MemoEditor
         {
             get { return DataContext as MainViewModel; }
         }
+
+
+        private void _initializeMessenger()
+        {
+            Messenger.Default.Register<CustomMessage>(this, (msg) =>
+            {
+                // Works with the Person object.
+                CustomMessage m = (CustomMessage)msg;
+                Debug.WriteLine("MainWindow.CustomMessage: " + m.msgtype);
+
+                switch (m.msgtype)
+                {
+                    case CustomMessage.MessageType.SELECTED:
+                        EditText1.ScrollToLine(0);
+                        break;
+                    default:
+                        break;
+                }
+            });
+        }
+
 
         #region toolbar events 
         private void FileNew_CanExecute(object sender, System.Windows.Input.CanExecuteRoutedEventArgs e)
@@ -183,7 +207,8 @@ namespace MemoEditor
 
         private void Find_CanExecute(object sender, System.Windows.Input.CanExecuteRoutedEventArgs e)
         {
-            e.CanExecute = true;
+            if (EditText1.IsEnabled)
+                e.CanExecute = true;
         }
 
         private void FindNext_Executed(object sender, ExecutedRoutedEventArgs e)
@@ -196,7 +221,8 @@ namespace MemoEditor
 
         private void FindNext_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
-            e.CanExecute = true;
+            if (EditText1.IsEnabled)
+                e.CanExecute = true;
         }
 
         private void SelectAll_Executed(object sender, ExecutedRoutedEventArgs e)
@@ -227,6 +253,22 @@ namespace MemoEditor
             if (EditText1.IsEnabled)
                 e.CanExecute = true; 
         }
+
+        /*
+        private void EditTextScroll1_KeyDown(object sender, KeyEventArgs e)
+        {
+            ScrollViewer scrollView = e.Source as ScrollViewer;
+
+            if (e.Key == Key.PageDown)
+            {
+                scrollView.pageScroll(ScrollView.FOCUS_DOWN);
+                scrollView.computeScroll(); 
+            } else {
+                scrollView.pageScroll(ScrollView.FOCUS_UP);
+                scrollView.computeScroll(); 
+            }
+        }
+         * */
 
     }
 }

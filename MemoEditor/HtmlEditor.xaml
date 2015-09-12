@@ -1,0 +1,13 @@
+﻿<Window x:Class="MemoEditor.HtmlEditor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ex="clr-namespace:Smith.WPF.HtmlEditor;assembly=Smith.WPF.HtmlEditor"
+        xmlns:resc="clr-namespace:Smith.WPF.HtmlEditor.Demo.Resources"
+        Title="HtmlEditor" 
+        WindowStartupLocation="CenterOwner"        
+        Height="400"
+        Width="700">
+    <Grid>
+        <ex:HtmlEditor x:Name="HtmlEditor1" />
+    </Grid>
+</Window>
