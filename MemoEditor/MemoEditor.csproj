@@ -95,9 +95,11 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="UIAutomationProvider" />
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -118,6 +120,9 @@
     <Compile Include="HeaderToImageConverter.cs" />
     <Compile Include="HtmlEditor.xaml.cs">
       <DependentUpon>HtmlEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HtmlEditor2.xaml.cs">
+      <DependentUpon>HtmlEditor2.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -149,6 +154,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="HtmlEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HtmlEditor2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -248,6 +257,10 @@
     <Resource Include="Resources\textfield_rename.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\HtmlEditorControl\HTMLEditorControl.csproj">
+      <Project>{5873de0f-6853-4c8e-91a4-7a6861069a9a}</Project>
+      <Name>HTMLEditorControl</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SmithHtmlEditor.Demo\SmithHtmlEditor.Demo.csproj">
       <Project>{941eb254-38f8-4b0b-abe1-426d6c04aec9}</Project>
       <Name>SmithHtmlEditor.Demo</Name>

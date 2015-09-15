@@ -4,7 +4,7 @@
   <description asmv2:iconFile="Resources\MemoEditor.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="MemoEditor" version="0.17.5733.25811" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="MemoEditor" version="0.18.5734.39257" language="neutral" processorArchitecture="msil" />
     <commandLine file="MemoEditor.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -72,26 +72,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MemoEditor.exe" size="221584">
-      <assemblyIdentity name="MemoEditor" version="0.17.5733.25811" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MemoEditor.exe" size="224144">
+      <assemblyIdentity name="MemoEditor" version="0.18.5734.39257" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>jMNoOSgE9EWqNwrGl2kvb/orIs8=</dsig:DigestValue>
+        <dsig:DigestValue>0Ygn7fAA3/sikabMC8iEyMxxfFw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ko-KR\MemoEditor.resources.dll" size="5632">
-      <assemblyIdentity name="MemoEditor.resources" version="0.17.5733.25811" language="ko-KR" processorArchitecture="msil" />
+      <assemblyIdentity name="MemoEditor.resources" version="0.18.5734.39257" language="ko-KR" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>83Vn3slfuDdUCL/FT1rndC6GNsc=</dsig:DigestValue>
+        <dsig:DigestValue>/xP3JVmYDHgKsdut6PHuNxU7/QY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -108,6 +108,18 @@
     </dependentAssembly>
   </dependency>
   <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MSDN.HtmlEditorControl.dll" size="245760">
+      <assemblyIdentity name="MSDN.HtmlEditorControl" version="2.0.5734.39199" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>0I3hyf0iVYfkWB46I3sBx/ZknMY=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Smith.WPF.HtmlEditor.dll" size="152576">
       <assemblyIdentity name="Smith.WPF.HtmlEditor" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
@@ -115,7 +127,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>WzekWuu4i3yZSa+SzqeSYqVCwi0=</dsig:DigestValue>
+        <dsig:DigestValue>tBrIhbeIfmymfALW7c8D2cqL70A=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -127,7 +139,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>Fs+2LRce8nxBzCx3a2SsXUUGTdk=</dsig:DigestValue>
+        <dsig:DigestValue>F+0UAyeRwsdRFsh7KgYxpb48TEc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -139,7 +151,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>pFonsKtvaYx5VCEL+UpytgCwA9c=</dsig:DigestValue>
+        <dsig:DigestValue>ynUyS+9lp8c55axTQ9z45+3Jai0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -151,7 +163,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>JAT7YTArBLhaDVzfuNjWNXCEiac=</dsig:DigestValue>
+        <dsig:DigestValue>Ur9dqtNh/pcXTGOiLjesrDZckVQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -163,7 +175,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>2/0pBBldqwyjbqdS9S0S+KfGwWA=</dsig:DigestValue>
+        <dsig:DigestValue>uj8O/5kTODPoSwEQmgPHdn7ggno=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -175,7 +187,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>Pevhsf5MdaSdgYgkjTf8G36vu4s=</dsig:DigestValue>
+        <dsig:DigestValue>aEVFmfSUkBrALO0OKGyVA11IV/s=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

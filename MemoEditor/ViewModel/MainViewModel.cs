@@ -470,7 +470,7 @@ namespace MemoEditor.ViewModel
 
         private void OnEditHtml()
         {
-            var html_editor = new HtmlEditor();
+            var html_editor = new HtmlEditor2();
             html_editor.Owner = MainWindow.Instance;
             html_editor.Show();
         }
