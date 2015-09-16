@@ -73,6 +73,17 @@
             <MenuItem Header="{x:Static resx:Resources.menu_view}">
                 <MenuItem x:Name="MenuItemTopmost" Command="" Header="{x:Static resx:Resources.menu_topmost}" IsCheckable="True" Click="MenuItemTopmost_Click" />
             </MenuItem>
+            <MenuItem Header="{x:Static resx:Resources.menu_favorite_folder}">
+                <MenuItem x:Name="MenuItemAddFavoriteFolder" Command="" Header="{x:Static resx:Resources.menu_add_favorite_folder}" Click="MenuItemAddFavoriteFolder_Clicked"/>
+                <MenuItem x:Name="MenuItemFavoriteFolders" Command="" Header="{x:Static resx:Resources.menu_favorite_folders}" ItemsSource="{Binding RecentFiles}" >
+                    <MenuItem.ItemContainerStyle>
+                        <Style>
+                            <Setter Property="MenuItem.Header" Value="{Binding Name}"/>
+                            <Setter Property="MenuItem.Command" Value="{Binding Open}"/>
+                        </Style>
+                    </MenuItem.ItemContainerStyle>
+                </MenuItem>
+            </MenuItem>
             <MenuItem Header="{x:Static resx:Resources.menu_help}">
                 <MenuItem Command="{Binding HelpInfoCommand}" Header="{x:Static resx:Resources.menu_info}" />
             </MenuItem>

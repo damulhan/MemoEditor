@@ -358,6 +358,15 @@ namespace MemoEditor.Properties {
         }
         
         /// <summary>
+        ///   Add to Favorite Folder과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string menu_add_favorite_folder {
+            get {
+                return ResourceManager.GetString("menu_add_favorite_folder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Change Font과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         public static string menu_change_font {
@@ -381,6 +390,24 @@ namespace MemoEditor.Properties {
         public static string menu_exit {
             get {
                 return ResourceManager.GetString("menu_exit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Favorite Folder과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string menu_favorite_folder {
+            get {
+                return ResourceManager.GetString("menu_favorite_folder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Favorite Folder과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string menu_favorite_folders {
+            get {
+                return ResourceManager.GetString("menu_favorite_folders", resourceCulture);
             }
         }
         

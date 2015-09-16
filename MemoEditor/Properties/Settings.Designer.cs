@@ -118,5 +118,16 @@ namespace MemoEditor.Properties {
                 this["FontFamily"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Collections.Specialized.StringCollection FavoriteFolders {
+            get {
+                return ((global::System.Collections.Specialized.StringCollection)(this["FavoriteFolders"]));
+            }
+            set {
+                this["FavoriteFolders"] = value;
+            }
+        }
     }
 }

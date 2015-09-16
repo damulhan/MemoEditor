@@ -147,8 +147,6 @@ namespace MemoEditor
         {
             ViewModel.EditHtml1_TextChangedCommand.Execute(e.Source);
         }
-
-
         #endregion
         
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -357,5 +355,23 @@ namespace MemoEditor
             }
         }
 
+        private void MenuItemAddFavoriteFolder_Clicked(object sender, RoutedEventArgs e)
+        {
+            UserPreferences up = UserPreferences.Instance;
+            var node_e = ViewModel.FirstGeneration.GetEnumerator();
+            node_e.MoveNext();
+            var node = node_e.Current;
+            if (node.ExplorerType == ExplorerType.Folder) 
+            {
+                up.AddToFavoriteFolders(node.Path);
+                up.Save();
+                this.MenuItemFavoriteFolders.GetBindingExpression(MenuItem.ItemsSourceProperty).UpdateTarget();
+            }
+            else
+            {
+                MainViewModel.MessageBoxShow("Not folder");
+            }
+        }
+        
     }
 }

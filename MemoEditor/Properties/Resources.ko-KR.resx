@@ -216,6 +216,9 @@
   <data name="memo_foldername_prefix" xml:space="preserve">
     <value>새 폴더</value>
   </data>
+  <data name="menu_add_favorite_folder" xml:space="preserve">
+    <value>즐겨찾기 폴더 추가</value>
+  </data>
   <data name="menu_change_font" xml:space="preserve">
     <value>폰트 변경</value>
   </data>
@@ -224,6 +227,12 @@
   </data>
   <data name="menu_exit" xml:space="preserve">
     <value>종료</value>
+  </data>
+  <data name="menu_favorite_folder" xml:space="preserve">
+    <value>즐겨찾기 폴더</value>
+  </data>
+  <data name="menu_favorite_folders" xml:space="preserve">
+    <value>즐겨찾기 폴더 목록</value>
   </data>
   <data name="menu_file" xml:space="preserve">
     <value>파일</value>

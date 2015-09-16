@@ -216,6 +216,9 @@
   <data name="memo_foldername_prefix" xml:space="preserve">
     <value>New Folder</value>
   </data>
+  <data name="menu_add_favorite_folder" xml:space="preserve">
+    <value>Add to Favorite Folder</value>
+  </data>
   <data name="menu_change_font" xml:space="preserve">
     <value>Change Font</value>
   </data>
@@ -224,6 +227,12 @@
   </data>
   <data name="menu_exit" xml:space="preserve">
     <value>Exit</value>
+  </data>
+  <data name="menu_favorite_folder" xml:space="preserve">
+    <value>Favorite Folder</value>
+  </data>
+  <data name="menu_favorite_folders" xml:space="preserve">
+    <value>Favorite Folder</value>
   </data>
   <data name="menu_file" xml:space="preserve">
     <value>File</value>

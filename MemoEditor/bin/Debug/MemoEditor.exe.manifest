@@ -4,7 +4,7 @@
   <description asmv2:iconFile="Resources\MemoEditor.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="MemoEditor" version="0.19.0.0" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="MemoEditor" version="0.20.0.0" language="neutral" processorArchitecture="msil" />
     <commandLine file="MemoEditor.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -72,26 +72,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MemoEditor.exe" size="226192">
-      <assemblyIdentity name="MemoEditor" version="0.19.0.0" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MemoEditor.exe" size="229776">
+      <assemblyIdentity name="MemoEditor" version="0.20.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>Gp17Q9SozeZpxwWRpDpZ2Nc6xo8=</dsig:DigestValue>
+        <dsig:DigestValue>/oJbxISXoy9ZQmtJC2LXs/FFEAs=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ko-KR\MemoEditor.resources.dll" size="6144">
-      <assemblyIdentity name="MemoEditor.resources" version="0.19.0.0" language="ko-KR" processorArchitecture="msil" />
+      <assemblyIdentity name="MemoEditor.resources" version="0.20.0.0" language="ko-KR" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>Yi+AzFVCmrA9MiBMf9oR1zVdruE=</dsig:DigestValue>
+        <dsig:DigestValue>E6vYQgawvLDk5stSFo4AXi4Bm7g=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

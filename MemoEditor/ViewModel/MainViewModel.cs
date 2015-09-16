@@ -12,6 +12,7 @@ using System.Collections;
 using System.Windows.Media;
 using System.Windows.Controls;
 using System;
+using System.Linq;
 
 namespace MemoEditor.ViewModel
 {
@@ -195,6 +196,16 @@ namespace MemoEditor.ViewModel
             {
                 _currentExplorerNode = value;
                 RaisePropertyChanged("CurrentExplorerNode");
+            }
+        }
+
+        public IEnumerable RecentFiles
+        {
+            get
+            {
+                UserPreferences up = UserPreferences.Instance;
+                return up.FavoriteFolders.Select((path, index) =>
+                        new FavoriteFolderViewModel(this, index, path));
             }
         }
 
@@ -489,22 +500,27 @@ namespace MemoEditor.ViewModel
 
             if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                FirstGeneration.Clear();
-
-                Messenger.Default.Send(new CustomMessage(
-                    CustomMessage.MessageType.TREEVIEW_DESTROYED));
-
-                // FirstGeneration 
-                var firsts = new ObservableCollection<ExplorerNode>();
-                var node = new ExplorerNode(dialog.SelectedPath);
-                firsts.Add(node);
-                FirstGeneration = firsts;
-                node.IsExpanded = true;
-                node.IsSelected = true;
-
-                // Save in Setting 
-                _userPrefs.WorkingFolder = dialog.SelectedPath;
+                _folderChange(dialog.SelectedPath);
             }
+        }
+
+        private void _folderChange(string path)
+        {
+            FirstGeneration.Clear();
+
+            Messenger.Default.Send(new CustomMessage(
+                CustomMessage.MessageType.TREEVIEW_DESTROYED));
+
+            // FirstGeneration 
+            var firsts = new ObservableCollection<ExplorerNode>();
+            var node = new ExplorerNode(path);
+            firsts.Add(node);
+            FirstGeneration = firsts;
+            node.IsExpanded = true;
+            node.IsSelected = true;
+
+            // Save in Setting 
+            _userPrefs.WorkingFolder = path;            
         }
 
         private void OnLoaded()
@@ -590,5 +606,39 @@ namespace MemoEditor.ViewModel
         ////}
 
         #endregion 
+
+        public class FavoriteFolderViewModel
+        {
+            private int _index;
+            private string _path;
+            private MainViewModel _vm;
+
+            public FavoriteFolderViewModel(MainViewModel vm, int index, string path)
+            {
+                _vm = vm;
+                _index = index;
+                _path = path;
+            }
+
+            public string Name 
+            {
+                get {
+                    var _name = _path.Substring(_path.LastIndexOf("\\") + 1);
+                    return string.Format("_{0} - {1}", _index + 1, _name);
+                }
+            }
+
+            public RelayCommand Open 
+            {
+                get
+                {
+                    return new RelayCommand(() => { 
+                        // open path; 
+                        _vm._folderChange(_path);
+                    }, () => true);
+                }
+            }
+        }
+
     }
 }

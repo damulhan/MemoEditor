@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.ComponentModel;
 using System.Diagnostics;
+using GalaSoft.MvvmLight;
+using System.Collections.Specialized;
 
 namespace MemoEditor
 {
-    public class UserPreferences
+    public class UserPreferences : ViewModelBase
     {
         private static UserPreferences _instance;
 
@@ -21,6 +23,7 @@ namespace MemoEditor
         private string _workingFolder;
         private double _fontSize;
         private string _fontFamily;
+        private System.Collections.Specialized.StringCollection _favoriteFolders;
 
         #endregion //Member Variables
 
@@ -71,6 +74,26 @@ namespace MemoEditor
         {
             get { return _fontFamily; }
             set { _fontFamily = value; }
+        }
+
+        public IEnumerable<string> FavoriteFolders
+        {
+            get {
+                var col = (_favoriteFolders != null) ? 
+                    _favoriteFolders : 
+                    new StringCollection();
+                return col.OfType<string>();
+            }
+        }
+
+        public void AddToFavoriteFolders(string str)
+        {
+            _favoriteFolders.Insert(0, str);
+            while (_favoriteFolders.Count > 10) {
+                _favoriteFolders.RemoveAt(10);
+            }
+
+            RaisePropertyChanged("FavoriteFolders");
         }
 
         #endregion //Public Properties
@@ -147,6 +170,7 @@ namespace MemoEditor
             }
         }
 
+
         private void Load()
         {
             _windowTop = Properties.Settings.Default.WindowTop;
@@ -157,7 +181,11 @@ namespace MemoEditor
             _workingFolder = Properties.Settings.Default.WorkingFolder;
             _fontSize = Properties.Settings.Default.FontSize;
             _fontFamily = Properties.Settings.Default.FontFamily;
+            _favoriteFolders = Properties.Settings.Default.FavoriteFolders;
+            if(_favoriteFolders == null)
+                _favoriteFolders = new StringCollection();
         }
+        
 
         public void Save()
         {
@@ -186,6 +214,9 @@ namespace MemoEditor
 
                 Debug.WriteLine("UserPref: _fontFamily: " + _fontFamily);
                 Properties.Settings.Default.FontFamily = _fontFamily;
+
+                Debug.WriteLine("UserPref: _favoriteFolders: " + _favoriteFolders);
+                Properties.Settings.Default.FavoriteFolders = _favoriteFolders;
 
                 Properties.Settings.Default.Save();
             }
