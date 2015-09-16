@@ -126,12 +126,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SmithHtmlEditor\SmithHtmlEditor.csproj">
-      <Project>{84BADDA1-AB3A-4064-B87E-178D7446901D}</Project>
-      <Name>SmithHtmlEditor</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <COMReference Include="MSHTML">
       <Guid>{3050F1C5-98B5-11CF-BB82-00AA00BDCE0B}</Guid>
       <VersionMajor>4</VersionMajor>

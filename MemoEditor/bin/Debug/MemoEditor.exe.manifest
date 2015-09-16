@@ -4,7 +4,7 @@
   <description asmv2:iconFile="Resources\MemoEditor.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="MemoEditor" version="0.18.0.0" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="MemoEditor" version="0.19.0.0" language="neutral" processorArchitecture="msil" />
     <commandLine file="MemoEditor.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -72,26 +72,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MemoEditor.exe" size="228240">
-      <assemblyIdentity name="MemoEditor" version="0.18.0.0" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MemoEditor.exe" size="226192">
+      <assemblyIdentity name="MemoEditor" version="0.19.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>C4VJas6aR/NZPAe4TXA4uq5ES6E=</dsig:DigestValue>
+        <dsig:DigestValue>pdc55P/xdhnaonR0N0UX3Nfk7e8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ko-KR\MemoEditor.resources.dll" size="6144">
-      <assemblyIdentity name="MemoEditor.resources" version="0.18.0.0" language="ko-KR" processorArchitecture="msil" />
+      <assemblyIdentity name="MemoEditor.resources" version="0.19.0.0" language="ko-KR" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>5/RfCn/Fr4vEjjkfUxoZsXC2sig=</dsig:DigestValue>
+        <dsig:DigestValue>9xwdeMSG8gBMrOQXG21yFPB3pfY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -109,85 +109,13 @@
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MSDN.HtmlEditorControl.dll" size="249856">
-      <assemblyIdentity name="MSDN.HtmlEditorControl" version="2.0.5737.27064" language="neutral" processorArchitecture="msil" />
+      <assemblyIdentity name="MSDN.HtmlEditorControl" version="2.0.5737.27191" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>eywq8ggVCL5+MvzeN4TmHhcLCjk=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Smith.WPF.HtmlEditor.dll" size="152576">
-      <assemblyIdentity name="Smith.WPF.HtmlEditor" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>r2ypJAIWoRiXubZXeIbyz2yOxWA=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Smith.WPF.HtmlEditor.Demo.exe" size="15360">
-      <assemblyIdentity name="Smith.WPF.HtmlEditor.Demo" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>oxAFQ95kVoP/ctf4PGe4lmEF4ts=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="zh-CN\Smith.WPF.HtmlEditor.Demo.resources.dll" size="3584">
-      <assemblyIdentity name="Smith.WPF.HtmlEditor.Demo.resources" version="1.0.0.0" language="zh-CN" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>j7pmpttfw/hhyRzUwAMfbZRv25c=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="en-US\Smith.WPF.HtmlEditor.resources.dll" size="7168">
-      <assemblyIdentity name="Smith.WPF.HtmlEditor.resources" version="1.0.0.0" language="en-US" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>O+0hI+3RM5ul3/MlbumxfpXDz/g=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ko-KR\Smith.WPF.HtmlEditor.resources.dll" size="7168">
-      <assemblyIdentity name="Smith.WPF.HtmlEditor.resources" version="1.0.0.0" language="ko-KR" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>1RArpchgIf+ShhHaipAk2OUapn0=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="zh-CN\Smith.WPF.HtmlEditor.resources.dll" size="7168">
-      <assemblyIdentity name="Smith.WPF.HtmlEditor.resources" version="1.0.0.0" language="zh-CN" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>Ir9QJYYezKUHda1nYVmgIZJKUZU=</dsig:DigestValue>
+        <dsig:DigestValue>2cFUSmngH/SQeHtCrG3dLkqzOEQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

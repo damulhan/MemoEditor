@@ -118,9 +118,6 @@
       <DependentUpon>Findwindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="HeaderToImageConverter.cs" />
-    <Compile Include="HtmlEditor.xaml.cs">
-      <DependentUpon>HtmlEditor.xaml</DependentUpon>
-    </Compile>
     <Compile Include="HtmlEditor2.xaml.cs">
       <DependentUpon>HtmlEditor2.xaml</DependentUpon>
     </Compile>
@@ -150,10 +147,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Findwindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="HtmlEditor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -260,14 +253,6 @@
     <ProjectReference Include="..\HtmlEditorControl\HTMLEditorControl.csproj">
       <Project>{5873de0f-6853-4c8e-91a4-7a6861069a9a}</Project>
       <Name>HTMLEditorControl</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SmithHtmlEditor.Demo\SmithHtmlEditor.Demo.csproj">
-      <Project>{941eb254-38f8-4b0b-abe1-426d6c04aec9}</Project>
-      <Name>SmithHtmlEditor.Demo</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SmithHtmlEditor\SmithHtmlEditor.csproj">
-      <Project>{84badda1-ab3a-4064-b87e-178d7446901d}</Project>
-      <Name>SmithHtmlEditor</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
