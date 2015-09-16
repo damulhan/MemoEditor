@@ -46,6 +46,7 @@ using mshtmlEventObject = mshtml.IHTMLEventObj;
 
 using Pavonis.COM;
 using Pavonis.COM.IOleCommandTarget;
+using System.Diagnostics;
 
 #endregion
 
@@ -1610,6 +1611,32 @@ namespace MSDN.Html.Editor
                 {
                     this.InnerHtml = dialog.HTML;
                 }
+            }
+
+        } //HtmlContentsEdit
+
+        /// <summary>
+        /// Method to allow the user to edit the raw HTML
+        /// Dialog presented and the body contents set
+        /// </summary>
+        public void HtmlContentsEdit2()
+        {
+            var wb = editorWebBrowser;
+
+            if (!htmlText.Visible)
+            {
+                htmlText.Location = wb.Location;
+                htmlText.Width = wb.Width;
+                htmlText.Height = wb.Height;
+                htmlText.Text = this.InnerHtml;
+                htmlText.Show();
+                wb.Hide();
+            }
+            else
+            {
+                this.InnerHtml = htmlText.Text;
+                htmlText.Hide();
+                wb.Show();
             }
 
         } //HtmlContentsEdit
@@ -3768,11 +3795,18 @@ namespace MSDN.Html.Editor
         private void DefineDialogProperties(Form dialog)
         {
             // set ambient control properties
-            dialog.Font = this.ParentForm.Font;
-            dialog.ForeColor = this.ParentForm.ForeColor;
-            dialog.BackColor = this.ParentForm.BackColor;
-            dialog.Cursor = this.ParentForm.Cursor;
-            dialog.RightToLeft = this.ParentForm.RightToLeft;
+            if (ParentForm != null)
+            {
+                dialog.Font = this.ParentForm.Font;
+                dialog.ForeColor = this.ParentForm.ForeColor;
+                dialog.BackColor = this.ParentForm.BackColor;
+                dialog.Cursor = this.ParentForm.Cursor;
+                dialog.RightToLeft = this.ParentForm.RightToLeft;
+            }
+            else
+            {
+                dialog.Font = new Font("Consolas", 12, FontStyle.Regular);
+            }
 
             // define location and control style as system
             dialog.StartPosition = FormStartPosition.CenterParent;
@@ -4194,5 +4228,10 @@ namespace MSDN.Html.Editor
 
         #endregion
 
+        private void toolstripHtmlCode_Click(object sender, EventArgs e)
+        {
+            HtmlContentsEdit2();
+        }
+        
     } //HtmlEditorControl
 }

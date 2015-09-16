@@ -246,7 +246,16 @@
   <data name="menu_view" xml:space="preserve">
     <value>보기</value>
   </data>
+  <data name="msg_cannot_change" xml:space="preserve">
+    <value>변경할 수 없습니다.</value>
+  </data>
   <data name="msg_delete" xml:space="preserve">
     <value>삭제하겠습니까?</value>
+  </data>
+  <data name="msg_htmltotext_modechange_ok" xml:space="preserve">
+    <value>Html 속성이 없어집니다. 진행하겠습니까?</value>
+  </data>
+  <data name="msg_text2html_open_as_htmlmode" xml:space="preserve">
+    <value>HTML모드로 열겠습니까?</value>
   </data>
 </root>

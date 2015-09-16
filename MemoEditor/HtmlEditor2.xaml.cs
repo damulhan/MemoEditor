@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -21,7 +23,6 @@ namespace MemoEditor
         public HtmlEditor2()
         {
             InitializeComponent();
-
         }
     }
 }

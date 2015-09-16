@@ -10,6 +10,7 @@ using GalaSoft.MvvmLight.Command;
 using System.Windows.Input;
 using Utility;
 using GalaSoft.MvvmLight.Messaging;
+using MSDN.Html.Editor;
 
 namespace MemoEditor
 {
@@ -87,8 +88,22 @@ namespace MemoEditor
                 switch (m.msgtype)
                 {
                     case CustomMessage.MessageType.SELECTED:
+                        
+                        // editText1 goto first line 
                         EditText1.ScrollToLine(0);
+
+                        // goto text mode 
+                        _changeHtmlMode(false);
+                        
                         break;
+
+                    case CustomMessage.MessageType.BEFORE_FILE_SAVE:
+                        if (EditHtml1._HtmlEditor != null) 
+                            ViewModel.EditHtml = EditHtml1._HtmlEditor.InnerHtml;
+
+                        ViewModel.EditText = EditText1.Text;
+                        break;
+
                     default:
                         break;
                 }
@@ -120,12 +135,19 @@ namespace MemoEditor
         private void EditText1_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
             TextBox _editText1 = e.Source as TextBox;
-            
+
             BindingExpression be = _editText1.GetBindingExpression(TextBox.TextProperty);
             be.UpdateSource();
 
+            //Debug.WriteLine("edit: " + ViewModel.EditText);            
             ViewModel.EditText1_TextChangedCommand.Execute(e.Source);
         }
+
+        private void EditHtml1_TextChanged(object sender, KeyEventArgs e)
+        {
+            ViewModel.EditHtml1_TextChangedCommand.Execute(e.Source);
+        }
+
 
         #endregion
         
@@ -254,21 +276,72 @@ namespace MemoEditor
                 e.CanExecute = true; 
         }
 
-        /*
-        private void EditTextScroll1_KeyDown(object sender, KeyEventArgs e)
+        private void EditHtmlCommandBtn_Clicked(object sender, RoutedEventArgs e)
         {
-            ScrollViewer scrollView = e.Source as ScrollViewer;
+            bool goto_htmlmode = EditText1.IsVisible;
+            bool treat_as_html = false;
 
-            if (e.Key == Key.PageDown)
+            // if html -> text mode? 
+            if (!goto_htmlmode)
             {
-                scrollView.pageScroll(ScrollView.FOCUS_DOWN);
-                scrollView.computeScroll(); 
-            } else {
-                scrollView.pageScroll(ScrollView.FOCUS_UP);
-                scrollView.computeScroll(); 
+                string str = Properties.Resources.ResourceManager.GetString("msg_htmltotext_modechange_ok");
+                MessageBoxResult res = MainViewModel.MessageBoxShow_Question(str);
+                if (res == MessageBoxResult.Cancel)
+                    return;
+            }
+            else
+            {
+                // if text -> html mode? 
+                string str = Properties.Resources.ResourceManager.GetString("msg_text2html_open_as_htmlmode");
+                MessageBoxResult res = MainViewModel.MessageBoxShow_Question(str, MessageBoxButton.YesNoCancel);
+                if (res == MessageBoxResult.Cancel)
+                    return;
+
+                if (res == MessageBoxResult.Yes) 
+                    treat_as_html = true;
+            }
+
+            _changeHtmlMode(goto_htmlmode);
+            _copyTextToHtml(goto_htmlmode, treat_as_html);
+        }
+
+        private void _changeHtmlMode(bool goto_htmlmode) 
+        {
+            var btn = EditHtmlCommandBtn;
+
+            if (goto_htmlmode)
+            {
+                // get into html mode 
+                btn.Background = Brushes.LightGray; ;
+                EditText1.Visibility = Visibility.Hidden;
+                EditHtml1.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                // get into text mode 
+                btn.Background = Brushes.Transparent;
+                EditText1.Visibility = Visibility.Visible;
+                EditHtml1.Visibility = Visibility.Hidden;
+            }
+
+            ViewModel.HtmlMode = goto_htmlmode;
+        }
+
+        private void _copyTextToHtml(bool direction_text2html, bool treat_as_html = false)
+        {
+            HtmlEditorControl html = EditHtml1._HtmlEditor;
+            if (direction_text2html)
+            {
+                if (treat_as_html)
+                    html.InnerHtml = EditText1.Text;
+                else
+                    html.InnerText = EditText1.Text;
+            }
+            else
+            {
+                EditText1.Text = html.InnerText;
             }
         }
-         * */
 
     }
 }

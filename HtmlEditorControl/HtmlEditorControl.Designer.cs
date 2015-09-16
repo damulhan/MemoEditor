@@ -29,6 +29,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HtmlEditorControl));
             this.browserPanel = new System.Windows.Forms.Panel();
+            this.htmlText = new System.Windows.Forms.TextBox();
             this.editorWebBrowser = new System.Windows.Forms.WebBrowser();
             this.toolstripEditor = new System.Windows.Forms.ToolStrip();
             this.toolstripTextCut = new System.Windows.Forms.ToolStripButton();
@@ -63,6 +64,7 @@
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.toolstripFindReplace = new System.Windows.Forms.ToolStripButton();
             this.toolstripDocumentPrint = new System.Windows.Forms.ToolStripButton();
+            this.toolstripHtmlCode = new System.Windows.Forms.ToolStripButton();
             this.contextEditor = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.contextTable = new System.Windows.Forms.ToolStripMenuItem();
             this.contextTableModify = new System.Windows.Forms.ToolStripMenuItem();
@@ -138,10 +140,16 @@
             // 
             // browserPanel
             // 
+            this.browserPanel.Controls.Add(this.htmlText);
             this.browserPanel.Controls.Add(this.editorWebBrowser);
             resources.ApplyResources(this.browserPanel, "browserPanel");
             this.browserPanel.Name = "browserPanel";
             this.browserPanel.Resize += new System.EventHandler(this.browserPanelResize);
+            // 
+            // htmlText
+            // 
+            resources.ApplyResources(this.htmlText, "htmlText");
+            this.htmlText.Name = "htmlText";
             // 
             // editorWebBrowser
             // 
@@ -188,7 +196,8 @@
             this.toolstripInsertLink,
             this.toolStripSeparator6,
             this.toolstripFindReplace,
-            this.toolstripDocumentPrint});
+            this.toolstripDocumentPrint,
+            this.toolstripHtmlCode});
             this.toolstripEditor.Name = "toolstripEditor";
             this.toolstripEditor.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             // 
@@ -455,6 +464,14 @@
             this.toolstripDocumentPrint.Name = "toolstripDocumentPrint";
             this.toolstripDocumentPrint.Tag = "DocumentPrint";
             this.toolstripDocumentPrint.Click += new System.EventHandler(this.toolstripEditorClick);
+            // 
+            // toolstripHtmlCode
+            // 
+            this.toolstripHtmlCode.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolstripHtmlCode.Image = global::MSDN.Html.Editor.Properties.Resources.ToolbarHtmlcode;
+            resources.ApplyResources(this.toolstripHtmlCode, "toolstripHtmlCode");
+            this.toolstripHtmlCode.Name = "toolstripHtmlCode";
+            this.toolstripHtmlCode.Click += new System.EventHandler(this.toolstripHtmlCode_Click);
             // 
             // contextEditor
             // 
@@ -1010,6 +1027,7 @@
             this.Name = "HtmlEditorControl";
             resources.ApplyResources(this, "$this");
             this.browserPanel.ResumeLayout(false);
+            this.browserPanel.PerformLayout();
             this.toolstripEditor.ResumeLayout(false);
             this.toolstripEditor.PerformLayout();
             this.contextEditor.ResumeLayout(false);
@@ -1122,5 +1140,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator16;
         private System.Windows.Forms.ToolStripMenuItem contextInsertTable;
         private System.Windows.Forms.WebBrowser editorWebBrowser;
+        private System.Windows.Forms.ToolStripButton toolstripHtmlCode;
+        private System.Windows.Forms.TextBox htmlText;
     }
 }

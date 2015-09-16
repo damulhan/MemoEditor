@@ -246,7 +246,16 @@
   <data name="menu_view" xml:space="preserve">
     <value>View</value>
   </data>
+  <data name="msg_cannot_change" xml:space="preserve">
+    <value>Cannot change.</value>
+  </data>
   <data name="msg_delete" xml:space="preserve">
     <value>Want to delete?</value>
+  </data>
+  <data name="msg_htmltotext_modechange_ok" xml:space="preserve">
+    <value>Html properties will be disappeard. Will you goahead?</value>
+  </data>
+  <data name="msg_text2html_open_as_htmlmode" xml:space="preserve">
+    <value>Would you open as HTML mode?</value>
   </data>
 </root>

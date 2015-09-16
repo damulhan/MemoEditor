@@ -23,12 +23,14 @@ namespace MemoEditor.ViewModel
     /// </summary>
     public class MainViewModel : ViewModelBase
     {
+        #region Event mapper 
         // event mapper 
         public RelayCommand OnLoadedCommand { get; private set; }
         public RelayCommand OnClosingCommand { get; private set; }
         public RelayCommand FileNewCommand { get; private set; }
         public RelayCommand FileSaveCommand { get; private set; }
         public RelayCommand EditText1_TextChangedCommand { get; private set; }
+        public RelayCommand EditHtml1_TextChangedCommand { get; private set; }        
         public RelayCommand FolderNewCommand { get; private set; }
         public RelayCommand FileRenameCommand { get; private set; }
         public RelayCommand FileDeleteCommand { get; private set; }
@@ -36,29 +38,35 @@ namespace MemoEditor.ViewModel
         public RelayCommand FolderChangeCommand { get; private set; }
         public RelayCommand ExitCommand { get; private set; }
         public RelayCommand SettingCommand { get; private set; }
-        public RelayCommand EditHtmlCommand { get; private set; } 
+        public RelayCommand EditHtmlCommand { get; private set; }
+        #endregion
+
+        #region Variable Definition 
 
         // data service 
         private readonly IDataService _dataService;
 
         private UserPreferences _userPrefs;
-        
-        public IDataService DataService {
+
+        public IDataService DataService
+        {
             get { return _dataService; }
         }
 
         private string _title;
         public string Title
         {
-            get { 
-                return _title; 
+            get
+            {
+                return _title;
             }
-            set { 
+            set
+            {
                 _title = value;
                 RaisePropertyChanged("Title");
             }
         }
-        
+
         private string _welcomeTitle = string.Empty;
 
         /// <summary>
@@ -103,15 +111,31 @@ namespace MemoEditor.ViewModel
             }
         }
 
+        private bool _htmlMode;
+        public bool HtmlMode
+        {
+            get
+            {
+                return _htmlMode;
+            }
+            set
+            {
+                _htmlMode = value;
+                RaisePropertyChanged("HtmlMode");
+            }
+        }
+
         private bool _textChanged = false;
         private string _editText = "";
-        private string _editTextOld = ""; 
+        private string _editTextOld = "";
 
         public string EditText
         {
-            get { 
-                return _editText; 
+            get
+            {
+                return _editText;
             }
+
             set
             {
                 if (_editText != value)
@@ -122,15 +146,35 @@ namespace MemoEditor.ViewModel
             }
         }
 
+        private string _editHtml = "";
+        public string EditHtml
+        {
+            get
+            {
+                return _editHtml;
+            }
+
+            set
+            {
+                if (_editHtml != value)
+                {
+                    _editHtml = value;
+                    RaisePropertyChanged("EditHtml");
+                }
+            }
+        }
+
         public bool EditTextSavable
         {
-            get {
+            get
+            {
                 return _textChanged;
             }
         }
 
         private bool _isEnabledEditText;
-        public bool IsEnabledEditText {
+        public bool IsEnabledEditText
+        {
             get { return _isEnabledEditText; }
             set
             {
@@ -141,14 +185,20 @@ namespace MemoEditor.ViewModel
 
         private ExplorerNode _currentExplorerNode = null;
 
-        public ExplorerNode CurrentExplorerNode 
+        public ExplorerNode CurrentExplorerNode
         {
-            get { return _currentExplorerNode;  }
-            set { 
+            get
+            {
+                return _currentExplorerNode;
+            }
+            set
+            {
                 _currentExplorerNode = value;
                 RaisePropertyChanged("CurrentExplorerNode");
             }
         }
+
+        #endregion 
 
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
@@ -178,6 +228,7 @@ namespace MemoEditor.ViewModel
             FileNewCommand = new RelayCommand(OnFileNew, () => true);
             FileSaveCommand = new RelayCommand(OnFileSave, () => EditTextSavable);
             EditText1_TextChangedCommand = new RelayCommand(OnEditText1_TextChanged, () => true);
+            EditHtml1_TextChangedCommand = new RelayCommand(OnEditHtml1_TextChanged, () => true);
             FolderNewCommand = new RelayCommand(OnFolderNew, () => true);
             FileRenameCommand = new RelayCommand(OnFileRename, () => true);
             FileDeleteCommand = new RelayCommand(OnFileDelete, () => true);
@@ -190,7 +241,7 @@ namespace MemoEditor.ViewModel
             // Loading user preference
             this._userPrefs = UserPreferences.Instance;
         }
-        
+
         private void _initializeData(DataItem item)
         {
             // Title
@@ -198,7 +249,7 @@ namespace MemoEditor.ViewModel
 
             // WelcomeTitle 
             WelcomeTitle = item.Title;
-            
+
             // FirstGeneration 
             var firsts = new ObservableCollection<ExplorerNode>();
             foreach (var i in item.FirstGeneration)
@@ -210,6 +261,7 @@ namespace MemoEditor.ViewModel
 
             // EditText 
             EditText = "";
+            EditHtml = "";
 
             // IsEnabled_EditText 
             IsEnabledEditText = false;
@@ -231,14 +283,18 @@ namespace MemoEditor.ViewModel
                     case CustomMessage.MessageType.SELECTED:
                         var node = (ExplorerNode)m.obj;
 
+                        //Debug.WriteLine("EditText: " + EditText);
                         // saving old files 
                         OnFileSave();
 
                         // load files 
-                        if (node != null && node.ExplorerType == ExplorerType.File) {
+                        if (node != null && node.ExplorerType == ExplorerType.File)
+                        {
                             _currentExplorerNode = node;
                             FileOpen(node.Path);
-                        } else {
+                        }
+                        else
+                        {
                             EditTextInit();
                         }
 
@@ -248,20 +304,26 @@ namespace MemoEditor.ViewModel
 
                     case CustomMessage.MessageType.CREATED_NEW:
                         break;
+
                     case CustomMessage.MessageType.CREATED_NEW_FOLDER:
                         break;
+
                     default:
                         break;
                 }
             });
         }
-        
+
+
+        #region Event functions 
+
         private void EditTextInit()
         {
             _editTextOld = "";
             EditText = "";
+            EditHtml = "";
             IsEnabledEditText = false;
-            _textChanged = false; 
+            _textChanged = false;
         }
 
         private void OnFileNew()
@@ -283,20 +345,28 @@ namespace MemoEditor.ViewModel
             Messenger.Default.Send(new CustomMessage(
                 CustomMessage.MessageType.CREATE_NEW_FOLDER));
         }
-        
+
         private void OnFileSave()
         {
-            //MessageBox.Show("The Save command was invoked");
+            Messenger.Default.Send(new CustomMessage(
+                            CustomMessage.MessageType.BEFORE_FILE_SAVE));
+
             Debug.WriteLine("File Save..");
 
-            if (_textChanged && _currentExplorerNode != null)
+            if (_currentExplorerNode != null)
             {
                 try
                 {
-                    Debug.WriteLine("Saving.." + EditText);
+                    string text = "";
+                    if (HtmlMode)
+                        text = EditHtml;
+                    else
+                        text = EditText;
 
-                    System.IO.File.WriteAllText(_currentExplorerNode.Path, EditText);
-                    _editTextOld = EditText;
+                    Debug.WriteLine("Saving.." + text);
+
+                    System.IO.File.WriteAllText(_currentExplorerNode.Path, text);
+                    _editTextOld = text;
                 }
                 catch (System.IO.IOException e)
                 {
@@ -305,7 +375,11 @@ namespace MemoEditor.ViewModel
                 }
             }
 
-            _textChanged = false; 
+            _textChanged = false;
+
+            Messenger.Default.Send(new CustomMessage(
+                            CustomMessage.MessageType.AFTER_FILE_SAVE));
+
         }
 
         private void FileOpen(string path)
@@ -327,7 +401,7 @@ namespace MemoEditor.ViewModel
                 IsEnabledEditText = true;
 
                 // set text changed to false 
-                _textChanged = false; 
+                _textChanged = false;
 
             }
             catch (System.IO.FileNotFoundException e)
@@ -392,20 +466,25 @@ namespace MemoEditor.ViewModel
 
         private void OnHelpInfo()
         {
-            string messageBoxText = Version.APP_NAME + "\n"+
-                "©2015 greatcorea9000@hanmail.net\n"+
+            string messageBoxText = Version.APP_NAME + "\n" +
+                "©2015 greatcorea9000@hanmail.net\n" +
                 "ver " + Version.VERSION;
             MessageBoxShow(messageBoxText);
         }
 
         private void OnEditText1_TextChanged()
         {
-            _textChanged = true; 
+            _textChanged = true;
+        }
+
+        private void OnEditHtml1_TextChanged()
+        {
+            _textChanged = true;
         }
 
         private void OnFolderChange()
         {
-            System.Windows.Forms.FolderBrowserDialog dialog 
+            System.Windows.Forms.FolderBrowserDialog dialog
                 = new System.Windows.Forms.FolderBrowserDialog();
 
             if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
@@ -425,7 +504,7 @@ namespace MemoEditor.ViewModel
 
                 // Save in Setting 
                 _userPrefs.WorkingFolder = dialog.SelectedPath;
-           }
+            }
         }
 
         private void OnLoaded()
@@ -456,7 +535,7 @@ namespace MemoEditor.ViewModel
         {
             OnFileSave();
         }
-        
+
         private void OnExit()
         {
             OnClosing();
@@ -470,18 +549,37 @@ namespace MemoEditor.ViewModel
 
         private void OnEditHtml()
         {
+            /*
             var html_editor = new HtmlEditor2();
             html_editor.Owner = MainWindow.Instance;
             html_editor.Show();
+            */
+            //EditText1.Hide();
+            //EditHtml1.Show();
         }
 
-        public static void MessageBoxShow(string msg) 
+        #endregion
+
+
+        #region Utility 
+
+        public static MessageBoxResult MessageBoxShow(string msg)
         {
             string messageBoxText = msg;
             string caption = Version.APP_NAME;
             MessageBoxButton button = MessageBoxButton.OK;
             MessageBoxImage icon = MessageBoxImage.Information;
             MessageBoxResult result = MessageBoxEx.Show(MainWindow.Instance, messageBoxText, caption, button, icon);
+            return result;
+        }
+
+        public static MessageBoxResult MessageBoxShow_Question(string msg, MessageBoxButton button = MessageBoxButton.OKCancel)
+        {
+            string messageBoxText = msg;
+            string caption = Version.APP_NAME;
+            MessageBoxImage icon = MessageBoxImage.Question;
+            MessageBoxResult result = MessageBoxEx.Show(MainWindow.Instance, messageBoxText, caption, button, icon);
+            return result;
         }
 
         ////public override void Cleanup()
@@ -490,5 +588,7 @@ namespace MemoEditor.ViewModel
 
         ////    base.Cleanup();
         ////}
+
+        #endregion 
     }
 }

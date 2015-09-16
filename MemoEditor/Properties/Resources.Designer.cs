@@ -448,11 +448,38 @@ namespace MemoEditor.Properties {
         }
         
         /// <summary>
+        ///   Cannot change.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string msg_cannot_change {
+            get {
+                return ResourceManager.GetString("msg_cannot_change", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Want to delete?과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         public static string msg_delete {
             get {
                 return ResourceManager.GetString("msg_delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Html properties will be disappeard. Will you goahead?과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string msg_htmltotext_modechange_ok {
+            get {
+                return ResourceManager.GetString("msg_htmltotext_modechange_ok", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Would you open as HTML mode?과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string msg_text2html_open_as_htmlmode {
+            get {
+                return ResourceManager.GetString("msg_text2html_open_as_htmlmode", resourceCulture);
             }
         }
     }

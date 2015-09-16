@@ -118,13 +118,44 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="htmlText.Location" type="System.Drawing.Point, System.Drawing">
+    <value>19, 164</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="htmlText.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="htmlText.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>Vertical</value>
+  </data>
+  <data name="htmlText.Size" type="System.Drawing.Size, System.Drawing">
+    <value>161, 78</value>
+  </data>
+  <data name="htmlText.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="htmlText.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;htmlText.Name" xml:space="preserve">
+    <value>htmlText</value>
+  </data>
+  <data name="&gt;&gt;htmlText.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;htmlText.Parent" xml:space="preserve">
+    <value>browserPanel</value>
+  </data>
+  <data name="&gt;&gt;htmlText.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="editorWebBrowser.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 4</value>
   </data>
   <data name="editorWebBrowser.Size" type="System.Drawing.Size, System.Drawing">
     <value>668, 264</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="editorWebBrowser.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
@@ -138,9 +169,8 @@
     <value>browserPanel</value>
   </data>
   <data name="&gt;&gt;editorWebBrowser.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="browserPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
@@ -422,6 +452,18 @@
   </data>
   <data name="toolstripDocumentPrint.Text" xml:space="preserve">
     <value>Print Document</value>
+  </data>
+  <data name="toolstripHtmlCode.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="toolstripHtmlCode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="toolstripHtmlCode.Text" xml:space="preserve">
+    <value>toolStripButton1</value>
+  </data>
+  <data name="toolstripHtmlCode.ToolTipText" xml:space="preserve">
+    <value>View Html Code</value>
   </data>
   <data name="toolstripEditor.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 275</value>
@@ -1153,6 +1195,12 @@
     <value>toolstripDocumentPrint</value>
   </data>
   <data name="&gt;&gt;toolstripDocumentPrint.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolstripHtmlCode.Name" xml:space="preserve">
+    <value>toolstripHtmlCode</value>
+  </data>
+  <data name="&gt;&gt;toolstripHtmlCode.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;contextTable.Name" xml:space="preserve">

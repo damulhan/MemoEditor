@@ -1,0 +1,13 @@
+body
+{
+	border-right: thin groove;
+	border-top: thin groove;
+	border-left: thin groove;
+	border-bottom: thin groove;
+	font-family: 'Malgun Gothic', Arial,'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14px;
+}
+
+p {
+    margin:0;
+}

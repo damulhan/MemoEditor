@@ -137,7 +137,6 @@
     </Compile>
     <Compile Include="HtmlEditor.xaml.cs">
       <DependentUpon>HtmlEditor.xaml</DependentUpon>
-      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="HtmlEditorControl.Designer.cs">
       <DependentUpon>HtmlEditorControl.cs</DependentUpon>
@@ -212,6 +211,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\HtmlEditor.bmp" />
+    <Resource Include="Resources\ToolbarHtmlcode.png" />
     <Content Include="Resources\HtmlEditor.ico" />
     <Content Include="Resources\ToolbarBold.bmp" />
     <Content Include="Resources\ToolbarCopy.bmp" />

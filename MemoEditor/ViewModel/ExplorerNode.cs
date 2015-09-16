@@ -14,9 +14,11 @@ namespace MemoEditor.ViewModel
     public class ExplorerNode : ViewModelBase
     {
         public static readonly ExplorerNode dummyExplorerNode = new ExplorerNode();
-        public static readonly string FILE_EXTENSION = "txt";
+        public static readonly string FILE_EXTENSION1 = "txt";
+        public static readonly string FILE_EXTENSION2 = "html";
 
         public static ExplorerNode SelectedNode { get; private set; }
+        public static ExplorerNode PreviousNode { get; private set; }
 
         public ExplorerNode Parent { get; private set; }
 
@@ -93,14 +95,17 @@ namespace MemoEditor.ViewModel
                     if (Path != null)
                     {
                         string path, oldpath, newpath, newname;
-                        string filetype = "." + FILE_EXTENSION;
+                        string filetype1 = "." + FILE_EXTENSION1;
+                        string filetype2 = "." + FILE_EXTENSION2;
 
                         newname = value;
 
                         // if new file extension is not ends with .txt 
-                        if (ExplorerType == ExplorerType.File && !newname.ToLower().EndsWith(filetype))
+                        if (ExplorerType == ExplorerType.File && 
+                            !newname.ToLower().EndsWith(filetype1) &&
+                            !newname.ToLower().EndsWith(filetype2))
                         {
-                            newname += filetype;
+                            newname += filetype1;
                         }
 
                         path = Path.Substring(0, Path.LastIndexOf("\\"));
@@ -130,7 +135,8 @@ namespace MemoEditor.ViewModel
                         }
                         catch (System.IO.FileNotFoundException)
                         {
-                            MainViewModel.MessageBoxShow("변경할 수 없습니다.");
+                            string str = Properties.Resources.ResourceManager.GetString("msg_cannot_change");
+                            MainViewModel.MessageBoxShow(str);
                         }
                     }
                 }
@@ -159,7 +165,8 @@ namespace MemoEditor.ViewModel
 
         private void Expand()
         {
-            string filter = "*" + FILE_EXTENSION;
+            string filter1 = "*" + FILE_EXTENSION1;
+            string filter2 = "*" + FILE_EXTENSION2;
 
             if (ExplorerType != ExplorerType.Folder)
                 return;
@@ -183,7 +190,7 @@ namespace MemoEditor.ViewModel
                                         });
                     }
 
-                    foreach (string s in Directory.GetFiles(Path, filter))
+                    foreach (string s in Directory.GetFiles(Path, filter1))
                     {
                         Children.Add(new ExplorerNode
                                         {
@@ -193,6 +200,18 @@ namespace MemoEditor.ViewModel
                                             Parent = this,
                                         });
                     }
+
+                    foreach (string s in Directory.GetFiles(Path, filter2))
+                    {
+                        Children.Add(new ExplorerNode
+                        {
+                            Name = s.Substring(s.LastIndexOf("\\") + 1),
+                            Path = s,
+                            ExplorerType = ExplorerType.File,
+                            Parent = this,
+                        });
+                    }
+
                 }
                 catch (Exception e) {
                     Debug.Write(e.ToString());
@@ -223,7 +242,7 @@ namespace MemoEditor.ViewModel
             int i = 1;
             do
             {
-                s = node.Path + "\\" + Properties.Resources.ResourceManager.GetString("memo_filename_prefix") + i.ToString() + "." + FILE_EXTENSION;
+                s = node.Path + "\\" + Properties.Resources.ResourceManager.GetString("memo_filename_prefix") + i.ToString() + "." + FILE_EXTENSION1;
                 if (!File.Exists(s)) break;
                 i++;
             } while (true);
@@ -346,6 +365,7 @@ namespace MemoEditor.ViewModel
 
                 Set(() => IsSelected, ref _isSelected, value);
 
+                PreviousNode = SelectedNode;                
                 SelectedNode = this;
 
                 // send message 

@@ -20,6 +20,8 @@ namespace MemoEditor.ViewModel
             CREATED_NEW_FOLDER,
             DELETE_FILE,
             TREEVIEW_DESTROYED,
+            BEFORE_FILE_SAVE,
+            AFTER_FILE_SAVE,
         };
 
         public MessageType msgtype;
