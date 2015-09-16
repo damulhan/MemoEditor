@@ -26,7 +26,7 @@ namespace MSDN.Html.Editor
         /// </summary>
         private void InitializeComponent()
         {
-            System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(EnterHrefForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EnterHrefForm));
             this.bInsert = new System.Windows.Forms.Button();
             this.bRemove = new System.Windows.Forms.Button();
             this.bCancel = new System.Windows.Forms.Button();
@@ -42,8 +42,10 @@ namespace MSDN.Html.Editor
             // 
             this.bInsert.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.bInsert.DialogResult = System.Windows.Forms.DialogResult.Yes;
-            this.bInsert.Location = new System.Drawing.Point(184, 106);
+            this.bInsert.Location = new System.Drawing.Point(215, 122);
+            this.bInsert.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.bInsert.Name = "bInsert";
+            this.bInsert.Size = new System.Drawing.Size(87, 26);
             this.bInsert.TabIndex = 0;
             this.bInsert.Text = "Insert Href";
             // 
@@ -51,9 +53,10 @@ namespace MSDN.Html.Editor
             // 
             this.bRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.bRemove.DialogResult = System.Windows.Forms.DialogResult.No;
-            this.bRemove.Location = new System.Drawing.Point(264, 106);
+            this.bRemove.Location = new System.Drawing.Point(308, 122);
+            this.bRemove.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.bRemove.Name = "bRemove";
-            this.bRemove.Size = new System.Drawing.Size(80, 23);
+            this.bRemove.Size = new System.Drawing.Size(93, 26);
             this.bRemove.TabIndex = 1;
             this.bRemove.Text = "Remove Href";
             // 
@@ -61,72 +64,75 @@ namespace MSDN.Html.Editor
             // 
             this.bCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.bCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.bCancel.Location = new System.Drawing.Point(352, 106);
+            this.bCancel.Location = new System.Drawing.Point(411, 122);
+            this.bCancel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.bCancel.Name = "bCancel";
+            this.bCancel.Size = new System.Drawing.Size(87, 26);
             this.bCancel.TabIndex = 2;
             this.bCancel.Text = "Cancel";
             // 
             // labelText
             // 
-            this.labelText.Location = new System.Drawing.Point(8, 16);
+            this.labelText.Location = new System.Drawing.Point(9, 19);
             this.labelText.Name = "labelText";
-            this.labelText.Size = new System.Drawing.Size(40, 23);
+            this.labelText.Size = new System.Drawing.Size(47, 26);
             this.labelText.TabIndex = 3;
             this.labelText.Text = "Text:";
             // 
             // labelHref
             // 
-            this.labelHref.Location = new System.Drawing.Point(8, 48);
+            this.labelHref.Location = new System.Drawing.Point(9, 55);
             this.labelHref.Name = "labelHref";
-            this.labelHref.Size = new System.Drawing.Size(40, 23);
+            this.labelHref.Size = new System.Drawing.Size(47, 26);
             this.labelHref.TabIndex = 4;
             this.labelHref.Text = "Href:";
             // 
             // hrefText
             // 
-            this.hrefText.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                | System.Windows.Forms.AnchorStyles.Left)
-                | System.Windows.Forms.AnchorStyles.Right)));
-            this.hrefText.Location = new System.Drawing.Point(56, 16);
+            this.hrefText.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.hrefText.Location = new System.Drawing.Point(65, 19);
+            this.hrefText.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.hrefText.Name = "hrefText";
             this.hrefText.ReadOnly = true;
-            this.hrefText.Size = new System.Drawing.Size(368, 20);
+            this.hrefText.Size = new System.Drawing.Size(429, 21);
             this.hrefText.TabIndex = 5;
-            this.hrefText.Text = "";
             // 
             // hrefLink
             // 
-            this.hrefLink.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                | System.Windows.Forms.AnchorStyles.Left)
-                | System.Windows.Forms.AnchorStyles.Right)));
-            this.hrefLink.Location = new System.Drawing.Point(56, 48);
+            this.hrefLink.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.hrefLink.Location = new System.Drawing.Point(65, 55);
+            this.hrefLink.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.hrefLink.Name = "hrefLink";
-            this.hrefLink.Size = new System.Drawing.Size(368, 20);
+            this.hrefLink.Size = new System.Drawing.Size(429, 21);
             this.hrefLink.TabIndex = 6;
-            this.hrefLink.Text = "";
             // 
             // labelTarget
             // 
-            this.labelTarget.Location = new System.Drawing.Point(8, 80);
+            this.labelTarget.Location = new System.Drawing.Point(9, 92);
             this.labelTarget.Name = "labelTarget";
-            this.labelTarget.Size = new System.Drawing.Size(40, 23);
+            this.labelTarget.Size = new System.Drawing.Size(47, 26);
             this.labelTarget.TabIndex = 7;
             this.labelTarget.Text = "Target:";
             // 
             // listTargets
             // 
             this.listTargets.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.listTargets.Location = new System.Drawing.Point(56, 80);
+            this.listTargets.Location = new System.Drawing.Point(65, 92);
+            this.listTargets.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.listTargets.Name = "listTargets";
-            this.listTargets.Size = new System.Drawing.Size(121, 21);
+            this.listTargets.Size = new System.Drawing.Size(140, 23);
             this.listTargets.TabIndex = 8;
             // 
             // EnterHrefForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.bCancel;
-            this.ClientSize = new System.Drawing.Size(432, 136);
+            this.ClientSize = new System.Drawing.Size(504, 158);
             this.Controls.Add(this.listTargets);
             this.Controls.Add(this.labelTarget);
             this.Controls.Add(this.hrefLink);
@@ -136,8 +142,10 @@ namespace MSDN.Html.Editor
             this.Controls.Add(this.bCancel);
             this.Controls.Add(this.bRemove);
             this.Controls.Add(this.bInsert);
+            this.Font = new System.Drawing.Font("Arial", 9F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "EnterHrefForm";
@@ -145,6 +153,7 @@ namespace MSDN.Html.Editor
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "Enter Href";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
         #endregion

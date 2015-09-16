@@ -40,20 +40,22 @@ namespace MSDN.Html.Editor
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.htmlText.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.htmlText.Location = new System.Drawing.Point(9, 7);
+            this.htmlText.Location = new System.Drawing.Point(9, 9);
+            this.htmlText.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.htmlText.Multiline = true;
             this.htmlText.Name = "htmlText";
             this.htmlText.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.htmlText.Size = new System.Drawing.Size(514, 269);
+            this.htmlText.Size = new System.Drawing.Size(514, 335);
             this.htmlText.TabIndex = 0;
             // 
             // bOK
             // 
             this.bOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.bOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.bOK.Location = new System.Drawing.Point(328, 283);
+            this.bOK.Location = new System.Drawing.Point(328, 354);
+            this.bOK.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.bOK.Name = "bOK";
-            this.bOK.Size = new System.Drawing.Size(87, 21);
+            this.bOK.Size = new System.Drawing.Size(87, 26);
             this.bOK.TabIndex = 1;
             this.bOK.Text = "OK";
             // 
@@ -61,24 +63,27 @@ namespace MSDN.Html.Editor
             // 
             this.bCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.bCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.bCancel.Location = new System.Drawing.Point(431, 283);
+            this.bCancel.Location = new System.Drawing.Point(431, 354);
+            this.bCancel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.bCancel.Name = "bCancel";
-            this.bCancel.Size = new System.Drawing.Size(87, 21);
+            this.bCancel.Size = new System.Drawing.Size(87, 26);
             this.bCancel.TabIndex = 2;
             this.bCancel.Text = "Cancel";
             // 
             // EditHtmlForm
             // 
             this.AcceptButton = this.bOK;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.bCancel;
-            this.ClientSize = new System.Drawing.Size(534, 311);
+            this.ClientSize = new System.Drawing.Size(534, 389);
             this.Controls.Add(this.bCancel);
             this.Controls.Add(this.bOK);
             this.Controls.Add(this.htmlText);
+            this.Font = new System.Drawing.Font("Arial", 9F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "EditHtmlForm";

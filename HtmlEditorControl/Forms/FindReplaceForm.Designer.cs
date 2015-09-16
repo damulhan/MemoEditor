@@ -52,11 +52,12 @@ namespace MSDN.Html.Editor
             // 
             this.tabControl.Controls.Add(this.tabFind);
             this.tabControl.Controls.Add(this.tabReplace);
-            this.tabControl.Location = new System.Drawing.Point(8, 8);
+            this.tabControl.Location = new System.Drawing.Point(9, 9);
+            this.tabControl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
             this.tabControl.ShowToolTips = true;
-            this.tabControl.Size = new System.Drawing.Size(440, 32);
+            this.tabControl.Size = new System.Drawing.Size(513, 38);
             this.tabControl.TabIndex = 0;
             this.tabControl.TabStop = false;
             this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
@@ -64,9 +65,10 @@ namespace MSDN.Html.Editor
             // tabFind
             // 
             this.tabFind.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.tabFind.Location = new System.Drawing.Point(4, 22);
+            this.tabFind.Location = new System.Drawing.Point(4, 24);
+            this.tabFind.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabFind.Name = "tabFind";
-            this.tabFind.Size = new System.Drawing.Size(432, 6);
+            this.tabFind.Size = new System.Drawing.Size(505, 10);
             this.tabFind.TabIndex = 0;
             this.tabFind.Text = "Find";
             this.tabFind.ToolTipText = "Find Text";
@@ -75,17 +77,18 @@ namespace MSDN.Html.Editor
             // 
             this.tabReplace.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.tabReplace.Location = new System.Drawing.Point(4, 22);
+            this.tabReplace.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabReplace.Name = "tabReplace";
-            this.tabReplace.Size = new System.Drawing.Size(432, 6);
+            this.tabReplace.Size = new System.Drawing.Size(505, 12);
             this.tabReplace.TabIndex = 1;
             this.tabReplace.Text = "Replace";
             this.tabReplace.ToolTipText = "Find and Replace Text";
             // 
             // labelFind
             // 
-            this.labelFind.Location = new System.Drawing.Point(8, 16);
+            this.labelFind.Location = new System.Drawing.Point(9, 19);
             this.labelFind.Name = "labelFind";
-            this.labelFind.Size = new System.Drawing.Size(96, 23);
+            this.labelFind.Size = new System.Drawing.Size(112, 26);
             this.labelFind.TabIndex = 0;
             this.labelFind.Text = "Find What:";
             // 
@@ -93,27 +96,30 @@ namespace MSDN.Html.Editor
             // 
             this.bCancel.BackColor = System.Drawing.SystemColors.Control;
             this.bCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.bCancel.Location = new System.Drawing.Point(344, 80);
+            this.bCancel.Location = new System.Drawing.Point(401, 92);
+            this.bCancel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.bCancel.Name = "bCancel";
-            this.bCancel.Size = new System.Drawing.Size(75, 23);
+            this.bCancel.Size = new System.Drawing.Size(87, 26);
             this.bCancel.TabIndex = 4;
             this.bCancel.Text = "Cancel";
             this.bCancel.UseVisualStyleBackColor = false;
             // 
             // textFind
             // 
-            this.textFind.Location = new System.Drawing.Point(112, 16);
+            this.textFind.Location = new System.Drawing.Point(131, 19);
+            this.textFind.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textFind.Name = "textFind";
-            this.textFind.Size = new System.Drawing.Size(296, 20);
+            this.textFind.Size = new System.Drawing.Size(345, 21);
             this.textFind.TabIndex = 1;
             this.textFind.TextChanged += new System.EventHandler(this.textFind_TextChanged);
             // 
             // bFindNext
             // 
             this.bFindNext.BackColor = System.Drawing.SystemColors.Control;
-            this.bFindNext.Location = new System.Drawing.Point(264, 80);
+            this.bFindNext.Location = new System.Drawing.Point(308, 92);
+            this.bFindNext.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.bFindNext.Name = "bFindNext";
-            this.bFindNext.Size = new System.Drawing.Size(75, 23);
+            this.bFindNext.Size = new System.Drawing.Size(87, 26);
             this.bFindNext.TabIndex = 3;
             this.bFindNext.Text = "Find Next";
             this.bFindNext.UseVisualStyleBackColor = false;
@@ -121,26 +127,28 @@ namespace MSDN.Html.Editor
             // 
             // labelReplace
             // 
-            this.labelReplace.Location = new System.Drawing.Point(8, 48);
+            this.labelReplace.Location = new System.Drawing.Point(9, 55);
             this.labelReplace.Name = "labelReplace";
-            this.labelReplace.Size = new System.Drawing.Size(96, 23);
+            this.labelReplace.Size = new System.Drawing.Size(112, 26);
             this.labelReplace.TabIndex = 0;
             this.labelReplace.Text = "Replace  With:";
             // 
             // textReplace
             // 
-            this.textReplace.Location = new System.Drawing.Point(112, 48);
+            this.textReplace.Location = new System.Drawing.Point(131, 55);
+            this.textReplace.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textReplace.Name = "textReplace";
-            this.textReplace.Size = new System.Drawing.Size(296, 20);
+            this.textReplace.Size = new System.Drawing.Size(345, 21);
             this.textReplace.TabIndex = 2;
             this.textReplace.TextChanged += new System.EventHandler(this.textReplace_TextChanged);
             // 
             // bReplaceAll
             // 
             this.bReplaceAll.BackColor = System.Drawing.SystemColors.Control;
-            this.bReplaceAll.Location = new System.Drawing.Point(176, 80);
+            this.bReplaceAll.Location = new System.Drawing.Point(205, 92);
+            this.bReplaceAll.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.bReplaceAll.Name = "bReplaceAll";
-            this.bReplaceAll.Size = new System.Drawing.Size(75, 23);
+            this.bReplaceAll.Size = new System.Drawing.Size(87, 26);
             this.bReplaceAll.TabIndex = 7;
             this.bReplaceAll.Text = "Replace All";
             this.bReplaceAll.UseVisualStyleBackColor = false;
@@ -149,9 +157,10 @@ namespace MSDN.Html.Editor
             // bReplace
             // 
             this.bReplace.BackColor = System.Drawing.SystemColors.Control;
-            this.bReplace.Location = new System.Drawing.Point(96, 80);
+            this.bReplace.Location = new System.Drawing.Point(112, 92);
+            this.bReplace.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.bReplace.Name = "bReplace";
-            this.bReplace.Size = new System.Drawing.Size(75, 23);
+            this.bReplace.Size = new System.Drawing.Size(87, 26);
             this.bReplace.TabIndex = 6;
             this.bReplace.Text = "Replace";
             this.bReplace.UseVisualStyleBackColor = false;
@@ -160,9 +169,10 @@ namespace MSDN.Html.Editor
             // bOptions
             // 
             this.bOptions.BackColor = System.Drawing.SystemColors.Control;
-            this.bOptions.Location = new System.Drawing.Point(8, 80);
+            this.bOptions.Location = new System.Drawing.Point(9, 92);
+            this.bOptions.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.bOptions.Name = "bOptions";
-            this.bOptions.Size = new System.Drawing.Size(80, 23);
+            this.bOptions.Size = new System.Drawing.Size(93, 26);
             this.bOptions.TabIndex = 5;
             this.bOptions.Text = "Options";
             this.bOptions.UseVisualStyleBackColor = false;
@@ -170,17 +180,19 @@ namespace MSDN.Html.Editor
             // 
             // optionMatchCase
             // 
-            this.optionMatchCase.Location = new System.Drawing.Point(8, 8);
+            this.optionMatchCase.Location = new System.Drawing.Point(9, 9);
+            this.optionMatchCase.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.optionMatchCase.Name = "optionMatchCase";
-            this.optionMatchCase.Size = new System.Drawing.Size(240, 24);
+            this.optionMatchCase.Size = new System.Drawing.Size(280, 28);
             this.optionMatchCase.TabIndex = 8;
             this.optionMatchCase.Text = "Match Exact Case";
             // 
             // optionMatchWhole
             // 
-            this.optionMatchWhole.Location = new System.Drawing.Point(8, 32);
+            this.optionMatchWhole.Location = new System.Drawing.Point(9, 38);
+            this.optionMatchWhole.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.optionMatchWhole.Name = "optionMatchWhole";
-            this.optionMatchWhole.Size = new System.Drawing.Size(240, 24);
+            this.optionMatchWhole.Size = new System.Drawing.Size(280, 28);
             this.optionMatchWhole.TabIndex = 9;
             this.optionMatchWhole.Text = "Match Whole Word Only";
             // 
@@ -189,9 +201,10 @@ namespace MSDN.Html.Editor
             this.panelOptions.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.panelOptions.Controls.Add(this.optionMatchCase);
             this.panelOptions.Controls.Add(this.optionMatchWhole);
-            this.panelOptions.Location = new System.Drawing.Point(16, 152);
+            this.panelOptions.Location = new System.Drawing.Point(19, 175);
+            this.panelOptions.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panelOptions.Name = "panelOptions";
-            this.panelOptions.Size = new System.Drawing.Size(424, 64);
+            this.panelOptions.Size = new System.Drawing.Size(495, 74);
             this.panelOptions.TabIndex = 8;
             // 
             // panelInput
@@ -206,22 +219,25 @@ namespace MSDN.Html.Editor
             this.panelInput.Controls.Add(this.bReplaceAll);
             this.panelInput.Controls.Add(this.bFindNext);
             this.panelInput.Controls.Add(this.bCancel);
-            this.panelInput.Location = new System.Drawing.Point(16, 40);
+            this.panelInput.Location = new System.Drawing.Point(19, 46);
+            this.panelInput.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panelInput.Name = "panelInput";
-            this.panelInput.Size = new System.Drawing.Size(424, 112);
+            this.panelInput.Size = new System.Drawing.Size(495, 129);
             this.panelInput.TabIndex = 9;
             // 
             // FindReplaceForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.bCancel;
-            this.ClientSize = new System.Drawing.Size(458, 224);
+            this.ClientSize = new System.Drawing.Size(534, 259);
             this.Controls.Add(this.panelOptions);
             this.Controls.Add(this.panelInput);
             this.Controls.Add(this.tabControl);
+            this.Font = new System.Drawing.Font("Arial", 9F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FindReplaceForm";

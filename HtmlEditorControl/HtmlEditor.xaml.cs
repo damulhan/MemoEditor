@@ -72,5 +72,22 @@ namespace MSDN.Html.Editor
                 _HtmlEditor.InnerText = value;
             }
         }
+
+        public string SelectedHtml
+        {
+            get { return _HtmlEditor.SelectedHtml;  }
+            set { _HtmlEditor.SelectedHtml = value; }
+        }
+
+        public string SelectedText 
+        {
+            get { return _HtmlEditor.SelectedText; }
+            set { _HtmlEditor.SelectedText = value; }
+        }
+
+        public void TextSelectAll()
+        {
+            _HtmlEditor.TextSelectAll();
+        }
     }
 }

@@ -41,97 +41,108 @@ namespace MSDN.Html.Editor
             this.labelName = new System.Windows.Forms.Label();
             this.labelSample = new System.Windows.Forms.Label();
             this.SuspendLayout();
-// 
-// bCancel
-// 
+            // 
+            // bCancel
+            // 
             this.bCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.bCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.bCancel.Location = new System.Drawing.Point(240, 200);
+            this.bCancel.Location = new System.Drawing.Point(280, 231);
+            this.bCancel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.bCancel.Name = "bCancel";
+            this.bCancel.Size = new System.Drawing.Size(87, 26);
             this.bCancel.TabIndex = 0;
             this.bCancel.Text = "Cancel";
-// 
-// bApply
-// 
+            // 
+            // bApply
+            // 
             this.bApply.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.bApply.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.bApply.Location = new System.Drawing.Point(160, 200);
+            this.bApply.Location = new System.Drawing.Point(187, 231);
+            this.bApply.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.bApply.Name = "bApply";
+            this.bApply.Size = new System.Drawing.Size(87, 26);
             this.bApply.TabIndex = 1;
             this.bApply.Text = "Apply";
-// 
-// checkBold
-// 
-            this.checkBold.Location = new System.Drawing.Point(160, 64);
+            // 
+            // checkBold
+            // 
+            this.checkBold.Location = new System.Drawing.Point(187, 74);
+            this.checkBold.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.checkBold.Name = "checkBold";
-            this.checkBold.Size = new System.Drawing.Size(104, 16);
+            this.checkBold.Size = new System.Drawing.Size(121, 19);
             this.checkBold.TabIndex = 2;
             this.checkBold.Text = "Bold";
             this.checkBold.CheckStateChanged += new System.EventHandler(this.FontSelectionChanged);
-// 
-// checkUnderline
-// 
-            this.checkUnderline.Location = new System.Drawing.Point(160, 96);
+            // 
+            // checkUnderline
+            // 
+            this.checkUnderline.Location = new System.Drawing.Point(187, 111);
+            this.checkUnderline.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.checkUnderline.Name = "checkUnderline";
-            this.checkUnderline.Size = new System.Drawing.Size(104, 16);
+            this.checkUnderline.Size = new System.Drawing.Size(121, 19);
             this.checkUnderline.TabIndex = 3;
             this.checkUnderline.Text = "Underline";
             this.checkUnderline.CheckStateChanged += new System.EventHandler(this.FontSelectionChanged);
-// 
-// checkItalic
-// 
-            this.checkItalic.Location = new System.Drawing.Point(160, 80);
+            // 
+            // checkItalic
+            // 
+            this.checkItalic.Location = new System.Drawing.Point(187, 92);
+            this.checkItalic.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.checkItalic.Name = "checkItalic";
-            this.checkItalic.Size = new System.Drawing.Size(104, 16);
+            this.checkItalic.Size = new System.Drawing.Size(121, 19);
             this.checkItalic.TabIndex = 4;
             this.checkItalic.Text = "Italic";
             this.checkItalic.CheckStateChanged += new System.EventHandler(this.FontSelectionChanged);
-// 
-// labelSize
-// 
-            this.labelSize.Location = new System.Drawing.Point(160, 8);
+            // 
+            // labelSize
+            // 
+            this.labelSize.Location = new System.Drawing.Point(187, 9);
             this.labelSize.Name = "labelSize";
-            this.labelSize.Size = new System.Drawing.Size(120, 16);
+            this.labelSize.Size = new System.Drawing.Size(140, 19);
             this.labelSize.TabIndex = 6;
             this.labelSize.Text = "Font Size";
-// 
-// checkStrikeout
-// 
-            this.checkStrikeout.Location = new System.Drawing.Point(160, 112);
+            // 
+            // checkStrikeout
+            // 
+            this.checkStrikeout.Location = new System.Drawing.Point(187, 129);
+            this.checkStrikeout.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.checkStrikeout.Name = "checkStrikeout";
-            this.checkStrikeout.Size = new System.Drawing.Size(104, 16);
+            this.checkStrikeout.Size = new System.Drawing.Size(121, 19);
             this.checkStrikeout.TabIndex = 7;
             this.checkStrikeout.Text = "Strikeout";
             this.checkStrikeout.CheckStateChanged += new System.EventHandler(this.FontSelectionChanged);
-// 
-// checkSubscript
-// 
-            this.checkSubscript.Location = new System.Drawing.Point(160, 144);
+            // 
+            // checkSubscript
+            // 
+            this.checkSubscript.Location = new System.Drawing.Point(187, 166);
+            this.checkSubscript.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.checkSubscript.Name = "checkSubscript";
-            this.checkSubscript.Size = new System.Drawing.Size(104, 16);
+            this.checkSubscript.Size = new System.Drawing.Size(121, 19);
             this.checkSubscript.TabIndex = 8;
             this.checkSubscript.Text = "Subscript";
-// 
-// checkSuperscript
-// 
-            this.checkSuperscript.Location = new System.Drawing.Point(160, 160);
+            // 
+            // checkSuperscript
+            // 
+            this.checkSuperscript.Location = new System.Drawing.Point(187, 185);
+            this.checkSuperscript.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.checkSuperscript.Name = "checkSuperscript";
-            this.checkSuperscript.Size = new System.Drawing.Size(104, 16);
+            this.checkSuperscript.Size = new System.Drawing.Size(121, 19);
             this.checkSuperscript.TabIndex = 9;
             this.checkSuperscript.Text = "Superscript";
-// 
-// listFontName
-// 
+            // 
+            // listFontName
+            // 
             this.listFontName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
             this.listFontName.FormattingEnabled = true;
-            this.listFontName.Location = new System.Drawing.Point(16, 24);
+            this.listFontName.Location = new System.Drawing.Point(19, 28);
+            this.listFontName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.listFontName.Name = "listFontName";
-            this.listFontName.Size = new System.Drawing.Size(121, 160);
+            this.listFontName.Size = new System.Drawing.Size(140, 184);
             this.listFontName.TabIndex = 10;
             this.listFontName.SelectedIndexChanged += new System.EventHandler(this.FontSelectionChanged);
-// 
-// listFontSize
-// 
+            // 
+            // listFontSize
+            // 
             this.listFontSize.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.listFontSize.FormattingEnabled = true;
             this.listFontSize.Items.AddRange(new object[] {
@@ -143,35 +154,37 @@ namespace MSDN.Html.Editor
             "5 : 18 points",
             "6 : 24 points",
             "7 : 36 points"});
-            this.listFontSize.Location = new System.Drawing.Point(160, 24);
+            this.listFontSize.Location = new System.Drawing.Point(187, 28);
+            this.listFontSize.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.listFontSize.Name = "listFontSize";
+            this.listFontSize.Size = new System.Drawing.Size(140, 23);
             this.listFontSize.TabIndex = 11;
-// 
-// labelName
-// 
-            this.labelName.Location = new System.Drawing.Point(16, 8);
+            // 
+            // labelName
+            // 
+            this.labelName.Location = new System.Drawing.Point(19, 9);
             this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(120, 16);
+            this.labelName.Size = new System.Drawing.Size(140, 19);
             this.labelName.TabIndex = 12;
             this.labelName.Text = "Font Name";
-// 
-// labelSample
-// 
+            // 
+            // labelSample
+            // 
             this.labelSample.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.labelSample.Location = new System.Drawing.Point(16, 192);
+            this.labelSample.Location = new System.Drawing.Point(19, 221);
             this.labelSample.Name = "labelSample";
-            this.labelSample.Size = new System.Drawing.Size(120, 23);
+            this.labelSample.Size = new System.Drawing.Size(140, 26);
             this.labelSample.TabIndex = 13;
             this.labelSample.Text = "Sample AaZa";
             this.labelSample.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-// 
-// FontAttributeForm
-// 
+            // 
+            // FontAttributeForm
+            // 
             this.AcceptButton = this.bApply;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.bCancel;
-            this.ClientSize = new System.Drawing.Size(322, 232);
+            this.ClientSize = new System.Drawing.Size(376, 268);
             this.Controls.Add(this.labelSample);
             this.Controls.Add(this.labelName);
             this.Controls.Add(this.listFontSize);
@@ -185,8 +198,10 @@ namespace MSDN.Html.Editor
             this.Controls.Add(this.checkBold);
             this.Controls.Add(this.bApply);
             this.Controls.Add(this.bCancel);
+            this.Font = new System.Drawing.Font("Arial", 9F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FontAttributeForm";

@@ -249,8 +249,15 @@ namespace MemoEditor
 
         private void SelectAll_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            EditText1.Focus();
-            EditText1.SelectAll();
+            if (ViewModel.HtmlMode)
+            {
+                EditHtml1.TextSelectAll();
+            }
+            else
+            {
+                EditText1.Focus();
+                EditText1.SelectAll();
+            }
         }
 
         private void SelectAll_CanExecute(object sender, CanExecuteRoutedEventArgs e)
@@ -265,9 +272,16 @@ namespace MemoEditor
 
             string datePatt = "yyyy-MM-dd hh:mm:ss tt";
 
-            EditText1.SelectedText = time.ToString(datePatt);
-            EditText1.SelectionStart += EditText1.SelectedText.Length;
-            EditText1.SelectionLength = 0;
+            if (ViewModel.HtmlMode)
+            {
+                EditHtml1.SelectedHtml = time.ToString(datePatt);
+            }
+            else
+            {
+                EditText1.SelectedText = time.ToString(datePatt);
+                EditText1.SelectionStart += EditText1.SelectedText.Length;
+                EditText1.SelectionLength = 0;
+            }
         }
 
         private void AddTime_CanExecute(object sender, CanExecuteRoutedEventArgs e)
