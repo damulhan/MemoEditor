@@ -105,6 +105,11 @@ namespace MemoEditor
                         
                         break;
 
+                    case CustomMessage.MessageType.FOLDER_CHANGED:
+                        string path = m.str1;
+                        SBText1.Text = path;
+                        break;
+
                     case CustomMessage.MessageType.BEFORE_FILE_SAVE:
                         if (EditHtml1._HtmlEditor != null) 
                             ViewModel.EditHtml = EditHtml1._HtmlEditor.InnerHtml;
@@ -194,6 +199,13 @@ namespace MemoEditor
         private void MenuItemTopmost_Click(object sender, RoutedEventArgs e)
         {
             this.Topmost = (sender as MenuItem).IsChecked;
+        }
+        
+        private void MenuItemStatusBarVisible_Click(object sender, RoutedEventArgs e)
+        {
+            StatusBar1.Visibility = (sender as MenuItem).IsChecked ? 
+                Visibility.Visible : 
+                Visibility.Collapsed; 
         }
 
         private void MenuItemFontChange_Clicked(object sender, RoutedEventArgs e)
@@ -380,6 +392,7 @@ namespace MemoEditor
                 MainViewModel.MessageBoxShow("Not folder");
             }
         }
+
         
     }
 }

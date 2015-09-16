@@ -25,6 +25,7 @@ namespace MemoEditor
             {
                 return GetIconForPath(node.Path);
             }
+
             if (node.ExplorerType == ExplorerType.Drive)
             {
                 var uri = new Uri("pack://application:,,,./Resources/diskdrive.png");

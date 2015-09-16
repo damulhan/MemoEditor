@@ -249,6 +249,9 @@
   <data name="menu_save" xml:space="preserve">
     <value>저장</value>
   </data>
+  <data name="menu_statusbar_visible" xml:space="preserve">
+    <value>상태바 보이기</value>
+  </data>
   <data name="menu_topmost" xml:space="preserve">
     <value>항상 위에</value>
   </data>

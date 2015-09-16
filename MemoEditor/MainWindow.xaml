@@ -72,6 +72,7 @@
             </MenuItem>
             <MenuItem Header="{x:Static resx:Resources.menu_view}">
                 <MenuItem x:Name="MenuItemTopmost" Command="" Header="{x:Static resx:Resources.menu_topmost}" IsCheckable="True" Click="MenuItemTopmost_Click" />
+                <MenuItem x:Name="MenuItemStatusBarVisible" Command="" Header="{x:Static resx:Resources.menu_statusbar_visible}" IsCheckable="True" Click="MenuItemStatusBarVisible_Click" />
             </MenuItem>
             <MenuItem Header="{x:Static resx:Resources.menu_favorite_folder}">
                 <MenuItem x:Name="MenuItemAddFavoriteFolder" Command="" Header="{x:Static resx:Resources.menu_add_favorite_folder}" Click="MenuItemAddFavoriteFolder_Clicked"/>
@@ -132,11 +133,15 @@
                         <Image Source="/Resources/html.png" />
                         <TextBlock Margin="3,0,0,0" Text="{x:Static resx:Resources.btn_edit_html}"/>
                     </StackPanel>
-                </Button>                
+                </Button>
             </ToolBar>
         </ToolBarTray>
 
-        <Grid Margin="0,0,0,0">
+        <StatusBar x:Name="StatusBar1" DockPanel.Dock="Bottom" Height="20" Visibility="Collapsed">
+            <TextBlock x:Name="SBText1" TextWrapping="Wrap" Text="."/>
+        </StatusBar>
+
+        <Grid Margin="0,0,0,0" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="180"/>
                 <ColumnDefinition Width="*"/>
@@ -156,8 +161,8 @@
 
             <GridSplitter Margin="0,0,0,0" Width="5"/>
 
-            <Grid Grid.Column="1" Margin="0,0,0,0">            
-                
+            <Grid Grid.Column="1" Margin="0,0,0,0">
+
                 <TextBox x:Name="EditText1" Grid.Column="1" TextWrapping="Wrap" AcceptsReturn="True" 
                     Text="{Binding EditText}" 
                     IsEnabled="{Binding IsEnabledEditText, UpdateSourceTrigger=PropertyChanged}" 
@@ -167,7 +172,7 @@
                     VerticalScrollBarVisibility="Auto" />
 
                 <mshe:HtmlEditor x:Name="EditHtml1" Visibility="Hidden" KeyDown="EditHtml1_TextChanged"/>
-                
+
             </Grid>
 
         </Grid>

@@ -457,6 +457,15 @@ namespace MemoEditor.Properties {
         }
         
         /// <summary>
+        ///   Show Status Bar과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string menu_statusbar_visible {
+            get {
+                return ResourceManager.GetString("menu_statusbar_visible", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Top Most과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         public static string menu_topmost {

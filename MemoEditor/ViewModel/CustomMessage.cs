@@ -22,6 +22,7 @@ namespace MemoEditor.ViewModel
             TREEVIEW_DESTROYED,
             BEFORE_FILE_SAVE,
             AFTER_FILE_SAVE,
+            FOLDER_CHANGED,
         };
 
         public MessageType msgtype;

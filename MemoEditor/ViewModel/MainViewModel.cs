@@ -262,13 +262,8 @@ namespace MemoEditor.ViewModel
             WelcomeTitle = item.Title;
 
             // FirstGeneration 
-            var firsts = new ObservableCollection<ExplorerNode>();
-            foreach (var i in item.FirstGeneration)
-            {
-                string s = (string)i;
-                firsts.Add(new ExplorerNode(s));
-            }
-            FirstGeneration = firsts;
+            var first_path = item.FirstGeneration.First<string>();
+            _folderChange(first_path);
 
             // EditText 
             EditText = "";
@@ -506,7 +501,8 @@ namespace MemoEditor.ViewModel
 
         private void _folderChange(string path)
         {
-            FirstGeneration.Clear();
+            if (FirstGeneration != null)
+                FirstGeneration.Clear();
 
             Messenger.Default.Send(new CustomMessage(
                 CustomMessage.MessageType.TREEVIEW_DESTROYED));
@@ -519,8 +515,12 @@ namespace MemoEditor.ViewModel
             node.IsExpanded = true;
             node.IsSelected = true;
 
+            Messenger.Default.Send(new CustomMessage(
+                CustomMessage.MessageType.FOLDER_CHANGED, path, null, null));
+
             // Save in Setting 
-            _userPrefs.WorkingFolder = path;            
+            if (_userPrefs != null)
+                _userPrefs.WorkingFolder = path;            
         }
 
         private void OnLoaded()
@@ -536,10 +536,8 @@ namespace MemoEditor.ViewModel
                     workingdir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
                 }
 
-                // FirstGeneration 
-                var firsts = new ObservableCollection<ExplorerNode>();
-                firsts.Add(new ExplorerNode(workingdir));
-                FirstGeneration = firsts;
+                // Folder change 
+                _folderChange(workingdir);
             }
             catch (System.IO.FileNotFoundException e)
             {

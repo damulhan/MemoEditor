@@ -249,6 +249,9 @@
   <data name="menu_save" xml:space="preserve">
     <value>Save</value>
   </data>
+  <data name="menu_statusbar_visible" xml:space="preserve">
+    <value>Show Status Bar</value>
+  </data>
   <data name="menu_topmost" xml:space="preserve">
     <value>Top Most</value>
   </data>
