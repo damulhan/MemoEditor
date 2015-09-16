@@ -88,12 +88,20 @@ namespace MemoEditor
                 switch (m.msgtype)
                 {
                     case CustomMessage.MessageType.SELECTED:
-                        
                         // editText1 goto first line 
                         EditText1.ScrollToLine(0);
 
                         // goto text mode 
                         _changeHtmlMode(false);
+
+                        var node = ViewModel.CurrentExplorerNode;
+                        if (node != null && 
+                            node.ExplorerType == ExplorerType.File &&
+                            node.Name.EndsWith(".html"))
+                        {
+                            _changeHtmlMode(true);
+                            _copyTextToHtml(true, true);
+                        }
                         
                         break;
 
