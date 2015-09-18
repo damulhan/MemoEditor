@@ -169,7 +169,8 @@ namespace MemoEditor.ViewModel
         {
             get
             {
-                return _textChanged;
+                return _textChanged && 
+                    (_editTextOld != "" && _editTextOld != _editText);
             }
         }
 
@@ -359,7 +360,7 @@ namespace MemoEditor.ViewModel
 
             Debug.WriteLine("File Save..");
 
-            if (_currentExplorerNode != null)
+            if (_textChanged && _currentExplorerNode != null)
             {
                 try
                 {

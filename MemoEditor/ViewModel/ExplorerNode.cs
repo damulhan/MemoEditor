@@ -119,15 +119,34 @@ namespace MemoEditor.ViewModel
                             if (ExplorerType == ExplorerType.File)
                             {
                                 System.IO.File.Move(oldpath, newpath);
+
+                                _name = newname;
+                                Path = newpath;
                             }
                             else if(ExplorerType == ExplorerType.Folder) 
                             {
                                 System.IO.Directory.Move(oldpath, newpath);
+
+                                _name = newname;
+                                Path = newpath;
+
+                                //IsExpanded = false;
+
+                                // Represh children 
+                                Children.Clear();
+                                ExplorerNode childnode = new ExplorerNode
+                                {
+                                    Name = ".",
+                                    Path = "\\.",
+                                    ExplorerType = ExplorerType.Dummy,
+                                    Children = new ObservableCollection<ExplorerNode> { dummyExplorerNode },
+                                    Parent = this,
+                                };
+                                Children.Add(childnode);
+
+                                //IsExpanded = true;
+                                Expand();
                             }
-
-                            _name = newname;
-
-                            Path = newpath;
 
                             RaisePropertyChanged("Name");
 

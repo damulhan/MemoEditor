@@ -72,26 +72,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MemoEditor.exe" size="229776">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MemoEditor.exe" size="230800">
       <assemblyIdentity name="MemoEditor" version="0.20.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>L2sY4QNqPfirO9Y9PeMFRSPgBGE=</dsig:DigestValue>
+        <dsig:DigestValue>S2cAejyFcI5AHC/p/VnU4ZtpB1E=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ko-KR\MemoEditor.resources.dll" size="6144">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ko-KR\MemoEditor.resources.dll" size="6656">
       <assemblyIdentity name="MemoEditor.resources" version="0.20.0.0" language="ko-KR" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>psypumofz36bHIylkLLMhrj6toU=</dsig:DigestValue>
+        <dsig:DigestValue>7sXKWhWgpWQpzQgSD39bYNK9tg0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -109,13 +109,13 @@
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MSDN.HtmlEditorControl.dll" size="245760">
-      <assemblyIdentity name="MSDN.HtmlEditorControl" version="2.0.5737.28168" language="neutral" processorArchitecture="msil" />
+      <assemblyIdentity name="MSDN.HtmlEditorControl" version="2.0.5737.41427" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>JjMANvZixOl7jPmlYGgKLMToVFs=</dsig:DigestValue>
+        <dsig:DigestValue>uy76m+Fpe6Qq2sjp7w2ZbAl4f0I=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

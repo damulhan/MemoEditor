@@ -153,8 +153,8 @@
             // 
             // editorWebBrowser
             // 
-            this.editorWebBrowser.IsWebBrowserContextMenuEnabled = false;
             resources.ApplyResources(this.editorWebBrowser, "editorWebBrowser");
+            this.editorWebBrowser.IsWebBrowserContextMenuEnabled = false;
             this.editorWebBrowser.Name = "editorWebBrowser";
             this.editorWebBrowser.ScriptErrorsSuppressed = true;
             this.editorWebBrowser.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.BrowserDocumentComplete);
