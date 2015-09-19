@@ -34,6 +34,8 @@ namespace MemoEditor.ViewModel
         public RelayCommand EditHtml1_TextChangedCommand { get; private set; }        
         public RelayCommand FolderNewCommand { get; private set; }
         public RelayCommand FileRenameCommand { get; private set; }
+        public RelayCommand FileChangeExtensionTXTCommand { get; private set; }
+        public RelayCommand FileChangeExtensionHTMLCommand { get; private set; }        
         public RelayCommand FileDeleteCommand { get; private set; }
         public RelayCommand HelpInfoCommand { get; private set; }
         public RelayCommand FolderChangeCommand { get; private set; }
@@ -169,8 +171,7 @@ namespace MemoEditor.ViewModel
         {
             get
             {
-                return _textChanged && 
-                    (_editTextOld != "" && _editTextOld != _editText);
+                return _textChanged;
             }
         }
 
@@ -243,6 +244,8 @@ namespace MemoEditor.ViewModel
             EditHtml1_TextChangedCommand = new RelayCommand(OnEditHtml1_TextChanged, () => true);
             FolderNewCommand = new RelayCommand(OnFolderNew, () => true);
             FileRenameCommand = new RelayCommand(OnFileRename, () => true);
+            FileChangeExtensionTXTCommand = new RelayCommand(OnFileChangeExtensionTXT, () => true);
+            FileChangeExtensionHTMLCommand = new RelayCommand(OnFileChangeExtensionHTML, () => true);
             FileDeleteCommand = new RelayCommand(OnFileDelete, () => true);
             HelpInfoCommand = new RelayCommand(OnHelpInfo, () => true);
             FolderChangeCommand = new RelayCommand(OnFolderChange, () => true);
@@ -445,6 +448,19 @@ namespace MemoEditor.ViewModel
                 }
             }
         }
+
+        private void OnFileChangeExtensionTXT()
+        {
+            Messenger.Default.Send(new CustomMessage(
+                CustomMessage.MessageType.FILE_CHANGE_EXTENSION, "txt", "", null));
+        }
+
+        private void OnFileChangeExtensionHTML()
+        {
+            Messenger.Default.Send(new CustomMessage(
+                CustomMessage.MessageType.FILE_CHANGE_EXTENSION, "html", "", null));
+        }
+
 
         private void OnFileDelete()
         {

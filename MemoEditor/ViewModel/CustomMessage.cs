@@ -23,6 +23,8 @@ namespace MemoEditor.ViewModel
             BEFORE_FILE_SAVE,
             AFTER_FILE_SAVE,
             FOLDER_CHANGED,
+            FILE_CHANGE_EXTENSION,
+            AFTER_FILE_CHANGE_EXTENSION,
         };
 
         public MessageType msgtype;

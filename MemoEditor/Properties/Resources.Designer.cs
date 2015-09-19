@@ -223,6 +223,24 @@ namespace MemoEditor.Properties {
         }
         
         /// <summary>
+        ///   Change extension to .html과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string command_rename_html {
+            get {
+                return ResourceManager.GetString("command_rename_html", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Change extension to .txt과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string command_rename_txt {
+            get {
+                return ResourceManager.GetString("command_rename_txt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Replace과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         public static string command_replace {

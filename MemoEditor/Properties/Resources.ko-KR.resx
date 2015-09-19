@@ -171,6 +171,12 @@
   <data name="command_rename" xml:space="preserve">
     <value>이름 변경</value>
   </data>
+  <data name="command_rename_html" xml:space="preserve">
+    <value>.html로 확장자 바꾸기</value>
+  </data>
+  <data name="command_rename_txt" xml:space="preserve">
+    <value>.txt로 확장자 바꾸기</value>
+  </data>
   <data name="command_replace" xml:space="preserve">
     <value>바꾸기</value>
   </data>

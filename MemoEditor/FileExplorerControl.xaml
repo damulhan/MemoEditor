@@ -18,6 +18,9 @@
                     <MenuItem Header="{x:Static resx:Resources.command_save}" IsEnabled="{Binding EditTextSavable}"/>
                     <MenuItem Header="{x:Static resx:Resources.command_rename}" Command="{Binding FileRenameCommand}"/>
                     <MenuItem Header="{x:Static resx:Resources.command_delete}" Command="{Binding FileDeleteCommand}"/>
+                    <Separator />
+                    <MenuItem Header="{x:Static resx:Resources.command_rename_txt}" Command="{Binding FileChangeExtensionTXTCommand}"/>
+                    <MenuItem Header="{x:Static resx:Resources.command_rename_html}" Command="{Binding FileChangeExtensionHTMLCommand}"/>
                 </ContextMenu>
             </TreeView.ContextMenu>
             <TreeView.ItemContainerStyle>

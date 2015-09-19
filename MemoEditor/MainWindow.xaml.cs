@@ -117,6 +117,10 @@ namespace MemoEditor
                         ViewModel.EditText = EditText1.Text;
                         break;
 
+                    case CustomMessage.MessageType.AFTER_FILE_CHANGE_EXTENSION:
+                        EditHtmlCommandBtn_Clicked(null, null);
+                        break;
+
                     default:
                         break;
                 }

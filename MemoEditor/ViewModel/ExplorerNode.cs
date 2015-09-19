@@ -74,6 +74,12 @@ namespace MemoEditor.ViewModel
                         _unregisterMessenger();
                         SelectedNode = null;
                         break;
+                    case CustomMessage.MessageType.FILE_CHANGE_EXTENSION:
+                        if(m.str1 == "txt") 
+                            _renameExtensionToTxt();
+                        else
+                            _renameExtensionToHtml();
+                        break;
                     default:
                         break;
                 }
@@ -158,6 +164,38 @@ namespace MemoEditor.ViewModel
                             MainViewModel.MessageBoxShow(str);
                         }
                     }
+                }
+            }
+        }
+
+        private void _renameExtensionToTxt() 
+        {
+            //MessageBox.Show("_renameExtensionToTxt");
+            var node = SelectedNode;
+            if (node != null && node.ExplorerType == ExplorerType.File) 
+            {
+                if (node.Name.ToLower().EndsWith(".html"))
+                {
+                    var newname = node.Name.Substring(0, node.Name.LastIndexOf(".html")) + ".txt";
+                    node.Name = newname;
+
+                    Messenger.Default.Send(new CustomMessage(CustomMessage.MessageType.AFTER_FILE_CHANGE_EXTENSION, "txt", ""));
+                }
+            }
+        }
+
+        private void _renameExtensionToHtml()
+        {
+            //MessageBox.Show("_renameExtensionToHtml");
+            var node = SelectedNode;
+            if (node != null && node.ExplorerType == ExplorerType.File)
+            {
+                if (node.Name.ToLower().EndsWith(".txt"))
+                {
+                    var newname = node.Name.Substring(0, node.Name.LastIndexOf(".txt")) + ".html";
+                    node.Name = newname;
+
+                    Messenger.Default.Send(new CustomMessage(CustomMessage.MessageType.AFTER_FILE_CHANGE_EXTENSION, "html", ""));
                 }
             }
         }
