@@ -51,7 +51,7 @@
 
                         <Grid>
                             <TextBlock Text="{Binding Name}" />
-                            <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Visibility="Collapsed" x:Name="TextBox" />
+                            <TextBox Text="{Binding Name, UpdateSourceTrigger=LostFocus}" Visibility="Collapsed" x:Name="TextBox" />
                         </Grid>
                         
                     </StackPanel>

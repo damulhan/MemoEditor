@@ -55,6 +55,9 @@ namespace MemoEditor
             //Debug.WriteLine("font:" + userPrefs.FontFamily + " " + userPrefs.FontSize);
 
             _initializeMessenger();
+
+            // 
+            AddHandler(Keyboard.KeyUpEvent, (KeyEventHandler)HandleKeyUpEvent);
         }
         
         public IntPtr Handle
@@ -160,9 +163,22 @@ namespace MemoEditor
             ViewModel.EditText1_TextChangedCommand.Execute(e.Source);
         }
 
-        private void EditHtml1_TextChanged(object sender, KeyEventArgs e)
+        private void HandleKeyUpEvent(object sender, KeyEventArgs e)
         {
-            ViewModel.EditHtml1_TextChangedCommand.Execute(e.Source);
+            // Ctrl-S 
+            if (e.Key == Key.S && 
+                   ((Keyboard.Modifiers & ModifierKeys.Control) > 0))
+            {
+                ViewModel.FileSaveCommand.Execute(e.Source);
+            }
+            else 
+            {
+                // EditHtml key pressed. 
+                if (ViewModel.HtmlMode)
+                {
+                    ViewModel.EditHtml1_TextChangedCommand.Execute(e.Source);
+                }
+            }
         }
         #endregion
         
@@ -396,7 +412,61 @@ namespace MemoEditor
                 MainViewModel.MessageBoxShow("Not folder");
             }
         }
-
         
+        /* 
+        private void Paste_Excuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            if (ViewModel.HtmlMode)
+                EditHtml1.SelectedText = Clipboard.GetText();
+            else
+                EditText1.SelectedText = Clipboard.GetText();
+        }
+
+        private void Paste_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = Clipboard.ContainsText();
+        }
+        
+        private void Cut_Excuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            if (ViewModel.HtmlMode)
+            {
+                Clipboard.SetText(EditHtml1.SelectedText);
+                EditHtml1.SelectedText = "";
+            }
+            else
+            {
+                Clipboard.SetText(EditText1.SelectedText);
+                EditText1.SelectedText = "";
+            }                
+        }
+
+        private void Cut_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = 
+                (EditText1.SelectedText.Length > 0) || 
+                (EditHtml1.SelectedText.Length > 0);
+        }
+        
+        private void Copy_Excuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            if (ViewModel.HtmlMode)
+            {
+                Clipboard.SetText(EditHtml1.SelectedText);
+            }
+            else
+            {
+                Clipboard.SetText(EditText1.SelectedText);
+            }            
+        }
+
+        private void Copy_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute =
+                (EditText1.SelectedText.Length > 0) ||
+                (EditHtml1.SelectedText.Length > 0);
+        }
+        */
+
     }
 }

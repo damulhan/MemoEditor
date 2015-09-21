@@ -163,6 +163,10 @@ namespace MemoEditor.ViewModel
                             string str = Properties.Resources.ResourceManager.GetString("msg_cannot_change");
                             MainViewModel.MessageBoxShow(str);
                         }
+                        catch (System.IO.IOException e)
+                        {
+                            MainViewModel.MessageBoxShow(e.ToString());
+                        }
                     }
                 }
             }

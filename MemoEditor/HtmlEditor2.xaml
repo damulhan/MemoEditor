@@ -6,6 +6,11 @@
         WindowStartupLocation="CenterOwner"        
         Height="400"
         Width="700">
+
+    <Window.InputBindings>
+        <KeyBinding Command="{Binding FileSaveCommand}" Key="S" Modifiers="Ctrl" />
+    </Window.InputBindings>
+
     <Grid>
         <mshe:HtmlEditor x:Name="HtmlEditor1" />
     </Grid>

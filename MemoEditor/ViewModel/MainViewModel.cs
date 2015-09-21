@@ -369,7 +369,15 @@ namespace MemoEditor.ViewModel
                 {
                     string text = "";
                     if (HtmlMode)
-                        text = EditHtml;
+                    {
+                        string html_header = "<!DOCTYPE html>\n" +
+                                            "<head><meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\" /></head>\n" +
+                                            "<body>\n";
+                        if (EditHtml != null && EditHtml.IndexOf("content-type") < 0)
+                            text = html_header + EditHtml;
+                        else
+                            text = EditHtml;
+                    }
                     else
                         text = EditText;
 

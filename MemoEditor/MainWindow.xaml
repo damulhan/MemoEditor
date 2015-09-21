@@ -33,6 +33,17 @@
         <CommandBinding Command="ApplicationCommands.Save" 
                         Executed="FileSave_Executed" 
                         CanExecute="FileSave_CanExecute" />
+        <!--
+        <CommandBinding Command="ApplicationCommands.Paste" 
+                        Executed="Paste_Executed"                        
+                        CanExecute="Paste_CanExecute" />
+        <CommandBinding Command="ApplicationCommands.Cut" 
+                        Executed="Cut_Excuted"                        
+                        CanExecute="Cut_CanExecute"/>
+        <CommandBinding Command="ApplicationCommands.Copy" 
+                        Executed="Copy_Excuted"                        
+                        CanExecute="Copy_CanExecute"/>
+        -->
         <CommandBinding Command="ApplicationCommands.Find" 
                         Executed="Find_Executed" 
                         CanExecute="Find_CanExecute" />
@@ -59,9 +70,16 @@
                 <MenuItem Command="{Binding ExitCommand}" Header="{x:Static resx:Resources.menu_exit}" InputGestureText="Ctrl+X"/>
             </MenuItem>
             <MenuItem Header="{x:Static resx:Resources.menu_edit}">
-                <MenuItem Command="ApplicationCommands.Cut" Header="{x:Static resx:Resources.command_cut}" />
-                <MenuItem Command="ApplicationCommands.Copy" Header="{x:Static resx:Resources.command_copy}" />
-                <MenuItem Command="ApplicationCommands.Paste" Header="{x:Static resx:Resources.command_paste}" />
+                <MenuItem Command="ApplicationCommands.Copy"/>
+                <MenuItem Command="ApplicationCommands.Cut"/>
+                <MenuItem Command="ApplicationCommands.Paste"/>
+                <MenuItem Command="ApplicationCommands.Undo"/>
+                <MenuItem Command="ApplicationCommands.Redo"/>
+                <!--
+                <MenuItem Command="Cut" Header="{x:Static resx:Resources.command_cut}" InputGestureText="Ctrl+X"/>
+                <MenuItem Command="Copy" Header="{x:Static resx:Resources.command_copy}" InputGestureText="Ctrl+C"/>
+                <MenuItem Command="Paste" Header="{x:Static resx:Resources.command_paste}" InputGestureText="Ctrl+P"/>
+                -->
                 <Separator />
                 <MenuItem Command="ApplicationCommands.Find" x:Name="MenuItemFind" Header="{x:Static resx:Resources.command_find}"  />
                 <MenuItem Command="local:MainWindow.FindNextCommand" x:Name="MenuItemFindNext" Header="{x:Static resx:Resources.command_find_next}" InputGestureText="F3"/>
@@ -171,7 +189,7 @@
                     Style="{StaticResource TextBoxWithColoredCaretStyle}"
                     VerticalScrollBarVisibility="Auto" />
 
-                <mshe:HtmlEditor x:Name="EditHtml1" Visibility="Hidden" KeyDown="EditHtml1_TextChanged"/>
+                <mshe:HtmlEditor x:Name="EditHtml1" Visibility="Hidden" />
 
             </Grid>
 
