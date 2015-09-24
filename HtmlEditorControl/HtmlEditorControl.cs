@@ -47,6 +47,7 @@ using mshtmlEventObject = mshtml.IHTMLEventObj;
 using Pavonis.COM;
 using Pavonis.COM.IOleCommandTarget;
 using System.Diagnostics;
+using System.Reflection;
 
 #endregion
 
@@ -887,6 +888,10 @@ namespace MSDN.Html.Editor
         {
             get
             {
+                //string html_header = "<!DOCTYPE html>\n" +
+                //                    "<head><meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\" /></head>\n" +
+                //                    "<body>\n";
+                //string html_tail = "\n</body></html>";
                 _bodyText = body.innerText;
                 _bodyHtml = body.innerHTML;
                 return _bodyHtml;
@@ -4231,6 +4236,16 @@ namespace MSDN.Html.Editor
         private void toolstripHtmlCode_Click(object sender, EventArgs e)
         {
             HtmlContentsEdit2();
+        }
+
+        private void editorWebBrowser_Resize(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void HtmlEditorControl_Resize(object sender, EventArgs e)
+        {
+
         }
         
     } //HtmlEditorControl

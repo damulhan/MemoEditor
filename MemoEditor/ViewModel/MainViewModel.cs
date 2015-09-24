@@ -35,7 +35,8 @@ namespace MemoEditor.ViewModel
         public RelayCommand FolderNewCommand { get; private set; }
         public RelayCommand FileRenameCommand { get; private set; }
         public RelayCommand FileChangeExtensionTXTCommand { get; private set; }
-        public RelayCommand FileChangeExtensionHTMLCommand { get; private set; }        
+        public RelayCommand FileChangeExtensionHTMLCommand { get; private set; }
+        public RelayCommand SetAsRootCommand { get; private set; }                
         public RelayCommand FileDeleteCommand { get; private set; }
         public RelayCommand HelpInfoCommand { get; private set; }
         public RelayCommand FolderChangeCommand { get; private set; }
@@ -246,6 +247,9 @@ namespace MemoEditor.ViewModel
             FileRenameCommand = new RelayCommand(OnFileRename, () => true);
             FileChangeExtensionTXTCommand = new RelayCommand(OnFileChangeExtensionTXT, () => true);
             FileChangeExtensionHTMLCommand = new RelayCommand(OnFileChangeExtensionHTML, () => true);
+            SetAsRootCommand = new RelayCommand(OnSetAsRoot, () =>
+                CurrentExplorerNode != null && 
+                CurrentExplorerNode.ExplorerType == ExplorerType.Folder);
             FileDeleteCommand = new RelayCommand(OnFileDelete, () => true);
             HelpInfoCommand = new RelayCommand(OnHelpInfo, () => true);
             FolderChangeCommand = new RelayCommand(OnFolderChange, () => true);
@@ -298,10 +302,13 @@ namespace MemoEditor.ViewModel
                         OnFileSave();
 
                         // load files 
-                        if (node != null && node.ExplorerType == ExplorerType.File)
+                        if (node != null)
                         {
                             _currentExplorerNode = node;
-                            FileOpen(node.Path);
+                            if (node.ExplorerType == ExplorerType.File)
+                            {
+                                FileOpen(node.Path);
+                            }
                         }
                         else
                         {
@@ -521,6 +528,14 @@ namespace MemoEditor.ViewModel
             if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 _folderChange(dialog.SelectedPath);
+            }
+        }
+
+        private void OnSetAsRoot()
+        {
+            if (CurrentExplorerNode != null && CurrentExplorerNode.ExplorerType == ExplorerType.Folder)
+            {
+                _folderChange(CurrentExplorerNode.Path);
             }
         }
 

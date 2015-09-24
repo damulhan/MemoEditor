@@ -186,6 +186,9 @@
   <data name="command_selectall" xml:space="preserve">
     <value>Select All</value>
   </data>
+  <data name="command_set_as_root" xml:space="preserve">
+    <value>Set as root</value>
+  </data>
   <data name="findwin_cancel" xml:space="preserve">
     <value>Cancel</value>
   </data>

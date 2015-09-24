@@ -186,6 +186,9 @@
   <data name="command_selectall" xml:space="preserve">
     <value>전체 선택</value>
   </data>
+  <data name="command_set_as_root" xml:space="preserve">
+    <value>맨 위 폴더로 설정</value>
+  </data>
   <data name="findwin_cancel" xml:space="preserve">
     <value>취소</value>
   </data>

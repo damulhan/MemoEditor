@@ -268,6 +268,15 @@ namespace MemoEditor.Properties {
         }
         
         /// <summary>
+        ///   Set as root과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string command_set_as_root {
+            get {
+                return ResourceManager.GetString("command_set_as_root", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Cancel과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         public static string findwin_cancel {

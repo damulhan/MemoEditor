@@ -159,6 +159,7 @@
             this.editorWebBrowser.ScriptErrorsSuppressed = true;
             this.editorWebBrowser.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.BrowserDocumentComplete);
             this.editorWebBrowser.Navigating += new System.Windows.Forms.WebBrowserNavigatingEventHandler(this.BrowserBeforeNavigate);
+            this.editorWebBrowser.Resize += new System.EventHandler(this.editorWebBrowser_Resize);
             // 
             // toolstripEditor
             // 
@@ -1026,6 +1027,7 @@
             this.Controls.Add(this.browserPanel);
             this.Name = "HtmlEditorControl";
             resources.ApplyResources(this, "$this");
+            this.Resize += new System.EventHandler(this.HtmlEditorControl_Resize);
             this.browserPanel.ResumeLayout(false);
             this.browserPanel.PerformLayout();
             this.toolstripEditor.ResumeLayout(false);

@@ -7,11 +7,14 @@
         Height="400"
         Width="700">
 
+    <!--
     <Window.InputBindings>
         <KeyBinding Command="{Binding FileSaveCommand}" Key="S" Modifiers="Ctrl" />
     </Window.InputBindings>
+    -->
 
-    <Grid>
+    <DockPanel >
         <mshe:HtmlEditor x:Name="HtmlEditor1" />
-    </Grid>
+    </DockPanel>
+    
 </Window>
