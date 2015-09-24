@@ -336,7 +336,7 @@ namespace MemoEditor
             // if html -> text mode? 
             if (!goto_htmlmode)
             {
-                string str = Properties.Resources.ResourceManager.GetString("msg_htmltotext_modechange_ok");
+                string str = Properties.Resources.msg_htmltotext_modechange_ok;
                 MessageBoxResult res = MainViewModel.MessageBoxShow_Question(str);
                 if (res == MessageBoxResult.Cancel)
                     return;
@@ -344,7 +344,7 @@ namespace MemoEditor
             else
             {
                 // if text -> html mode? 
-                string str = Properties.Resources.ResourceManager.GetString("msg_text2html_open_as_htmlmode");
+                string str = Properties.Resources.msg_text2html_open_as_htmlmode;
                 MessageBoxResult res = MainViewModel.MessageBoxShow_Question(str, MessageBoxButton.YesNoCancel);
                 if (res == MessageBoxResult.Cancel)
                     return;

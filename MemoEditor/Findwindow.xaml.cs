@@ -96,7 +96,7 @@ namespace MemoEditor
                 }
                 else
                 {
-                    string findwin_cannot_find_message = Properties.Resources.ResourceManager.GetString("findwin_cannot_find_message");
+                    string findwin_cannot_find_message = Properties.Resources.findwin_cannot_find_message;
                     MainViewModel.MessageBoxShow(findwin_cannot_find_message + ": " + FindString);
                 }
             }

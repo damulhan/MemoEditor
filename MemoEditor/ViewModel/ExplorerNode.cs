@@ -160,7 +160,7 @@ namespace MemoEditor.ViewModel
                         }
                         catch (System.IO.FileNotFoundException)
                         {
-                            string str = Properties.Resources.ResourceManager.GetString("msg_cannot_change");
+                            string str = Properties.Resources.msg_cannot_change;
                             MainViewModel.MessageBoxShow(str);
                         }
                         catch (System.IO.IOException e)
@@ -303,7 +303,7 @@ namespace MemoEditor.ViewModel
             int i = 1;
             do
             {
-                s = node.Path + "\\" + Properties.Resources.ResourceManager.GetString("memo_filename_prefix") + i.ToString() + "." + FILE_EXTENSION1;
+                s = node.Path + "\\" + Properties.Resources.memo_filename_prefix + i.ToString() + "." + FILE_EXTENSION1;
                 if (!File.Exists(s)) break;
                 i++;
             } while (true);
@@ -353,7 +353,7 @@ namespace MemoEditor.ViewModel
             int i = 1;
             do
             {
-                s = node.Path + "\\" + Properties.Resources.ResourceManager.GetString("memo_foldername_prefix") 
+                s = node.Path + "\\" + Properties.Resources.memo_foldername_prefix 
                     + i.ToString();
                 if( !Directory.Exists(s) ) break;
                 i++;

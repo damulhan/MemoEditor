@@ -276,6 +276,9 @@
   <data name="msg_htmltotext_modechange_ok" xml:space="preserve">
     <value>Html properties will be disappeard. Will you goahead?</value>
   </data>
+  <data name="msg_no_folder_exsits" xml:space="preserve">
+    <value>No Folder Exists</value>
+  </data>
   <data name="msg_text2html_open_as_htmlmode" xml:space="preserve">
     <value>Would you open as HTML mode?</value>
   </data>

@@ -479,7 +479,7 @@ namespace MemoEditor.ViewModel
 
         private void OnFileDelete()
         {
-            string messageBoxText = Properties.Resources.ResourceManager.GetString("msg_delete");
+            string messageBoxText = Properties.Resources.msg_delete;
             string caption = Version.APP_NAME;
             MessageBoxButton button = MessageBoxButton.OKCancel;
             MessageBoxImage icon = MessageBoxImage.Warning;
@@ -541,26 +541,34 @@ namespace MemoEditor.ViewModel
 
         private void _folderChange(string path)
         {
-            if (FirstGeneration != null)
-                FirstGeneration.Clear();
+            if (System.IO.Directory.Exists(path))
+            {
+                if (FirstGeneration != null)
+                    FirstGeneration.Clear();
 
-            Messenger.Default.Send(new CustomMessage(
-                CustomMessage.MessageType.TREEVIEW_DESTROYED));
+                Messenger.Default.Send(new CustomMessage(
+                    CustomMessage.MessageType.TREEVIEW_DESTROYED));
 
-            // FirstGeneration 
-            var firsts = new ObservableCollection<ExplorerNode>();
-            var node = new ExplorerNode(path);
-            firsts.Add(node);
-            FirstGeneration = firsts;
-            node.IsExpanded = true;
-            node.IsSelected = true;
+                // FirstGeneration 
+                var firsts = new ObservableCollection<ExplorerNode>();
+                var node = new ExplorerNode(path);
+                firsts.Add(node);
+                FirstGeneration = firsts;
+                node.IsExpanded = true;
+                node.IsSelected = true;
 
-            Messenger.Default.Send(new CustomMessage(
-                CustomMessage.MessageType.FOLDER_CHANGED, path, null, null));
+                Messenger.Default.Send(new CustomMessage(
+                    CustomMessage.MessageType.FOLDER_CHANGED, path, null, null));
 
-            // Save in Setting 
-            if (_userPrefs != null)
-                _userPrefs.WorkingFolder = path;            
+                // Save in Setting 
+                if (_userPrefs != null)
+                    _userPrefs.WorkingFolder = path;
+            }
+            else
+            {
+                MessageBoxShow(Properties.Resources.msg_no_folder_exsits);
+                return;
+            }
         }
 
         private void OnLoaded()

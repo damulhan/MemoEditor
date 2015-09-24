@@ -538,6 +538,15 @@ namespace MemoEditor.Properties {
         }
         
         /// <summary>
+        ///   No Folder Exists과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string msg_no_folder_exsits {
+            get {
+                return ResourceManager.GetString("msg_no_folder_exsits", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Would you open as HTML mode?과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         public static string msg_text2html_open_as_htmlmode {
