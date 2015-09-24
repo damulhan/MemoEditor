@@ -309,6 +309,31 @@ namespace MemoEditor.ViewModel
                             {
                                 FileOpen(node.Path);
                             }
+                            else if(node.ExplorerType == ExplorerType.Folder)
+                            {
+                                string file = node.Path + "\\" + Properties.Resources.str_folder_desc + ".";
+                                string file1 = file + ExplorerNode.FILE_EXTENSION1;
+                                string file2 = file + ExplorerNode.FILE_EXTENSION2;
+                                string folder_desc_file = Properties.Resources.str_folder_desc + "." + ExplorerNode.FILE_EXTENSION1;
+
+                                if (System.IO.File.Exists(file1))
+                                {
+                                    FileOpen(file1);
+                                }
+                                else if (System.IO.File.Exists(file2))
+                                {
+                                    FileOpen(file2);
+                                }
+                                else
+                                {
+                                    OnFileNew(folder_desc_file);
+                                }
+                                
+                            }
+                            else 
+                            {
+                                EditTextInit();
+                            }
                         }
                         else
                         {
@@ -345,12 +370,17 @@ namespace MemoEditor.ViewModel
 
         private void OnFileNew()
         {
+            OnFileNew(null);
+        }
+
+        private void OnFileNew(string filename=null)
+        {
             Debug.WriteLine("File New..");
 
             OnFileSave();
 
             Messenger.Default.Send(new CustomMessage(
-                CustomMessage.MessageType.CREATE_NEW));
+                CustomMessage.MessageType.CREATE_NEW, filename));
         }
 
         private void OnFolderNew()
@@ -365,15 +395,16 @@ namespace MemoEditor.ViewModel
 
         private void OnFileSave()
         {
-            Messenger.Default.Send(new CustomMessage(
-                            CustomMessage.MessageType.BEFORE_FILE_SAVE));
-
-            Debug.WriteLine("File Save..");
-
             if (_textChanged && _currentExplorerNode != null)
             {
+
+                Debug.WriteLine("File Save..");
+
                 try
                 {
+                    Messenger.Default.Send(new CustomMessage(
+                                    CustomMessage.MessageType.BEFORE_FILE_SAVE));
+
                     string text = "";
                     if (HtmlMode)
                     {
@@ -390,8 +421,23 @@ namespace MemoEditor.ViewModel
 
                     Debug.WriteLine("Saving.." + text);
 
-                    System.IO.File.WriteAllText(_currentExplorerNode.Path, text);
+                    string descfile = ExplorerNode.GetDescFileName(_currentExplorerNode);
+                    if(descfile != null) {
+                        string path;
+                        if(_currentExplorerNode.ExplorerType == ExplorerType.Folder)
+                            path = _currentExplorerNode.Path + "\\" + descfile;
+                        else 
+                            path = System.IO.Path.GetDirectoryName(_currentExplorerNode.Path) + "\\" + descfile;
+
+                        System.IO.File.WriteAllText(path, text);
+                    } else {
+                        System.IO.File.WriteAllText(_currentExplorerNode.Path, text);
+                    }
+
                     _editTextOld = text;
+
+                    Messenger.Default.Send(new CustomMessage(
+                                    CustomMessage.MessageType.AFTER_FILE_SAVE));
                 }
                 catch (System.IO.IOException e)
                 {
@@ -401,9 +447,6 @@ namespace MemoEditor.ViewModel
             }
 
             _textChanged = false;
-
-            Messenger.Default.Send(new CustomMessage(
-                            CustomMessage.MessageType.AFTER_FILE_SAVE));
 
         }
 

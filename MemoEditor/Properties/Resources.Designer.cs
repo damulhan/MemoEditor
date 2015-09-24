@@ -554,5 +554,14 @@ namespace MemoEditor.Properties {
                 return ResourceManager.GetString("msg_text2html_open_as_htmlmode", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   __Folder과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string str_folder_desc {
+            get {
+                return ResourceManager.GetString("str_folder_desc", resourceCulture);
+            }
+        }
     }
 }

@@ -282,4 +282,7 @@
   <data name="msg_text2html_open_as_htmlmode" xml:space="preserve">
     <value>HTML모드로 열겠습니까?</value>
   </data>
+  <data name="str_folder_desc" xml:space="preserve">
+    <value>__폴더설명</value>
+  </data>
 </root>

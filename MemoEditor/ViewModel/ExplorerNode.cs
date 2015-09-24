@@ -62,7 +62,7 @@ namespace MemoEditor.ViewModel
                 switch (m.msgtype)
                 {
                     case CustomMessage.MessageType.CREATE_NEW:
-                        CreateNew();
+                        CreateNew(m.str1);
                         break;
                     case CustomMessage.MessageType.CREATE_NEW_FOLDER:
                         CreateNewFolder();
@@ -226,8 +226,8 @@ namespace MemoEditor.ViewModel
 
         private void Expand()
         {
-            string filter1 = "*" + FILE_EXTENSION1;
-            string filter2 = "*" + FILE_EXTENSION2;
+            string filter1 = "*." + FILE_EXTENSION1;
+            string filter2 = "*." + FILE_EXTENSION2;
 
             if (ExplorerType != ExplorerType.Folder)
                 return;
@@ -241,10 +241,13 @@ namespace MemoEditor.ViewModel
                 {
                     foreach (string s in Directory.GetDirectories(Path))
                     {
+                        string filename = s.Substring(s.LastIndexOf("\\") + 1);
+                        string path = s;
+
                         Children.Add(new ExplorerNode
                                         {
-                                            Name = s.Substring(s.LastIndexOf("\\") + 1),
-                                            Path = s,
+                                            Name = filename,
+                                            Path = path,
                                             ExplorerType = ExplorerType.Folder,
                                             Children = new ObservableCollection<ExplorerNode> { dummyExplorerNode },
                                             Parent = this,
@@ -253,10 +256,16 @@ namespace MemoEditor.ViewModel
 
                     foreach (string s in Directory.GetFiles(Path, filter1))
                     {
+                        string filename = s.Substring(s.LastIndexOf("\\") + 1);
+                        string path = s;
+
+                        if (filename == Properties.Resources.str_folder_desc + "." + ExplorerNode.FILE_EXTENSION1)
+                            continue;
+
                         Children.Add(new ExplorerNode
                                         {
-                                            Name = s.Substring(s.LastIndexOf("\\") + 1),
-                                            Path = s,
+                                            Name = filename,
+                                            Path = path,
                                             ExplorerType = ExplorerType.File,
                                             Parent = this,
                                         });
@@ -264,10 +273,16 @@ namespace MemoEditor.ViewModel
 
                     foreach (string s in Directory.GetFiles(Path, filter2))
                     {
+                        string filename = s.Substring(s.LastIndexOf("\\") + 1);
+                        string path = s;
+
+                        if (filename == Properties.Resources.str_folder_desc + "." + ExplorerNode.FILE_EXTENSION2)
+                            continue;
+
                         Children.Add(new ExplorerNode
                         {
-                            Name = s.Substring(s.LastIndexOf("\\") + 1),
-                            Path = s,
+                            Name = filename,
+                            Path = path,
                             ExplorerType = ExplorerType.File,
                             Parent = this,
                         });
@@ -280,7 +295,33 @@ namespace MemoEditor.ViewModel
             }
         }
 
-        private ExplorerNode CreateNew()
+        public static string GetDescFileName(ExplorerNode node)
+        {
+            string filename = null;
+            if (node != null)
+            {
+                if (node.ExplorerType == ExplorerType.Folder)
+                {
+                    string dirname = node.Path + "\\";
+                    string file1 = Properties.Resources.str_folder_desc + "." + ExplorerNode.FILE_EXTENSION1;
+                    string file2 = Properties.Resources.str_folder_desc + "." + ExplorerNode.FILE_EXTENSION2;
+                    
+                    if (System.IO.File.Exists(dirname + file1))
+                    {
+                        filename = file1;
+                    }
+                    else if (System.IO.File.Exists(dirname + file2))
+                    {
+                        filename = file2;
+                    }
+                }
+
+            }
+
+            return filename;
+        }
+
+        private ExplorerNode CreateNew(string filename = null)
         {
             Debug.WriteLine("CreateNew");
 
@@ -300,13 +341,20 @@ namespace MemoEditor.ViewModel
                 node.Expand();
 
             string s = node.Path;
-            int i = 1;
-            do
+            if (filename != null)
             {
-                s = node.Path + "\\" + Properties.Resources.memo_filename_prefix + i.ToString() + "." + FILE_EXTENSION1;
-                if (!File.Exists(s)) break;
-                i++;
-            } while (true);
+                s = node.Path + "\\" + filename;
+            }
+            else
+            {
+                int i = 1;
+                do
+                {
+                    s = node.Path + "\\" + Properties.Resources.memo_filename_prefix + i.ToString() + "." + FILE_EXTENSION1;
+                    if (!File.Exists(s)) break;
+                    i++;
+                } while (true);
+            }
 
             System.IO.File.WriteAllText(s, "");
 
