@@ -258,8 +258,9 @@ namespace MemoEditor.ViewModel
                     {
                         string filename = s.Substring(s.LastIndexOf("\\") + 1);
                         string path = s;
+                        string descfile = Properties.Resources.str_folder_desc + "." + ExplorerNode.FILE_EXTENSION1;
 
-                        if (filename == Properties.Resources.str_folder_desc + "." + ExplorerNode.FILE_EXTENSION1)
+                        if (filename == descfile)
                             continue;
 
                         Children.Add(new ExplorerNode
@@ -275,8 +276,9 @@ namespace MemoEditor.ViewModel
                     {
                         string filename = s.Substring(s.LastIndexOf("\\") + 1);
                         string path = s;
+                        string descfile = Properties.Resources.str_folder_desc + "." + ExplorerNode.FILE_EXTENSION2;
 
-                        if (filename == Properties.Resources.str_folder_desc + "." + ExplorerNode.FILE_EXTENSION2)
+                        if (filename == descfile)
                             continue;
 
                         Children.Add(new ExplorerNode
@@ -358,24 +360,36 @@ namespace MemoEditor.ViewModel
 
             System.IO.File.WriteAllText(s, "");
 
-            ExplorerNode childnode = new ExplorerNode
+            string descfile = Properties.Resources.str_folder_desc + "." + ExplorerNode.FILE_EXTENSION1;
+            if (descfile != filename)
             {
-                Name = s.Substring(s.LastIndexOf("\\") + 1),
-                Path = s,
-                ExplorerType = ExplorerType.File,
-                Parent = node,
-            };
+                ExplorerNode childnode = new ExplorerNode
+                {
+                    Name = s.Substring(s.LastIndexOf("\\") + 1),
+                    Path = s,
+                    ExplorerType = ExplorerType.File,
+                    Parent = node,
+                };
 
-            node.Children.Add(childnode);
+                node.Children.Add(childnode);
 
-            Messenger.Default.Send(new CustomMessage(
-                CustomMessage.MessageType.CREATED_NEW, childnode.Name, childnode.Path, childnode));
+                Messenger.Default.Send(new CustomMessage(
+                    CustomMessage.MessageType.CREATED_NEW, childnode.Name, childnode.Path, childnode));
 
-            // Selecting node 
-            node.IsExpanded = true;
-            childnode.IsSelected = true;
+                childnode.IsSelected = true;
 
-            return childnode;
+                // Selecting node 
+                node.IsExpanded = true;
+
+                return childnode;
+            }
+            else
+            {
+                // Selecting node 
+                node.IsExpanded = true;
+
+                return null;
+            }
         }
 
         private ExplorerNode CreateNewFolder()

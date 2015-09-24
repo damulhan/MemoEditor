@@ -92,8 +92,11 @@ namespace MemoEditor
                 {
                     case CustomMessage.MessageType.SELECTED:
                         // editText1 goto first line 
-                        if(EditText1.LineCount >= 0)
+                        try
+                        {
                             EditText1.ScrollToLine(0);
+                        }
+                        catch (System.ArgumentOutOfRangeException) { }
 
                         // goto text mode 
                         _changeHtmlMode(false);
