@@ -329,6 +329,8 @@ namespace MemoEditor.ViewModel
                                 string file2 = file + ExplorerNode.FILE_EXTENSION2;
                                 string folder_desc_file = Properties.Resources.str_folder_desc + "." + ExplorerNode.FILE_EXTENSION1;
 
+                                EditTextInit();
+
                                 if (System.IO.File.Exists(file1))
                                 {
                                     FileOpen(file1);
