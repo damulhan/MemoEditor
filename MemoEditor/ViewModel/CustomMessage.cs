@@ -25,6 +25,7 @@ namespace MemoEditor.ViewModel
             FOLDER_CHANGED,
             FILE_CHANGE_EXTENSION,
             AFTER_FILE_CHANGE_EXTENSION,
+            HTML_MODE_CHANGED,
         };
 
         public MessageType msgtype;

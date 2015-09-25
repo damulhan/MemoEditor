@@ -175,6 +175,12 @@ namespace MemoEditor.ViewModel
             {
                 return _textChanged;
             }
+
+            set
+            {
+                _textChanged = true;
+                RaisePropertyChanged("EditTextSavable");
+            }
         }
 
         private bool _isEnabledEditText;
@@ -426,7 +432,7 @@ namespace MemoEditor.ViewModel
                         string html_header = "<!DOCTYPE html>\n" +
                                             "<head><meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\" /></head>\n" +
                                             "<body>\n";
-                        if (EditHtml != null && EditHtml.IndexOf("content-type") < 0)
+                        if (EditHtml != null && EditHtml.IndexOf("<!DOCTYPE html") < 0)
                             text = html_header + EditHtml;
                         else
                             text = EditHtml;
@@ -479,6 +485,14 @@ namespace MemoEditor.ViewModel
                     EditText = text;
                     _editTextOld = text;
                 }
+
+                /*
+                if (EditText.IndexOf("<!DOCTYPE html") >= 0)
+                {
+                    Messenger.Default.Send(new CustomMessage(
+                                    CustomMessage.MessageType.HTML_MODE_CHANGED, "html"));
+                }
+                */
 
                 // set as editable 
                 IsEnabledEditText = true;

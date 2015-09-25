@@ -109,7 +109,19 @@ namespace MemoEditor
                             _changeHtmlMode(true);
                             _copyTextToHtml(true, true);
                         }
+
+                        if (EditText1.Text.IndexOf("<!DOCTYPE html") >= 0)
+                        {
+                            _changeHtmlMode(true);
+                            _copyTextToHtml(true, true);
+                        }
                         
+                        break;
+
+                    case CustomMessage.MessageType.HTML_MODE_CHANGED:
+                        bool goto_html_mode = (m.str1 == "html");
+                        _changeHtmlMode( goto_html_mode );
+                        _copyTextToHtml( goto_html_mode, true);
                         break;
 
                     case CustomMessage.MessageType.FOLDER_CHANGED:
@@ -360,6 +372,8 @@ namespace MemoEditor
 
             _changeHtmlMode(goto_htmlmode);
             _copyTextToHtml(goto_htmlmode, treat_as_html);
+
+            ViewModel.EditTextSavable = true; 
         }
 
         private void _changeHtmlMode(bool goto_htmlmode) 
