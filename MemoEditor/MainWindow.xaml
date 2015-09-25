@@ -155,7 +155,7 @@
             </ToolBar>
         </ToolBarTray>
 
-        <StatusBar x:Name="StatusBar1" DockPanel.Dock="Bottom" Height="20" Visibility="Collapsed">
+        <StatusBar x:Name="StatusBar1" DockPanel.Dock="Bottom" Height="20" Visibility="{Binding ShowStatusbar}">
             <TextBlock x:Name="SBText1" TextWrapping="Wrap" Text="."/>
         </StatusBar>
 

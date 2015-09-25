@@ -51,9 +51,9 @@ namespace MemoEditor
             this.EditText1.FontSize = userPrefs.FontSize;
             this.EditText1.FontFamily = new FontFamily(userPrefs.FontFamily);
             this.EditText1.SelectionBrush = Brushes.DodgerBlue;
-
-            //Debug.WriteLine("font:" + userPrefs.FontFamily + " " + userPrefs.FontSize);
-
+            this.StatusBar1.Visibility = userPrefs.ShowStatusbar ? Visibility.Visible : Visibility.Collapsed;
+            this.MenuItemStatusBarVisible.IsChecked = userPrefs.ShowStatusbar;
+            
             _initializeMessenger();
 
             // 
@@ -202,6 +202,7 @@ namespace MemoEditor
             userPrefs.WindowState = this.WindowState;
             userPrefs.FontSize = this.EditText1.FontSize;
             userPrefs.FontFamily = this.EditText1.FontFamily.ToString();
+            userPrefs.ShowStatusbar = (this.StatusBar1.Visibility == Visibility.Visible);
 
             userPrefs.Save();
             

@@ -180,6 +180,9 @@
   <data name="command_replace" xml:space="preserve">
     <value>바꾸기</value>
   </data>
+  <data name="command_run_explorer" xml:space="preserve">
+    <value>Explorer에서 열기</value>
+  </data>
   <data name="command_save" xml:space="preserve">
     <value>저장</value>
   </data>

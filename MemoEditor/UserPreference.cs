@@ -23,6 +23,7 @@ namespace MemoEditor
         private string _workingFolder;
         private double _fontSize;
         private string _fontFamily;
+        private bool _showStatusbar;
         private System.Collections.Specialized.StringCollection _favoriteFolders;
 
         #endregion //Member Variables
@@ -85,6 +86,11 @@ namespace MemoEditor
                 return col.OfType<string>();
             }
         }
+        public bool ShowStatusbar
+        {
+            get { return _showStatusbar; }
+            set { _showStatusbar = value; }
+        }
 
         public void AddToFavoriteFolders(string str)
         {
@@ -116,7 +122,9 @@ namespace MemoEditor
         {
             get {
                 if (_instance == null)
+                {
                     _instance = new UserPreferences();
+                }
 
                 return _instance;  
             }
@@ -184,6 +192,7 @@ namespace MemoEditor
             _favoriteFolders = Properties.Settings.Default.FavoriteFolders;
             if(_favoriteFolders == null)
                 _favoriteFolders = new StringCollection();
+            _showStatusbar = Properties.Settings.Default.ShowStatusbar;
         }
         
 
@@ -218,6 +227,9 @@ namespace MemoEditor
                 Debug.WriteLine("UserPref: _favoriteFolders: " + _favoriteFolders);
                 Properties.Settings.Default.FavoriteFolders = _favoriteFolders;
 
+                Debug.WriteLine("UserPref: _showStatusBar: " + ShowStatusbar);
+                Properties.Settings.Default.ShowStatusbar = ShowStatusbar;
+                
                 Properties.Settings.Default.Save();
             }
         }

@@ -23,6 +23,7 @@
                     <MenuItem Header="{x:Static resx:Resources.command_rename_html}" Command="{Binding FileChangeExtensionHTMLCommand}"/>
                     <Separator />
                     <MenuItem Header="{x:Static resx:Resources.command_set_as_root}" Command="{Binding SetAsRootCommand}" />
+                    <MenuItem Header="{x:Static resx:Resources.command_run_explorer}" Command="{Binding RunExplorerCommand}" />                    
                 </ContextMenu>
             </TreeView.ContextMenu>
             <TreeView.ItemContainerStyle>

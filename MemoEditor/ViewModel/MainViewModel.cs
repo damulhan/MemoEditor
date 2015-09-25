@@ -37,6 +37,7 @@ namespace MemoEditor.ViewModel
         public RelayCommand FileChangeExtensionTXTCommand { get; private set; }
         public RelayCommand FileChangeExtensionHTMLCommand { get; private set; }
         public RelayCommand SetAsRootCommand { get; private set; }                
+        public RelayCommand RunExplorerCommand { get; private set; }                        
         public RelayCommand FileDeleteCommand { get; private set; }
         public RelayCommand HelpInfoCommand { get; private set; }
         public RelayCommand FolderChangeCommand { get; private set; }
@@ -212,6 +213,15 @@ namespace MemoEditor.ViewModel
             }
         }
 
+        public bool ShowStatusbar 
+        {
+            get
+            {
+                UserPreferences up = UserPreferences.Instance;
+                return up.ShowStatusbar;
+            }
+        }
+
         #endregion 
 
         /// <summary>
@@ -249,6 +259,9 @@ namespace MemoEditor.ViewModel
             FileChangeExtensionHTMLCommand = new RelayCommand(OnFileChangeExtensionHTML, () => true);
             SetAsRootCommand = new RelayCommand(OnSetAsRoot, () =>
                 CurrentExplorerNode != null && 
+                CurrentExplorerNode.ExplorerType == ExplorerType.Folder);
+            RunExplorerCommand = new RelayCommand(OnRunExplorer, () =>
+                CurrentExplorerNode != null &&
                 CurrentExplorerNode.ExplorerType == ExplorerType.Folder);
             FileDeleteCommand = new RelayCommand(OnFileDelete, () => true);
             HelpInfoCommand = new RelayCommand(OnHelpInfo, () => true);
@@ -570,6 +583,8 @@ namespace MemoEditor.ViewModel
 
             if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
+                OnFileSave();
+
                 _folderChange(dialog.SelectedPath);
             }
         }
@@ -578,7 +593,20 @@ namespace MemoEditor.ViewModel
         {
             if (CurrentExplorerNode != null && CurrentExplorerNode.ExplorerType == ExplorerType.Folder)
             {
+                OnFileSave();
+                
                 _folderChange(CurrentExplorerNode.Path);
+            }
+        }
+
+        private void OnRunExplorer()
+        {
+            if (CurrentExplorerNode != null && CurrentExplorerNode.ExplorerType == ExplorerType.Folder)
+            {
+                Process process = new Process();
+                process.StartInfo.UseShellExecute = true;
+                process.StartInfo.FileName = CurrentExplorerNode.Path;
+                process.Start();
             }
         }
 

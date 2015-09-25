@@ -180,6 +180,9 @@
   <data name="command_replace" xml:space="preserve">
     <value>Replace</value>
   </data>
+  <data name="command_run_explorer" xml:space="preserve">
+    <value>Run Explorer on this folder</value>
+  </data>
   <data name="command_save" xml:space="preserve">
     <value>Save</value>
   </data>

@@ -250,6 +250,15 @@ namespace MemoEditor.Properties {
         }
         
         /// <summary>
+        ///   Run Explorer on this folder과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string command_run_explorer {
+            get {
+                return ResourceManager.GetString("command_run_explorer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Save과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         public static string command_save {
