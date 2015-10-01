@@ -234,8 +234,7 @@ namespace MemoEditor.ViewModel
 
             ExplorerNode dummyExplorerNode = new ExplorerNode { ExplorerType = ExplorerType.Dummy };
 
-            //if (Children.Count == 1 && Children[0].ExplorerType == ExplorerType.Dummy)
-            if(true)
+            if (Children.Count == 1 && Children[0].ExplorerType == ExplorerType.Dummy)
             {
                 Children.Clear();
                 try
