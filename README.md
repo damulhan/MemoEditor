@@ -13,5 +13,8 @@ The saved file is saved on .txt file, not a data base.
 
 - Screenshot
 
-![Screenshot] (./screenshot.png)
+![Screenshot] (./screenshot1.png)
+
+
+![Screenshot] (./screenshot2.png)
 
