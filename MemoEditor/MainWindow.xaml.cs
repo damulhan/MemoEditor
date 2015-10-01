@@ -28,7 +28,7 @@ namespace MemoEditor
 
         public static readonly RoutedUICommand AddTimeCommand =
             new RoutedUICommand("Add Time", "Add Time", typeof(MainWindow),
-                new InputGestureCollection() { new KeyGesture(Key.F5) }
+                new InputGestureCollection() { new KeyGesture(Key.F7) }
             );
 
         /// <summary>
@@ -137,7 +137,7 @@ namespace MemoEditor
                         break;
 
                     case CustomMessage.MessageType.AFTER_FILE_CHANGE_EXTENSION:
-                        EditHtmlCommandBtn_Clicked(null, null);
+                        //EditHtmlCommandBtn_Clicked(null, null);
                         break;
 
                     default:

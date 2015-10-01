@@ -234,7 +234,8 @@ namespace MemoEditor.ViewModel
 
             ExplorerNode dummyExplorerNode = new ExplorerNode { ExplorerType = ExplorerType.Dummy };
 
-            if (Children.Count == 1 && Children[0].ExplorerType == ExplorerType.Dummy)
+            //if (Children.Count == 1 && Children[0].ExplorerType == ExplorerType.Dummy)
+            if(true)
             {
                 Children.Clear();
                 try
@@ -254,6 +255,8 @@ namespace MemoEditor.ViewModel
                                         });
                     }
 
+                    List<ExplorerNode> _children = new List<ExplorerNode>();
+
                     foreach (string s in Directory.GetFiles(Path, filter1))
                     {
                         string filename = s.Substring(s.LastIndexOf("\\") + 1);
@@ -263,7 +266,7 @@ namespace MemoEditor.ViewModel
                         if (filename == descfile)
                             continue;
 
-                        Children.Add(new ExplorerNode
+                        _children.Add(new ExplorerNode
                                         {
                                             Name = filename,
                                             Path = path,
@@ -281,7 +284,7 @@ namespace MemoEditor.ViewModel
                         if (filename == descfile)
                             continue;
 
-                        Children.Add(new ExplorerNode
+                        _children.Add(new ExplorerNode
                         {
                             Name = filename,
                             Path = path,
@@ -290,6 +293,13 @@ namespace MemoEditor.ViewModel
                         });
                     }
 
+                    _children.Sort(delegate(ExplorerNode t1, ExplorerNode t2)
+                    {
+                        return t1.Name.CompareTo(t2.Name); 
+                    });
+
+                    foreach (var item in _children)
+                        Children.Add(item);
                 }
                 catch (Exception e) {
                     Debug.Write(e.ToString());
@@ -455,8 +465,26 @@ namespace MemoEditor.ViewModel
             {
                 try 
                 { 
-                    if (node.ExplorerType == ExplorerType.Folder) 
+                    if (node.ExplorerType == ExplorerType.Folder) {
+
+                        // delete desc file 
+                        string descfilepath = node.Path + "\\" + GetDescFileName(node);
+                        Collection<string> files = new Collection<string>();
+                        foreach (string s in Directory.GetFiles(node.Path)) files.Add(s);
+                        if (files.Count == 1 && files[0] == descfilepath)
+                        {
+                            try
+                            {
+                                File.Delete(descfilepath);
+                            }
+                            catch (IOException e) {
+                                MainViewModel.MessageBoxShow(e.Message);
+                            }
+                        }
+
+                        // delete folder 
                         Directory.Delete(node.Path);
+                    }                        
                     else if (node.ExplorerType == ExplorerType.File)
                         File.Delete(node.Path);
                 }

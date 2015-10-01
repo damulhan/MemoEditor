@@ -38,6 +38,7 @@
             
             <TreeView.InputBindings>
                 <KeyBinding Command="{Binding FileDeleteCommand}" Key="Delete" />
+                <KeyBinding Command="{Binding FileExplorerRefreshCommand}" Key="F5" />
             </TreeView.InputBindings>
 
             <TreeView.ItemTemplate>

@@ -86,7 +86,7 @@
                 <MenuItem Command="ApplicationCommands.Replace" x:Name="MenuItemReplace" Header="{x:Static resx:Resources.command_replace}" />
                 <Separator />
                 <MenuItem Command="ApplicationCommands.SelectAll" Header="{x:Static resx:Resources.command_selectall}" InputGestureText="Ctrl+A"/>
-                <MenuItem Command="local:MainWindow.AddTimeCommand" x:Name="MenuItemAddTime" Header="{x:Static resx:Resources.command_addtime}" InputGestureText="F5" />
+                <MenuItem Command="local:MainWindow.AddTimeCommand" x:Name="MenuItemAddTime" Header="{x:Static resx:Resources.command_addtime}" />
             </MenuItem>
             <MenuItem Header="{x:Static resx:Resources.menu_view}">
                 <MenuItem x:Name="MenuItemTopmost" Command="" Header="{x:Static resx:Resources.menu_topmost}" IsCheckable="True" Click="MenuItemTopmost_Click" />

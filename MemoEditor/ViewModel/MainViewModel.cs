@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Controls;
 using System;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace MemoEditor.ViewModel
 {
@@ -39,6 +40,7 @@ namespace MemoEditor.ViewModel
         public RelayCommand SetAsRootCommand { get; private set; }                
         public RelayCommand RunExplorerCommand { get; private set; }                        
         public RelayCommand FileDeleteCommand { get; private set; }
+        public RelayCommand FileExplorerRefreshCommand { get; private set; }        
         public RelayCommand HelpInfoCommand { get; private set; }
         public RelayCommand FolderChangeCommand { get; private set; }
         public RelayCommand ExitCommand { get; private set; }
@@ -270,6 +272,7 @@ namespace MemoEditor.ViewModel
                 CurrentExplorerNode != null &&
                 CurrentExplorerNode.ExplorerType == ExplorerType.Folder);
             FileDeleteCommand = new RelayCommand(OnFileDelete, () => true);
+            FileExplorerRefreshCommand = new RelayCommand(OnFileExplorerRefresh, () => true);
             HelpInfoCommand = new RelayCommand(OnHelpInfo, () => true);
             FolderChangeCommand = new RelayCommand(OnFolderChange, () => true);
             ExitCommand = new RelayCommand(OnExit, () => true);
@@ -571,6 +574,30 @@ namespace MemoEditor.ViewModel
                     // User pressed Cancel button
                     // ...
                     break;
+            }
+        }
+
+        private void OnFileExplorerRefresh() 
+        {
+            OnFileSave();
+
+            /*
+            ExplorerNode node = ExplorerNode.SelectedNode;
+            if (node.ExplorerType != ExplorerType.Folder)
+                node = node.Parent;
+
+            if (node != null)
+            {
+                node.IsExpanded = false;
+                node.IsExpanded = true; 
+            }
+            */
+
+            List<ExplorerNode> _first = FirstGeneration.ToList<ExplorerNode>();
+            if (_first.Count > 0)
+            {
+                string root = _first[0].Path;
+                _folderChange(root);
             }
         }
 
