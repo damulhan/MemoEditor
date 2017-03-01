@@ -1,0 +1,11 @@
+﻿###############################################################################
+# 이 .gitignore 파일은 Microsoft(R) Visual Studio에서 자동으로 만들어졌습니다.
+################################################################################
+
+/MemoEditor/bin/Debug
+/MemoEditor/obj/Debug
+/HtmlEditorApp/bin/Debug
+/HtmlEditorApp/obj
+/HtmlEditorControl/bin/Debug
+/HtmlEditorControl/obj/Debug
+

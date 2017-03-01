@@ -222,6 +222,11 @@ namespace MemoEditor
             ViewModel.OnClosingCommand.Execute(e);
         }
 
+        private void Window_Activated(object sender, EventArgs e)
+        {
+            ViewModel.OnActivatedCommand.Execute(e);
+        }
+
         private void FileExplorer1_Loaded(object sender, RoutedEventArgs e)
         {
             var treeview = e.Source as MemoEditor.FileExplorerControl;
@@ -431,7 +436,7 @@ namespace MemoEditor
                 MainViewModel.MessageBoxShow("Not folder");
             }
         }
-        
+
         /* 
         private void Paste_Excuted(object sender, ExecutedRoutedEventArgs e)
         {

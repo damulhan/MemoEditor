@@ -273,8 +273,14 @@
   <data name="msg_cannot_change" xml:space="preserve">
     <value>Cannot change.</value>
   </data>
+  <data name="msg_confirm_file_saved_ok" xml:space="preserve">
+    <value>If you not save now, file may not be saved, ok to exit?</value>
+  </data>
   <data name="msg_delete" xml:space="preserve">
     <value>Want to delete?</value>
+  </data>
+  <data name="msg_file_changed_reload_ok" xml:space="preserve">
+    <value>File has been changed by other program after last open/save. reload</value>
   </data>
   <data name="msg_htmltotext_modechange_ok" xml:space="preserve">
     <value>Html properties will be disappeard. Will you goahead?</value>

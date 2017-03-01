@@ -529,11 +529,29 @@ namespace MemoEditor.Properties {
         }
         
         /// <summary>
+        ///   If you not save now, file may not be saved, ok to exit?과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string msg_confirm_file_saved_ok {
+            get {
+                return ResourceManager.GetString("msg_confirm_file_saved_ok", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Want to delete?과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         public static string msg_delete {
             get {
                 return ResourceManager.GetString("msg_delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   File has been changed by other program after last open/save. reload과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string msg_file_changed_reload_ok {
+            get {
+                return ResourceManager.GetString("msg_file_changed_reload_ok", resourceCulture);
             }
         }
         

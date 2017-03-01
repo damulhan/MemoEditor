@@ -14,6 +14,7 @@ using System.Windows.Controls;
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using System.IO;
 
 namespace MemoEditor.ViewModel
 {
@@ -29,6 +30,7 @@ namespace MemoEditor.ViewModel
         // event mapper 
         public RelayCommand OnLoadedCommand { get; private set; }
         public RelayCommand OnClosingCommand { get; private set; }
+        public RelayCommand OnActivatedCommand { get; private set; }
         public RelayCommand FileNewCommand { get; private set; }
         public RelayCommand FileSaveCommand { get; private set; }
         public RelayCommand EditText1_TextChangedCommand { get; private set; }
@@ -230,7 +232,10 @@ namespace MemoEditor.ViewModel
             }
         }
 
-        #endregion 
+        private string _openedFilePath = null; 
+        private DateTime _lastWriteTime = new DateTime(0);
+
+        #endregion
 
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
@@ -257,6 +262,7 @@ namespace MemoEditor.ViewModel
             // Connecting window event with command 
             OnLoadedCommand = new RelayCommand(OnLoaded, () => true);
             OnClosingCommand = new RelayCommand(OnClosing, () => true);
+            OnActivatedCommand = new RelayCommand(OnActivated, () => true);
             FileNewCommand = new RelayCommand(OnFileNew, () => true);
             FileSaveCommand = new RelayCommand(OnFileSave, () => EditTextSavable);
             EditText1_TextChangedCommand = new RelayCommand(OnEditText1_TextChanged, () => true);
@@ -338,7 +344,7 @@ namespace MemoEditor.ViewModel
                                 string file2 = file + ExplorerNode.FILE_EXTENSION2;
                                 string folder_desc_file = Properties.Resources.str_folder_desc + "." + ExplorerNode.FILE_EXTENSION1;
 
-                                EditTextInit();
+                                _editTextInit();
 
                                 if (System.IO.File.Exists(file1))
                                 {
@@ -356,12 +362,12 @@ namespace MemoEditor.ViewModel
                             }
                             else 
                             {
-                                EditTextInit();
+                                _editTextInit();
                             }
                         }
                         else
                         {
-                            EditTextInit();
+                            _editTextInit();
                         }
 
                         // Title change 
@@ -383,7 +389,7 @@ namespace MemoEditor.ViewModel
 
         #region Event functions 
 
-        private void EditTextInit()
+        private void _editTextInit()
         {
             _editTextOld = "";
             EditText = "";
@@ -399,7 +405,7 @@ namespace MemoEditor.ViewModel
 
         private void OnFileNew(string filename=null)
         {
-            Debug.WriteLine("File New..");
+            Debug.WriteLine("OnFileNew..");
 
             OnFileSave();
 
@@ -409,7 +415,7 @@ namespace MemoEditor.ViewModel
 
         private void OnFolderNew()
         {
-            Debug.WriteLine("New folder ..");
+            Debug.WriteLine("OnFolderNew ..");
 
             OnFileSave();
 
@@ -419,6 +425,8 @@ namespace MemoEditor.ViewModel
 
         private void OnFileSave()
         {
+            Debug.WriteLine("OnFileSave");
+
             if (_textChanged && _currentExplorerNode != null)
             {
 
@@ -443,21 +451,27 @@ namespace MemoEditor.ViewModel
                     else
                         text = EditText;
 
-                    Debug.WriteLine("Saving.." + text);
+                    //Debug.WriteLine("Saving.." + text);
 
                     string descfile = ExplorerNode.GetDescFileName(_currentExplorerNode);
+                    string path; 
                     if(descfile != null) {
-                        string path;
                         if(_currentExplorerNode.ExplorerType == ExplorerType.Folder)
                             path = _currentExplorerNode.Path + "\\" + descfile;
                         else 
                             path = System.IO.Path.GetDirectoryName(_currentExplorerNode.Path) + "\\" + descfile;
 
-                        System.IO.File.WriteAllText(path, text);
                     } else {
-                        System.IO.File.WriteAllText(_currentExplorerNode.Path, text);
+                        path = _currentExplorerNode.Path;
                     }
+                    
+                    // all text 
+                    System.IO.File.WriteAllText(path, text);
 
+                    // save last write time 
+                    _lastWriteTime = File.GetLastWriteTime(path);
+                    
+                    // save old text 
                     _editTextOld = text;
 
                     Messenger.Default.Send(new CustomMessage(
@@ -503,6 +517,13 @@ namespace MemoEditor.ViewModel
                 // set text changed to false 
                 _textChanged = false;
 
+                // save last write time 
+                _lastWriteTime = File.GetLastWriteTime(path);
+
+                // save opened file path 
+                _openedFilePath = path;
+
+                Debug.WriteLine("Opened file name: " + path);
             }
             catch (System.IO.FileNotFoundException e)
             {
@@ -554,6 +575,8 @@ namespace MemoEditor.ViewModel
 
         private void OnFileDelete()
         {
+            Debug.WriteLine("OnFileDelete");
+
             string messageBoxText = Properties.Resources.msg_delete;
             string caption = Version.APP_NAME;
             MessageBoxButton button = MessageBoxButton.OKCancel;
@@ -621,6 +644,8 @@ namespace MemoEditor.ViewModel
 
         private void OnFolderChange()
         {
+            Debug.WriteLine("OnFolderChange");
+
             System.Windows.Forms.FolderBrowserDialog dialog
                 = new System.Windows.Forms.FolderBrowserDialog();
 
@@ -655,6 +680,8 @@ namespace MemoEditor.ViewModel
 
         private void _folderChange(string path)
         {
+            Debug.WriteLine("_folderChange:" + path);
+
             if (System.IO.Directory.Exists(path))
             {
                 if (FirstGeneration != null)
@@ -687,6 +714,8 @@ namespace MemoEditor.ViewModel
 
         private void OnLoaded()
         {
+            Debug.WriteLine("OnLoaded");
+
             // Make initial tree node 
             try
             {
@@ -709,11 +738,120 @@ namespace MemoEditor.ViewModel
 
         private void OnClosing()
         {
+            Debug.WriteLine("OnClosing");
+
+            // force save. 
             OnFileSave();
+        }
+
+        private bool _isFileChanged()
+        {
+            DateTime currWriteTime = File.GetLastWriteTime(_openedFilePath);
+            bool changed = false;
+            if (_lastWriteTime != null && currWriteTime.CompareTo(_lastWriteTime) > 0)
+                changed = true;
+
+            Debug.WriteLine("_isFileChanged: " + changed);
+            return changed;
+        }
+
+        private bool _checkLastWriteTime() 
+        {
+            Debug.WriteLine("_checkLastWriteTime");
+
+            bool solved = true;
+            if (_isFileChanged()) 
+            // changed after last open / saved 
+            {
+                string messageBoxText = Properties.Resources.msg_file_changed_reload_ok;
+                string caption = Version.APP_NAME;
+                MessageBoxButton button = MessageBoxButton.OKCancel;
+                MessageBoxImage icon = MessageBoxImage.Warning;
+                MessageBoxResult result = MessageBoxEx.Show(MainWindow.Instance, messageBoxText, caption, button, icon);
+
+                // Process message box results
+                switch (result)
+                {
+                    case MessageBoxResult.OK:
+                        FileOpen(_openedFilePath);
+
+                        string filename = Path.GetFileName(_openedFilePath);
+
+                        Messenger.Default.Send(new CustomMessage(
+                            CustomMessage.MessageType.OPENED, filename));
+
+                        solved = true; 
+                        break;
+
+                    case MessageBoxResult.Cancel:
+                        // User pressed Cancel button
+                        // ...
+                        solved = false; 
+                        break;
+
+                    default:
+                        break;
+                }
+            }
+
+            return solved; 
+        }
+
+        private bool _confirmFileSaved()
+        {
+            Debug.WriteLine("_confirmFileSaved");
+
+            string messageBoxText = Properties.Resources.msg_confirm_file_saved_ok;
+            string caption = Version.APP_NAME;
+            MessageBoxButton button = MessageBoxButton.OKCancel;
+            MessageBoxImage icon = MessageBoxImage.Warning;
+            MessageBoxResult result = MessageBoxEx.Show(MainWindow.Instance, messageBoxText, caption, button, icon);
+            bool oktoexit = false; 
+
+            // Process message box results
+            switch (result)
+            {
+                case MessageBoxResult.OK:
+                    oktoexit = true;
+                    break;
+
+                case MessageBoxResult.Cancel:
+                    oktoexit = false;
+                    break;
+            }
+
+            return oktoexit; 
+        }
+
+        private void OnActivated()
+        {
+            Debug.WriteLine("OnActivated");
+
+            if (_openedFilePath != null && _isFileChanged())
+            {
+                bool solved = _checkLastWriteTime();
+                if (solved == false)
+                {
+                    // ignore
+                }
+
+                // update last write time; 
+                _lastWriteTime = File.GetLastWriteTime(_openedFilePath); 
+            }
         }
 
         private void OnExit()
         {
+            Debug.WriteLine("OnExit");
+
+            bool solved = _checkLastWriteTime();
+            if (!solved)
+            {
+                bool oktoexit = _confirmFileSaved();
+                if (!oktoexit)
+                    return;
+            }
+
             OnClosing();
             Application.Current.Shutdown();
         }

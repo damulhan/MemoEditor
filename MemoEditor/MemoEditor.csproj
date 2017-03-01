@@ -56,16 +56,17 @@
     <ApplicationIcon>Resources\MemoEditor.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>474AFFAEA0D6B18739F83D4B4E45144146D52D1A</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>1AF025F6B475AECFA391402B0FAD101A128D999E</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>MemoEditor_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>
+    </ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>MemoEditor.App</StartupObject>

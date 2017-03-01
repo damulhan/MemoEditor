@@ -34,10 +34,16 @@ namespace MemoEditor
             }
             else
             {
-                var uri = new Uri("pack://application:,,,./Resources/folder.png");
-                var source = new BitmapImage(uri);
-                return source;
+                // This code bring about design view failure; after design time, it may be uncommented.
+                if (true)
+                {
+                    var uri = new Uri("pack://application:,,,./Resources/folder.png");
+                    var source = new BitmapImage(uri);
+                    return source;
+                }
             }
+
+            return null;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
