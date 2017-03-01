@@ -1,5 +1,6 @@
 ﻿using MemoEditor.ViewModel;
 using System;
+using System.ComponentModel;
 using System.Globalization;
 using System.IO;
 using System.Windows;
@@ -21,12 +22,16 @@ namespace MemoEditor
             if (node == null)
                 return null;
 
+            // This code bring about design view failure; after design time, 
+            // fetching icon return error; how to fix it?? 
+            if (DesignerProperties.GetIsInDesignMode(new DependencyObject()))
+                return null;
+
             if (node.ExplorerType == ExplorerType.File)
             {
                 return GetIconForPath(node.Path);
             }
-
-            if (node.ExplorerType == ExplorerType.Drive)
+            else if (node.ExplorerType == ExplorerType.Drive)
             {
                 var uri = new Uri("pack://application:,,,./Resources/diskdrive.png");
                 var source = new BitmapImage(uri);
@@ -34,13 +39,9 @@ namespace MemoEditor
             }
             else
             {
-                // This code bring about design view failure; after design time, it may be uncommented.
-                if (true)
-                {
-                    var uri = new Uri("pack://application:,,,./Resources/folder.png");
-                    var source = new BitmapImage(uri);
-                    return source;
-                }
+                var uri = new Uri("pack://application:,,,./Resources/folder.png");
+                var source = new BitmapImage(uri);
+                return source;
             }
 
             return null;
