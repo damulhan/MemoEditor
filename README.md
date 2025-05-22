@@ -2,7 +2,7 @@
 WPF based text editor with treeview navigation. Using [MVVMLight](https://github.com/lbugnion/mvvmlight)
 
 - A MemoEditor; 
-left file explorer is based on "[TreeView In-place Editing in MVVM](https://treeviewinplaceedit.codeplex.com)"  article
+left file explorer is based on "[TreeView In-place Editing in MVVM]( https://www.codeproject.com/Articles/893068/WPF-TreeView-with-in-place-editing )"  article
 
 
 - This project consists of Treeview and simple TextEdit component. The treeview represents 
